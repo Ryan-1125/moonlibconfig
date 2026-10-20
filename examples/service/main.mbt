@@ -18,6 +18,9 @@ fn main {
     println("Updated port: \{reloaded.lookup("service.port").as_int()}")
     println(output)
   } catch {
-    @config.ConfigError(d) => println("\{d.code}: \{d.message}")
+    @config.ConfigError(d) => {
+      println("\{d.code}: \{d.message}")
+      panic()
+    }
   }
 }

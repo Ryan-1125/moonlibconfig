@@ -1,8 +1,19 @@
 # moonlibconfig
 
-纯 MoonBit 的 libconfig 配置库，独立实现，参照 hyperrealm/libconfig 1.8.2，原创代码采用 Apache-2.0。目前为本地首版，尚未发布到 Mooncakes。
+纯 MoonBit 的 libconfig 配置库，独立实现，参照 hyperrealm/libconfig 1.8.2，原创代码采用 Apache-2.0。[GitHub仓库](https://github.com/Ryan-1125/moonlibconfig)公开可用；尚未发布到 Mooncakes。
 
 支持内存解析、类型保真、路径查询、替换和规范化写出。核心没有文件I/O或FFI依赖；group、同类型标量array、异构list、32/64位整数独立建模。字符串保存字节，提取String时严格检查UTF-8。
+
+安装MoonBit工具链后，可从源码运行：
+
+```text
+git clone https://github.com/Ryan-1125/moonlibconfig.git
+cd moonlibconfig
+moon update
+moon run examples/service --target wasm-gc
+```
+
+示例会读取服务名、端口和节点地址，将端口从9000替换为8080，写出并重读验证；出错以非零状态退出。[三个使用场景](docs/USE_CASES.md)说明接入方式和边界。
 
 ```moonbit
 ///|
@@ -21,7 +32,7 @@ test "service configuration" {
 
 默认输入/输出1 MiB、嵌套64层、节点100000、单字符串256 KiB，可用Limits调整。include、未知转义、NUL及非有限浮点明确拒绝；输出不保留注释和排版。[兼容性说明](docs/COMPATIBILITY.md)列出与Windows上游的8项实测差异，不宣称完全兼容。
 
-库25组测试通过；Wasm GC、JS、Windows native均已运行。140个真实上游差分输入中，110个共同范围双向读写通过。[验证记录](docs/VERIFICATION.md)包含证据和复现方式。CI配置尚未在远程运行。
+库25组测试通过；Wasm GC、JS、Windows native均已运行。140个真实上游差分输入中，110个共同范围双向读写通过。[验证记录](docs/VERIFICATION.md)包含证据和复现方式，最新CI状态见[GitHub Actions](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
 
 ```text
 moon fmt --check
