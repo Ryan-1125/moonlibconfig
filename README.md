@@ -32,7 +32,7 @@ test "service configuration" {
 
 默认输入/输出1 MiB、嵌套64层、节点100000、单字符串256 KiB，可用Limits调整。include、未知转义、NUL及非有限浮点明确拒绝；输出不保留注释和排版。[兼容性说明](docs/COMPATIBILITY.md)列出与Windows上游的8项实测差异，不宣称完全兼容。
 
-库25组测试通过；Wasm GC、JS、Windows native均已运行。140个真实上游差分输入中，110个共同范围双向读写通过。[验证记录](docs/VERIFICATION.md)包含证据和复现方式，最新CI状态见[GitHub Actions](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
+库27组测试通过；Wasm GC、JS、Windows native均已运行。140个真实上游差分输入中，110个共同范围双向读写通过。[验证记录](docs/VERIFICATION.md)包含证据和复现方式，最新CI状态见[GitHub Actions](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
 
 ```text
 moon fmt --check
