@@ -8,6 +8,9 @@ pub(all) enum Segment {
 ///|
 /// Parse paths such as server.port, peers[0].host or peers.[0].host.
 pub fn parse_path(path : String) -> Array[Segment] raise ConfigError {
+  if path.length() > Limits::default().max_input {
+    raise failure("input_limit", "path exceeds byte limit")
+  }
   let r = Reader::new(@utf8.encode(path), Limits::default())
   let result : Array[Segment] = []
   while r.peek() != -1 {
@@ -82,6 +85,9 @@ pub fn Value::get_path(
   self : Value,
   path : ArrayView[Segment],
 ) -> Value raise ConfigError {
+  if path.length() > 256 {
+    raise failure("path_limit", "query path exceeds 256 segments")
+  }
   let mut value = self
   for part in path {
     value = match part {

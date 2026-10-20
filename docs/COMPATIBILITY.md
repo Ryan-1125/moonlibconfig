@@ -31,3 +31,5 @@ tools/expected-differences-windows.json 固定以上八项的完整输入、双�
 - 默认输入/输出1 MiB、嵌套64层、100000个值节点（根group不计数）、单字符串256 KiB。嵌套可配置至256，路径最多256段，限制必须非负。
 - 行/列从1开始，列按字节计，offset从0开始；LF换行，CR增加列。查询/写出错误没有源位置，使用offset=0、line=1、column=1。
 - Value容器为可访问的MoonBit Array；replaced复制修改路径上的容器，不深复制未修改分支。writer检查手动构造的非法树，并用限制截断循环引用。
+- get_path、parse_path和replaced均执行256段路径上限；parse_path还受默认输入字节上限约束。
+- with_member/without_member用于合法group的新增、替换、删除，保留顺序且不修改源容器。新值的完整结构/资源校验仍由writer负责；这些接口不会自动修复调用方手工构造的非法树。

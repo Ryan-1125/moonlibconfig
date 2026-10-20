@@ -28,11 +28,13 @@ test "service configuration" {
 
 消费包在moon.pkg导入 `"Ryan-1125/moonlibconfig" @config`。当前通过moon.work使用本地模块，或运行tools/Test-Consumer.ps1验证实际发布ZIP的独立消费；尚无注册表安装证据。
 
-接口包括parse、parse_bytes、stringify、parse_path；Value提供lookup/get_path/get_member/at/replaced和as_int/as_int64/as_double/as_bool/as_bytes/as_string。整数提取不隐式转换，ConfigError携带错误码、位置及消息。
+接口包括parse、parse_bytes、stringify、parse_path；Value提供lookup/get_path/get_member/at/replaced、with_member/without_member，以及as_int/as_int64/as_double/as_bool/as_bytes/as_string。整数提取不隐式转换，ConfigError携带错误码、位置及消息。
+
+修改嵌套group时，可先用with_member新增/替换字段或without_member删除已有字段，再用replaced放回原路径。新字段追加至末尾，替换保留原顺序，删除不存在的字段报missing_member。操作复制修改的容器，未修改分支共享；写出时仍检查手工构造的非法树。
 
 默认输入/输出1 MiB、嵌套64层、节点100000、单字符串256 KiB，可用Limits调整。include、未知转义、NUL及非有限浮点明确拒绝；输出不保留注释和排版。[兼容性说明](docs/COMPATIBILITY.md)列出与Windows上游的8项实测差异，不宣称完全兼容。
 
-库27组测试通过；Wasm GC、JS、Windows native均已运行。140个真实上游差分输入中，110个共同范围双向读写通过。[验证记录](docs/VERIFICATION.md)包含证据和复现方式，最新CI状态见[GitHub Actions](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
+库31组测试通过；Wasm GC、JS、Windows native均已运行。140个真实上游差分输入中，110个共同范围双向读写通过。[验证记录](docs/VERIFICATION.md)包含证据和复现方式，最新CI状态见[GitHub Actions](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
 
 ```text
 moon fmt --check

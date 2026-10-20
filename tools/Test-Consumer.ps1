@@ -24,7 +24,12 @@ test "packaged public API consumer" {
   let source = @config.parse("server={port=9000} peers=({host=\"moon\"})")
   assert_eq(source.lookup("peers[0].host").as_string(), "moon")
   let changed = source.replaced(@config.parse_path("server.port"), @config.Integer(8080))
-  let text = @config.stringify(changed)
+  let server = changed.lookup("server").with_member("workers", @config.Integer(4))
+  let edited = changed.replaced(@config.parse_path("server"), server)
+  assert_eq(edited.lookup("server.workers").as_int(), 4)
+  let removed = server.without_member("workers")
+  assert_eq(removed, changed.lookup("server"))
+  let text = @config.stringify(edited)
   assert_eq(@config.parse(text).lookup("server.port").as_int(), 8080)
   assert_eq(source.lookup("server.port").as_int(), 9000)
 }

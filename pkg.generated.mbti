@@ -63,6 +63,8 @@ pub fn Value::get_path(Self, ArrayView[Segment]) -> Self raise ConfigError
 pub fn Value::kind(Self) -> String
 pub fn Value::lookup(Self, String) -> Self raise ConfigError
 pub fn Value::replaced(Self, ArrayView[Segment], Self) -> Self raise ConfigError
+pub fn Value::with_member(Self, String, Self) -> Self raise ConfigError
+pub fn Value::without_member(Self, String) -> Self raise ConfigError
 
 // Type aliases
 

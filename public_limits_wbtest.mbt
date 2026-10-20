@@ -23,6 +23,13 @@ test "public path APIs enforce the documented segment bound" {
   }
   assert_eq(parse_code, "path_limit")
   assert_eq(replace_code, "path_limit")
+  let query_code = try {
+    ignore(Value::Group([]).get_path(segments))
+    "accepted"
+  } catch {
+    ConfigError(d) => d.code
+  }
+  assert_eq(query_code, "path_limit")
 }
 
 ///|

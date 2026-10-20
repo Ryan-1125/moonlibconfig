@@ -42,15 +42,7 @@ fn Writer::settings(
 ) -> Unit raise ConfigError {
   let seen : Map[String, Bool] = Map([])
   for (name, value) in items {
-    let bytes = @utf8.encode(name)
-    if bytes.is_empty() || !name_start(bytes[0].to_int()) {
-      raise failure("invalid_name", "invalid setting name")
-    }
-    for b in bytes {
-      if !name_part(b.to_int()) {
-        raise failure("invalid_name", "invalid setting name")
-      }
-    }
+    check_name(name)
     if seen.contains(name) {
       raise failure("duplicate_name", "duplicate setting: " + name)
     }
