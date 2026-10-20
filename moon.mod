@@ -2,6 +2,8 @@ name = "Ryan-1125/moonlibconfig"
 
 version = "0.1.0"
 
+repository = "https://github.com/Ryan-1125/moonlibconfig"
+
 readme = "README.md"
 
 license = "Apache-2.0"
