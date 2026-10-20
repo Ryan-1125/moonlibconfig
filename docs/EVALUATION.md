@@ -1,6 +1,6 @@
 # libconfig 方向评估
 
-核实日期：2026-10-20（Asia/Shanghai）。状态：前期评估完成，尚未实现解析器、验证互操作或发布。
+核实日期：2026-10-20（Asia/Shanghai）。本文保留实施前评估历史；用户随后已授权开发，当前进展见README.md、COMPATIBILITY.md、VERIFICATION.md。下文“尚未实现”均指评估时状态。
 
 ## 结论
 

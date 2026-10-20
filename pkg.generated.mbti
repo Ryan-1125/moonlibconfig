@@ -1,0 +1,69 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Ryan-1125/moonlibconfig"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn parse(String, limits? : Limits) -> Value raise ConfigError
+
+pub fn parse_bytes(Bytes, limits? : Limits) -> Value raise ConfigError
+
+pub fn parse_path(String) -> Array[Segment] raise ConfigError
+
+pub fn stringify(Value, limits? : Limits) -> String raise ConfigError
+
+// Errors
+pub suberror ConfigError {
+  ConfigError(Diagnostic)
+} derive(@debug.Debug)
+
+// Types and methods
+pub(all) struct Diagnostic {
+  code : String
+  message : String
+  offset : Int32
+  line : Int32
+  column : Int32
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Limits {
+  max_input : Int32
+  max_depth : Int32
+  max_nodes : Int32
+  max_string : Int32
+} derive(Eq, @debug.Debug)
+pub fn Limits::default() -> Self
+
+pub(all) enum Segment {
+  Key(String)
+  Index(Int32)
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Value {
+  Integer(Int32)
+  Integer64(Int64)
+  Float(Double)
+  Boolean(Bool)
+  Text(Bytes)
+  Group(Array[(String, Value)])
+  ScalarArray(Array[Value])
+  List(Array[Value])
+} derive(Eq, @debug.Debug)
+pub fn Value::as_bool(Self) -> Bool raise ConfigError
+pub fn Value::as_bytes(Self) -> Bytes raise ConfigError
+pub fn Value::as_double(Self) -> Double raise ConfigError
+pub fn Value::as_int(Self) -> Int32 raise ConfigError
+pub fn Value::as_int64(Self) -> Int64 raise ConfigError
+pub fn Value::as_string(Self) -> String raise ConfigError
+pub fn Value::at(Self, Int32) -> Self raise ConfigError
+pub fn Value::get_member(Self, String) -> Self raise ConfigError
+pub fn Value::get_path(Self, ArrayView[Segment]) -> Self raise ConfigError
+pub fn Value::kind(Self) -> String
+pub fn Value::lookup(Self, String) -> Self raise ConfigError
+pub fn Value::replaced(Self, ArrayView[Segment], Self) -> Self raise ConfigError
+
+// Type aliases
+
+// Traits

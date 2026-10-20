@@ -1,0 +1,51 @@
+name: check
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install MoonBit on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh -o "$RUNNER_TEMP/install-moon.sh"
+          bash "$RUNNER_TEMP/install-moon.sh"
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Install MoonBit on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Invoke-WebRequest https://cli.moonbitlang.com/install/powershell.ps1 -OutFile "$env:RUNNER_TEMP/install-moon.ps1"
+          & "$env:RUNNER_TEMP/install-moon.ps1"
+          "$env:USERPROFILE/.moon/bin" | Out-File $env:GITHUB_PATH -Append
+      - run: moon version --all
+      - run: moon update
+      - run: moon fmt --check
+      - run: moon check --deny-warn
+      - run: moon test --target wasm-gc --deny-warn
+      - run: moon test --target js --deny-warn
+      - run: moon test --target native --deny-warn
+      - run: moon info
+      - run: git diff --exit-code -- pkg.generated.mbti
+      - run: moon package --list
+      - name: Independent ZIP consumer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./tools/Test-Consumer.ps1
+      - name: Real upstream comparison
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          ./tools/Get-Upstream.ps1
+          ./tools/Build-Oracle.ps1
+          node tools/differential.mjs

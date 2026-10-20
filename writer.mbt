@@ -100,6 +100,11 @@ fn Writer::value(
       self.emit("\"")
       for b in bytes {
         let c = b.to_int()
+        if c == 0 {
+          raise failure(
+            "unsupported_nul", "NUL bytes are not representable by libconfig string APIs",
+          )
+        }
         if c == 34 {
           self.emit("\\\"")
         } else if c == 92 {

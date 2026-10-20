@@ -11,6 +11,9 @@ pub fn parse_path(path : String) -> Array[Segment] raise ConfigError {
   let r = Reader::new(@utf8.encode(path), Limits::default())
   let result : Array[Segment] = []
   while r.peek() != -1 {
+    if result.length() >= 256 {
+      raise r.error("path_limit", "path exceeds 256 segments")
+    }
     if r.peek() == 91 {
       r.advance()
       let start = r.pos
@@ -147,6 +150,9 @@ pub fn Value::replaced(
   path : ArrayView[Segment],
   replacement : Value,
 ) -> Value raise ConfigError {
+  if path.length() > 256 {
+    raise failure("path_limit", "replacement path exceeds 256 segments")
+  }
   if path.length() == 0 {
     return replacement
   }

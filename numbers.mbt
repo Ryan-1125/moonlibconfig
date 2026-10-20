@@ -69,7 +69,7 @@ fn Reader::atom(self : Reader) -> Value raise ConfigError {
   if end <= start {
     raise self.error("invalid_number", "expected numeric value")
   }
-  let number = @utf8.decode_lossy(self.data[start:end])
+  let number = @utf8.decode_lossy(self.data[start:end]).to_lower()
   let base = if number.has_prefix("0x") {
     16
   } else if number.has_prefix("0b") {

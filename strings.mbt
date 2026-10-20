@@ -54,6 +54,11 @@ fn Reader::text(self : Reader) -> Bytes raise ConfigError {
         }
         self.advance()
       }
+      if c == 0 {
+        raise self.error(
+          "unsupported_nul", "NUL bytes are not representable by libconfig string APIs",
+        )
+      }
       if output.length() >= self.limits.max_string {
         raise self.error("string_limit", "decoded string exceeds byte limit")
       }

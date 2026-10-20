@@ -5,3 +5,4 @@
 /tools/.consumer/
 credentials.json
 *.log
+/tools/bridge/generated.mbt

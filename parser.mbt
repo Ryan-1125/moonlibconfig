@@ -52,7 +52,7 @@ fn Reader::settings(
     let value = self.value(depth)
     items.push((name, value))
     self.skip()
-    if self.peek() == 59 {
+    if self.peek() == 59 || self.peek() == 44 {
       self.advance()
       self.skip()
     }

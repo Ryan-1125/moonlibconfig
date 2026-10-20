@@ -6,5 +6,8 @@
 /tools/
 /MoonBit-跨项目交接.md
 /AGENTS.md
+/.github/
+/docs/EVALUATION.md
+/docs/DEVELOPMENT.md
 credentials.json
 *.log

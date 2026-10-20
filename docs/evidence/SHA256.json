@@ -1,5 +1,9 @@
 [
   {
+    "file": "differential-windows.json",
+    "Hash": "C4A130024F788372CB8CD503B4929CD9E21C02DDA20BDB2202BA5D192664C94D"
+  },
+  {
     "file": "mooncakes-config.json",
     "Hash": "8C05C6CCAC516D2F2688B25AABE4A1F99889F4ED5441FF9A8D2D2F4A56ED47B0"
   },

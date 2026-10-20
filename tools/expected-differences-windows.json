@@ -1,0 +1,173 @@
+[
+  {
+    "index": 17,
+    "input": "a=1 /*",
+    "upstreamAccepted": true,
+    "moonAccepted": false,
+    "issue": "acceptance",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "integer",
+            "1"
+          ]
+        ]
+      ]
+    ],
+    "moon": "unterminated_comment"
+  },
+  {
+    "index": 25,
+    "input": "a=\"\\u1234\"",
+    "upstreamAccepted": true,
+    "moonAccepted": false,
+    "issue": "acceptance",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "string",
+            "5c7531323334"
+          ]
+        ]
+      ]
+    ],
+    "moon": "invalid_escape"
+  },
+  {
+    "index": 26,
+    "input": "a=\"\\xG0\"",
+    "upstreamAccepted": true,
+    "moonAccepted": false,
+    "issue": "acceptance",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "string",
+            "5c784730"
+          ]
+        ]
+      ]
+    ],
+    "moon": "invalid_escape"
+  },
+  {
+    "index": 27,
+    "input": "a=\"\\x0\"",
+    "upstreamAccepted": true,
+    "moonAccepted": false,
+    "issue": "acceptance",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "string",
+            "5c7830"
+          ]
+        ]
+      ]
+    ],
+    "moon": "invalid_escape"
+  },
+  {
+    "index": 29,
+    "input": "a=\"\\x00after\"",
+    "upstreamAccepted": true,
+    "moonAccepted": false,
+    "issue": "acceptance",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "string",
+            ""
+          ]
+        ]
+      ]
+    ],
+    "moon": "unsupported_nul"
+  },
+  {
+    "index": 49,
+    "input": "a=0xFFFFFFFFL",
+    "upstreamAccepted": true,
+    "moonAccepted": true,
+    "issue": "tree",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "integer64",
+            "-1"
+          ]
+        ]
+      ]
+    ],
+    "moon": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "integer64",
+            "4294967295"
+          ]
+        ]
+      ]
+    ]
+  },
+  {
+    "index": 50,
+    "input": "a=0xffffffffffffffff",
+    "upstreamAccepted": false,
+    "moonAccepted": true,
+    "issue": "acceptance",
+    "upstream": "1: syntax error",
+    "moon": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "integer64",
+            "-1"
+          ]
+        ]
+      ]
+    ]
+  },
+  {
+    "index": 69,
+    "input": "a=1e999",
+    "upstreamAccepted": true,
+    "moonAccepted": false,
+    "issue": "acceptance",
+    "upstream": [
+      "group",
+      [
+        [
+          "61",
+          [
+            "float",
+            "inf"
+          ]
+        ]
+      ]
+    ],
+    "moon": "invalid_number"
+  }
+]

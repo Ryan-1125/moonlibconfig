@@ -123,10 +123,25 @@ test "writer obeys exact output and tree limits" {
 }
 
 ///|
-test "every byte survives canonical string serialization" {
-  let bytes = Bytes::makei(256, i => i.to_byte())
+test "every non-NUL byte survives canonical string serialization" {
+  let bytes = Bytes::makei(255, i => (i + 1).to_byte())
   let root = Group([("all", Text(bytes))])
   assert_eq(parse(stringify(root)), root)
+}
+
+///|
+test "NUL is explicitly rejected rather than silently truncated" {
+  assert_eq(
+    parse_error(b"a=\"\\x00tail\"", Limits::default()),
+    "unsupported_nul",
+  )
+  let code = try {
+    ignore(stringify(Group([("a", Text(b"\x00tail"))])))
+    "accepted"
+  } catch {
+    ConfigError(d) => d.code
+  }
+  assert_eq(code, "unsupported_nul")
 }
 
 ///|

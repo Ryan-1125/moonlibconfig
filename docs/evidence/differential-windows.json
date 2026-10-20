@@ -1,0 +1,6774 @@
+{
+  "version": "1.8.2",
+  "commit": "a42cb47c1526a4f2ed025fcbb2289863375bc898",
+  "cases": 140,
+  "roundtrips": 110,
+  "differences": [
+    {
+      "index": 17,
+      "input": "a=1 /*",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": "unterminated_comment"
+    },
+    {
+      "index": 25,
+      "input": "a=\"\\u1234\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "5c7531323334"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_escape"
+    },
+    {
+      "index": 26,
+      "input": "a=\"\\xG0\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "5c784730"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_escape"
+    },
+    {
+      "index": 27,
+      "input": "a=\"\\x0\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "5c7830"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_escape"
+    },
+    {
+      "index": 29,
+      "input": "a=\"\\x00after\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              ""
+            ]
+          ]
+        ]
+      ],
+      "moon": "unsupported_nul"
+    },
+    {
+      "index": 49,
+      "input": "a=0xFFFFFFFFL",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": "tree",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "4294967295"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 50,
+      "input": "a=0xffffffffffffffff",
+      "upstreamAccepted": false,
+      "moonAccepted": true,
+      "issue": "acceptance",
+      "upstream": "1: syntax error",
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 69,
+      "input": "a=1e999",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "inf"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_number"
+    }
+  ],
+  "records": [
+    {
+      "index": 0,
+      "input": "",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        []
+      ],
+      "moon": [
+        "group",
+        []
+      ]
+    },
+    {
+      "index": 1,
+      "input": "a=1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 2,
+      "input": "a=1 b=2",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ],
+          [
+            "62",
+            [
+              "integer",
+              "2"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ],
+          [
+            "62",
+            [
+              "integer",
+              "2"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 3,
+      "input": "a:1;",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 4,
+      "input": "a=1,",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 5,
+      "input": "a=1;;",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_name"
+    },
+    {
+      "index": 6,
+      "input": "a={} b=[] c=()",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "group",
+              []
+            ]
+          ],
+          [
+            "62",
+            [
+              "array",
+              []
+            ]
+          ],
+          [
+            "63",
+            [
+              "list",
+              []
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "group",
+              []
+            ]
+          ],
+          [
+            "62",
+            [
+              "array",
+              []
+            ]
+          ],
+          [
+            "63",
+            [
+              "list",
+              []
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 7,
+      "input": "a={b=({x=1},[2,3],true)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "group",
+              [
+                [
+                  "62",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "78",
+                            [
+                              "integer",
+                              "1"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "array",
+                        [
+                          [
+                            "integer",
+                            "2"
+                          ],
+                          [
+                            "integer",
+                            "3"
+                          ]
+                        ]
+                      ],
+                      [
+                        "boolean",
+                        true
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "group",
+              [
+                [
+                  "62",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "78",
+                            [
+                              "integer",
+                              "1"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "array",
+                        [
+                          [
+                            "integer",
+                            "2"
+                          ],
+                          [
+                            "integer",
+                            "3"
+                          ]
+                        ]
+                      ],
+                      [
+                        "boolean",
+                        true
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 8,
+      "input": "a=[1,2,]",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "array",
+              [
+                [
+                  "integer",
+                  "1"
+                ],
+                [
+                  "integer",
+                  "2"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "array",
+              [
+                [
+                  "integer",
+                  "1"
+                ],
+                [
+                  "integer",
+                  "2"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 9,
+      "input": "a=(1,2L,true,)",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "list",
+              [
+                [
+                  "integer",
+                  "1"
+                ],
+                [
+                  "integer64",
+                  "2"
+                ],
+                [
+                  "boolean",
+                  true
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "list",
+              [
+                [
+                  "integer",
+                  "1"
+                ],
+                [
+                  "integer64",
+                  "2"
+                ],
+                [
+                  "boolean",
+                  true
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 10,
+      "input": "a=[1,2L]",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: mismatched element type in array",
+      "moon": "array_type"
+    },
+    {
+      "index": 11,
+      "input": "a=[{}]",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "array_type"
+    },
+    {
+      "index": 12,
+      "input": "a=1 a=2",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: duplicate setting name",
+      "moon": "duplicate_name"
+    },
+    {
+      "index": 13,
+      "input": "_x=1",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_name"
+    },
+    {
+      "index": 14,
+      "input": "*x=1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "2a78",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "2a78",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 15,
+      "input": "a-b_2=1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "612d625f32",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "612d625f32",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 16,
+      "input": "#first\na=1 // two\nb=2 /* three */",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ],
+          [
+            "62",
+            [
+              "integer",
+              "2"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ],
+          [
+            "62",
+            [
+              "integer",
+              "2"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 17,
+      "input": "a=1 /*",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": "unterminated_comment"
+    },
+    {
+      "index": 18,
+      "input": "a=",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 19,
+      "input": "a={",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "unexpected_eof"
+    },
+    {
+      "index": 20,
+      "input": "a=(1 2)",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "unexpected_token"
+    },
+    {
+      "index": 21,
+      "input": "a=\"hello\" /*x*/ \" world\"",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "68656c6c6f20776f726c64"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "68656c6c6f20776f726c64"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 22,
+      "input": "a=\"月亮\"",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "e69c88e4baae"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "e69c88e4baae"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 23,
+      "input": "a=\"\\xFF\\x80\"",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "ff80"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "ff80"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 24,
+      "input": "a=\"\\a\\b\\f\\n\\r\\t\\v\\\\\\\"\"",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "07080c0a0d090b5c22"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "07080c0a0d090b5c22"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 25,
+      "input": "a=\"\\u1234\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "5c7531323334"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_escape"
+    },
+    {
+      "index": 26,
+      "input": "a=\"\\xG0\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "5c784730"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_escape"
+    },
+    {
+      "index": 27,
+      "input": "a=\"\\x0\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "5c7830"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_escape"
+    },
+    {
+      "index": 28,
+      "input": "a=\"line\nbreak\"",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "6c696e650a627265616b"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              "6c696e650a627265616b"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 29,
+      "input": "a=\"\\x00after\"",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "string",
+              ""
+            ]
+          ]
+        ]
+      ],
+      "moon": "unsupported_nul"
+    },
+    {
+      "index": 30,
+      "input": "a=TRUE b=fAlSe",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "boolean",
+              true
+            ]
+          ],
+          [
+            "62",
+            [
+              "boolean",
+              false
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "boolean",
+              true
+            ]
+          ],
+          [
+            "62",
+            [
+              "boolean",
+              false
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 31,
+      "input": "a=yes",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 32,
+      "input": "a=0",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "0"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "0"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 33,
+      "input": "a=+1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 34,
+      "input": "a=-1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 35,
+      "input": "a=01",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 36,
+      "input": "a=2147483647",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "2147483647"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "2147483647"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 37,
+      "input": "a=2147483648",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "2147483648"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "2147483648"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 38,
+      "input": "a=-2147483648",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-2147483648"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-2147483648"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 39,
+      "input": "a=-2147483649",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-2147483649"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-2147483649"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 40,
+      "input": "a=9223372036854775807",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "9223372036854775807"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "9223372036854775807"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 41,
+      "input": "a=-9223372036854775808",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-9223372036854775808"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-9223372036854775808"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 42,
+      "input": "a=9223372036854775808",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "integer_overflow"
+    },
+    {
+      "index": 43,
+      "input": "a=-9223372036854775809",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "integer_overflow"
+    },
+    {
+      "index": 44,
+      "input": "a=1L",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 45,
+      "input": "a=1LL",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 46,
+      "input": "a=1l",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 47,
+      "input": "a=1ll",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 48,
+      "input": "a=0xffffffff",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 49,
+      "input": "a=0xFFFFFFFFL",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": "tree",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "4294967295"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 50,
+      "input": "a=0xffffffffffffffff",
+      "upstreamAccepted": false,
+      "moonAccepted": true,
+      "issue": "acceptance",
+      "upstream": "1: syntax error",
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "-1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 51,
+      "input": "a=0x100000000",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "4294967296"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "4294967296"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 52,
+      "input": "a=0b1011",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "11"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "11"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 53,
+      "input": "a=0b11111111111111111111111111111111",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "-1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 54,
+      "input": "a=0o755",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "493"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "493"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 55,
+      "input": "a=0q755",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "493"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "493"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 56,
+      "input": "a=0o77777777777",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "8589934591"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer64",
+              "8589934591"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 57,
+      "input": "a=0x",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "integer_overflow"
+    },
+    {
+      "index": 58,
+      "input": "a=0b2",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 59,
+      "input": "a=0XFF",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "255"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "integer",
+              "255"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 60,
+      "input": "a=-0x1",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 61,
+      "input": "a=+0x1",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 62,
+      "input": "a=1.0",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 63,
+      "input": "a=.5",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0.5"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0.5"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 64,
+      "input": "a=1.",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 65,
+      "input": "a=1e3",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 66,
+      "input": "a=1.e3",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 67,
+      "input": "a=-0.0",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 68,
+      "input": "a=1e-20",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "9.9999999999999995e-21"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1e-20"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 69,
+      "input": "a=1e999",
+      "upstreamAccepted": true,
+      "moonAccepted": false,
+      "issue": "acceptance",
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "inf"
+            ]
+          ]
+        ]
+      ],
+      "moon": "invalid_number"
+    },
+    {
+      "index": 70,
+      "input": "a=1e-999",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 71,
+      "input": "a=NaN",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 72,
+      "input": "a=Infinity",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 73,
+      "input": "a=1.0L",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 74,
+      "input": "a=1e",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 75,
+      "input": "a=--1",
+      "upstreamAccepted": false,
+      "moonAccepted": false,
+      "issue": null,
+      "upstream": "1: syntax error",
+      "moon": "invalid_number"
+    },
+    {
+      "index": 76,
+      "input": "s0={port=8000; tag=\"n0\"; values=[0,1]; peers=({ok=true},0L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7330",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8000"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e30"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "0"
+                      ],
+                      [
+                        "integer",
+                        "1"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "0"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7330",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8000"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e30"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "0"
+                      ],
+                      [
+                        "integer",
+                        "1"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "0"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 77,
+      "input": "s1={port=8001; tag=\"n1\"; values=[1,2]; peers=({ok=true},1L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7331",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8001"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e31"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "1"
+                      ],
+                      [
+                        "integer",
+                        "2"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7331",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8001"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e31"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "1"
+                      ],
+                      [
+                        "integer",
+                        "2"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "1"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 78,
+      "input": "s2={port=8002; tag=\"n2\"; values=[2,3]; peers=({ok=true},2L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7332",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8002"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e32"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "2"
+                      ],
+                      [
+                        "integer",
+                        "3"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "2"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7332",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8002"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e32"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "2"
+                      ],
+                      [
+                        "integer",
+                        "3"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "2"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 79,
+      "input": "s3={port=8003; tag=\"n3\"; values=[3,4]; peers=({ok=true},3L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7333",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8003"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e33"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "3"
+                      ],
+                      [
+                        "integer",
+                        "4"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "3"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7333",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8003"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e33"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "3"
+                      ],
+                      [
+                        "integer",
+                        "4"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "3"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 80,
+      "input": "s4={port=8004; tag=\"n4\"; values=[4,5]; peers=({ok=true},4L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7334",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8004"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e34"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "4"
+                      ],
+                      [
+                        "integer",
+                        "5"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "4"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7334",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8004"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e34"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "4"
+                      ],
+                      [
+                        "integer",
+                        "5"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "4"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 81,
+      "input": "s5={port=8005; tag=\"n5\"; values=[5,6]; peers=({ok=true},5L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7335",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8005"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e35"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "5"
+                      ],
+                      [
+                        "integer",
+                        "6"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "5"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7335",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8005"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e35"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "5"
+                      ],
+                      [
+                        "integer",
+                        "6"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "5"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 82,
+      "input": "s6={port=8006; tag=\"n6\"; values=[6,7]; peers=({ok=true},6L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7336",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8006"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e36"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "6"
+                      ],
+                      [
+                        "integer",
+                        "7"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "6"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7336",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8006"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e36"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "6"
+                      ],
+                      [
+                        "integer",
+                        "7"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "6"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 83,
+      "input": "s7={port=8007; tag=\"n7\"; values=[7,8]; peers=({ok=true},7L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7337",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8007"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e37"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "7"
+                      ],
+                      [
+                        "integer",
+                        "8"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "7"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7337",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8007"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e37"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "7"
+                      ],
+                      [
+                        "integer",
+                        "8"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "7"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 84,
+      "input": "s8={port=8008; tag=\"n8\"; values=[8,9]; peers=({ok=true},8L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7338",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8008"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e38"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "8"
+                      ],
+                      [
+                        "integer",
+                        "9"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "8"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7338",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8008"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e38"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "8"
+                      ],
+                      [
+                        "integer",
+                        "9"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "8"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 85,
+      "input": "s9={port=8009; tag=\"n9\"; values=[9,10]; peers=({ok=true},9L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "7339",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8009"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e39"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "9"
+                      ],
+                      [
+                        "integer",
+                        "10"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "9"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "7339",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8009"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e39"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "9"
+                      ],
+                      [
+                        "integer",
+                        "10"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "9"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 86,
+      "input": "s10={port=8010; tag=\"n10\"; values=[10,11]; peers=({ok=true},10L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733130",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8010"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3130"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "10"
+                      ],
+                      [
+                        "integer",
+                        "11"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "10"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733130",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8010"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3130"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "10"
+                      ],
+                      [
+                        "integer",
+                        "11"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "10"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 87,
+      "input": "s11={port=8011; tag=\"n11\"; values=[11,12]; peers=({ok=true},11L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733131",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8011"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3131"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "11"
+                      ],
+                      [
+                        "integer",
+                        "12"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "11"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733131",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8011"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3131"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "11"
+                      ],
+                      [
+                        "integer",
+                        "12"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "11"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 88,
+      "input": "s12={port=8012; tag=\"n12\"; values=[12,13]; peers=({ok=true},12L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733132",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8012"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3132"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "12"
+                      ],
+                      [
+                        "integer",
+                        "13"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "12"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733132",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8012"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3132"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "12"
+                      ],
+                      [
+                        "integer",
+                        "13"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "12"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 89,
+      "input": "s13={port=8013; tag=\"n13\"; values=[13,14]; peers=({ok=true},13L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733133",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8013"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3133"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "13"
+                      ],
+                      [
+                        "integer",
+                        "14"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "13"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733133",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8013"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3133"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "13"
+                      ],
+                      [
+                        "integer",
+                        "14"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "13"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 90,
+      "input": "s14={port=8014; tag=\"n14\"; values=[14,15]; peers=({ok=true},14L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733134",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8014"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3134"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "14"
+                      ],
+                      [
+                        "integer",
+                        "15"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "14"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733134",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8014"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3134"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "14"
+                      ],
+                      [
+                        "integer",
+                        "15"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "14"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 91,
+      "input": "s15={port=8015; tag=\"n15\"; values=[15,16]; peers=({ok=true},15L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733135",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8015"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3135"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "15"
+                      ],
+                      [
+                        "integer",
+                        "16"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "15"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733135",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8015"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3135"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "15"
+                      ],
+                      [
+                        "integer",
+                        "16"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "15"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 92,
+      "input": "s16={port=8016; tag=\"n16\"; values=[16,17]; peers=({ok=true},16L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733136",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8016"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3136"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "16"
+                      ],
+                      [
+                        "integer",
+                        "17"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "16"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733136",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8016"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3136"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "16"
+                      ],
+                      [
+                        "integer",
+                        "17"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "16"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 93,
+      "input": "s17={port=8017; tag=\"n17\"; values=[17,18]; peers=({ok=true},17L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733137",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8017"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3137"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "17"
+                      ],
+                      [
+                        "integer",
+                        "18"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "17"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733137",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8017"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3137"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "17"
+                      ],
+                      [
+                        "integer",
+                        "18"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "17"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 94,
+      "input": "s18={port=8018; tag=\"n18\"; values=[18,19]; peers=({ok=true},18L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733138",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8018"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3138"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "18"
+                      ],
+                      [
+                        "integer",
+                        "19"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "18"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733138",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8018"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3138"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "18"
+                      ],
+                      [
+                        "integer",
+                        "19"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "18"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 95,
+      "input": "s19={port=8019; tag=\"n19\"; values=[19,20]; peers=({ok=true},19L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733139",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8019"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3139"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "19"
+                      ],
+                      [
+                        "integer",
+                        "20"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "19"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733139",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8019"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3139"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "19"
+                      ],
+                      [
+                        "integer",
+                        "20"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "19"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 96,
+      "input": "s20={port=8020; tag=\"n20\"; values=[20,21]; peers=({ok=true},20L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733230",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8020"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3230"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "20"
+                      ],
+                      [
+                        "integer",
+                        "21"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "20"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733230",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8020"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3230"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "20"
+                      ],
+                      [
+                        "integer",
+                        "21"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "20"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 97,
+      "input": "s21={port=8021; tag=\"n21\"; values=[21,22]; peers=({ok=true},21L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733231",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8021"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3231"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "21"
+                      ],
+                      [
+                        "integer",
+                        "22"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "21"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733231",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8021"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3231"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "21"
+                      ],
+                      [
+                        "integer",
+                        "22"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "21"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 98,
+      "input": "s22={port=8022; tag=\"n22\"; values=[22,23]; peers=({ok=true},22L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733232",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8022"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3232"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "22"
+                      ],
+                      [
+                        "integer",
+                        "23"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "22"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733232",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8022"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3232"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "22"
+                      ],
+                      [
+                        "integer",
+                        "23"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "22"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 99,
+      "input": "s23={port=8023; tag=\"n23\"; values=[23,24]; peers=({ok=true},23L)}",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "733233",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8023"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3233"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "23"
+                      ],
+                      [
+                        "integer",
+                        "24"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "23"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "733233",
+            [
+              "group",
+              [
+                [
+                  "706f7274",
+                  [
+                    "integer",
+                    "8023"
+                  ]
+                ],
+                [
+                  "746167",
+                  [
+                    "string",
+                    "6e3233"
+                  ]
+                ],
+                [
+                  "76616c756573",
+                  [
+                    "array",
+                    [
+                      [
+                        "integer",
+                        "23"
+                      ],
+                      [
+                        "integer",
+                        "24"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "7065657273",
+                  [
+                    "list",
+                    [
+                      [
+                        "group",
+                        [
+                          [
+                            "6f6b",
+                            [
+                              "boolean",
+                              true
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        "integer64",
+                        "23"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 100,
+      "input": "a=4.94065645841246544e-324",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "4.9406564584124654e-324"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "5e-324"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 101,
+      "input": "a=1.79769313486231571e+308",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.7976931348623157e+308"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.7976931348623157e+308"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 102,
+      "input": "a=3.14159265358979312e+0",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "3.1415926535897931"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "3.141592653589793"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 103,
+      "input": "a=2.71828182845904509e+0",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "2.7182818284590451"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "2.718281828459045"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 104,
+      "input": "a=1.00000000000000000e+20",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1e+20"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "100000000000000000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 105,
+      "input": "a=-1.00000000000000000e+20",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1e+20"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-100000000000000000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 106,
+      "input": "a=9.99999999999999945e-21",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "9.9999999999999995e-21"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1e-20"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 107,
+      "input": "a=-9.99999999999999945e-21",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-9.9999999999999995e-21"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1e-20"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 108,
+      "input": "a=-2.02005845900000005e-11",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-2.020058459e-11"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-2.020058459e-11"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 109,
+      "input": "a=3.58294691000000011e-11",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "3.5829469100000001e-11"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "3.58294691e-11"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 110,
+      "input": "a=1.21011936400000018e-9",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.2101193640000002e-09"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.2101193640000002e-9"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 111,
+      "input": "a=-2.11893130399999986e-8",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-2.1189313039999999e-08"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-2.118931304e-8"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 112,
+      "input": "a=1.88285120799999994e-7",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.8828512079999999e-07"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.882851208e-7"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 113,
+      "input": "a=6.98933837000000021e-7",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "6.9893383700000002e-07"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "6.98933837e-7"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 114,
+      "input": "a=-1.98323017899999989e-5",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1.9832301789999999e-05"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0.00001983230179"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 115,
+      "input": "a=-9.88254678999999985e-5",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-9.8825467899999999e-05"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0.0000988254679"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 116,
+      "input": "a=-7.47085144999999943e-4",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0.00074708514499999994"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0.0007470851449999999"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 117,
+      "input": "a=9.84697616999999879e-3",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0.0098469761699999988"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0.009846976169999999"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 118,
+      "input": "a=1.77414091999999995e-1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0.177414092"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "0.177414092"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 119,
+      "input": "a=1.30961560800000010e+0",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.3096156080000001"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.309615608"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 120,
+      "input": "a=-5.46312640000000016e-1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0.54631264000000002"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-0.54631264"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 121,
+      "input": "a=8.95871508999999975e+1",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "89.587150899999997"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "89.5871509"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 122,
+      "input": "a=-1.93312799399999994e+3",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1933.1279939999999"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1933.127994"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 123,
+      "input": "a=-1.53440918999999985e+3",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1534.4091899999999"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1534.4091899999999"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 124,
+      "input": "a=-8.46444909999999945e+4",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-84644.490999999995"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-84644.491"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 125,
+      "input": "a=-2.91855459000000032e+5",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-291855.45900000003"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-291855.45900000003"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 126,
+      "input": "a=-4.06682679000000004e+6",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-4066826.79"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-4066826.79"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 127,
+      "input": "a=1.08665102800000012e+8",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "108665102.80000001"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "108665102.80000001"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 128,
+      "input": "a=7.60528575000000000e+8",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "760528575"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "760528575"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 129,
+      "input": "a=-3.54190274000000000e+9",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-3541902740"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-3541902740"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 130,
+      "input": "a=7.04327436000000000e+10",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "70432743600"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "70432743600"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 131,
+      "input": "a=-8.17125087000000000e+11",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-817125087000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-817125087000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 132,
+      "input": "a=-1.41207850000000000e+12",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1412078500000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1412078500000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 133,
+      "input": "a=-1.89221295000000000e+13",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-18922129500000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-18922129500000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 134,
+      "input": "a=-1.40626882400000000e+15",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1406268824000000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1406268824000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 135,
+      "input": "a=-1.05665946300000000e+16",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-10566594630000000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-10566594630000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 136,
+      "input": "a=-3.59789180000000000e+16",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-35978918000000000"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-35978918000000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 137,
+      "input": "a=1.29064025100000000e+18",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1.290640251e+18"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "1290640251000000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 138,
+      "input": "a=2.65425914000000000e+18",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "2.65425914e+18"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "2654259140000000000"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 139,
+      "input": "a=-1.33967700000000000e+19",
+      "upstreamAccepted": true,
+      "moonAccepted": true,
+      "issue": null,
+      "upstream": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-1.339677e+19"
+            ]
+          ]
+        ]
+      ],
+      "moon": [
+        "group",
+        [
+          [
+            "61",
+            [
+              "float",
+              "-13396770000000000000"
+            ]
+          ]
+        ]
+      ]
+    }
+  ]
+}
