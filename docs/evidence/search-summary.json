@@ -1,0 +1,2437 @@
+[
+  {
+    "file": "mooncakes-config.json",
+    "count": 100,
+    "modules": [
+      {
+        "name": "123123213weqw/moon_configweave",
+        "version": "0.10.0",
+        "description": "Layered configuration merge, interpolation and provenance audit",
+        "repository": "https://github.com/123123213weqw/moon-configweave"
+      },
+      {
+        "name": "Noverberrain/configscope",
+        "version": "0.5.0",
+        "description": "Configuration contract compatibility checks for MoonBit",
+        "repository": "https://github.com/Noverberrain/ConfigScope.git"
+      },
+      {
+        "name": "justjavac/proton_config",
+        "version": "0.1.8",
+        "description": "Typed config parser for Proton moon.proton and moon.ext files.",
+        "repository": "https://github.com/moonbit-community/proton"
+      },
+      {
+        "name": "mizchi/bit_config",
+        "version": "0.48.0",
+        "description": "Git config file parser (gix-config equivalent)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "moonbitlang/moon_config",
+        "version": "0.4.4",
+        "description": "MoonBit package configuration parser",
+        "repository": "https://github.com/moonbitlang/parser"
+      },
+      {
+        "name": "moonbit-community/proton_config",
+        "version": "0.5.0",
+        "description": "Typed application configuration shared by Proton and its CLI.",
+        "repository": "https://github.com/moonbit-community/proton"
+      },
+      {
+        "name": "xmyd0915/moonpkgconfig",
+        "version": "0.3.1",
+        "description": "Source-aware pkg-config metadata parsing and native dependency inspection in MoonBit",
+        "repository": "https://github.com/xmyd0915/moonpkgconfig"
+      },
+      {
+        "name": "forey217/moonconfig",
+        "version": "0.2.0",
+        "description": "JSON configuration three-way review with explicit decisions and guarded patch replay",
+        "repository": "https://github.com/forey217/moonconfig"
+      },
+      {
+        "name": "mizchi/bitx_bitconfig",
+        "version": "0.48.0",
+        "description": "bit-specific config (extension module for mizchi/bit)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "moonrockz/directories",
+        "version": "0.1.2",
+        "description": "Platform-specific config, cache, and data directory paths for MoonBit (XDG on Linux, conventions on macOS/Windows)",
+        "repository": "https://github.com/moonrockz/directories"
+      },
+      {
+        "name": "jingmo653/sshconfig-resolve",
+        "version": "0.1.0",
+        "description": "OpenSSH client configuration parser, evaluator, and explainable resolver for MoonBit.",
+        "repository": "https://github.com/jingmo653/sshconfig-resolve"
+      },
+      {
+        "name": "crh12354/moonconfigkit",
+        "version": "0.1.1",
+        "description": "MoonConfigKit is a MoonBit-native INI/properties configuration merge, validation, diagnostics, and reporting toolkit.",
+        "repository": "https://github.com/crh12354/23423"
+      },
+      {
+        "name": "moonbitstack/moonyaml",
+        "version": "0.1.1",
+        "description": "moonyaml — YAML for MoonBit. Reads and writes YAML 1.2.2 into the same `Json` tree every other reader in this family produces: block and flow collections, the five block scalar forms, anchors and aliases, tags, and multi-document streams. What it does not understand it refuses rather than guesses.",
+        "repository": "https://github.com/moonbitstack/moonyaml"
+      },
+      {
+        "name": "moonbitstack/moontoml",
+        "version": "0.1.0",
+        "description": "moontoml — TOML 1.0.0 for MoonBit. Reads and writes the format MoonBit's own moon.mod and moon.pkg are written in, into the same `Json` tree every other reader in this family produces: tables and arrays of tables, dotted keys, the four string forms, the four date-time forms, and integers in four bases.",
+        "repository": "https://github.com/moonbitstack/moontoml"
+      },
+      {
+        "name": "CYang-dep/moonkconfig",
+        "version": "0.1.0",
+        "description": "Portable Kconfig core: typed dependency resolution, boolean choices and reproducible build configuration",
+        "repository": "https://github.com/CYang-dep/moonkconfig"
+      },
+      {
+        "name": "joanna/minitpl",
+        "version": "0.1.2",
+        "description": "A lightweight MoonBit template toolkit for rendering, variable extraction, and template validation.",
+        "repository": "https://github.com/jojochensmart-lab/minitpl"
+      },
+      {
+        "name": "pangbit/moonjsonnet",
+        "version": "0.1.0",
+        "description": "An embeddable, lazy Jsonnet interpreter for MoonBit native applications",
+        "repository": "https://github.com/pangbit/moonjsonnet"
+      },
+      {
+        "name": "moonbit-community/ini",
+        "version": "0.2.3",
+        "description": "High-performance INI parser for MoonBit with nested section support.",
+        "repository": "https://github.com/moonbit-community/ini.git"
+      },
+      {
+        "name": "bobzhang/toml",
+        "version": "0.4.3",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "moonbit-community/toml",
+        "version": "0.5.0",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "bob/toml",
+        "version": "0.1.6",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "hnlyxiaobing/toml",
+        "version": "0.4.9",
+        "description": "A TOML parser implementation in MoonBit (fork of bobzhang/toml with array-of-tables fix)",
+        "repository": "https://github.com/hnlyxiaobing/toml"
+      },
+      {
+        "name": "conglinyizhi/toml",
+        "version": "0.1.0",
+        "description": "Nightly-compatible TOML parser for MoonBit, maintained from moonbit-community/toml-parser",
+        "repository": "https://github.com/conglinyizhi/toml-mbt"
+      },
+      {
+        "name": "spectacleCase/dotenv",
+        "version": "0.1.0",
+        "description": "Dotenv for MoonBit - loads environment variables from .env files",
+        "repository": "https://github.com/spectacleCase/moon-dotenv.git"
+      },
+      {
+        "name": "tonyfettes/amtoml",
+        "version": "0.1.0",
+        "description": "A comprehensive TOML (Tom's Obvious, Minimal Language) parser for MoonBit with full support for TOML v1.0.0 specification including tables, arrays, dotted keys, and inline tables.",
+        "repository": ""
+      },
+      {
+        "name": "tonyfettes/toml_parser",
+        "version": "0.1.0",
+        "description": "A pure MoonBit TOML parser supporting strings, numbers, booleans, arrays, tables, and comments",
+        "repository": "https://github.com/tonyfettes/toml_parser"
+      },
+      {
+        "name": "maria/toml_parser",
+        "version": "0.1.0",
+        "description": "A complete TOML (Tom's Obvious, Minimal Language) parser implementation in MoonBit with support for all basic types, arrays, tables, and nested structures.",
+        "repository": ""
+      },
+      {
+        "name": "maria/ini_parser",
+        "version": "0.1.0",
+        "description": "A complete INI file parser for MoonBit with support for sections, multiple data types, comments, and comprehensive error handling",
+        "repository": "https://github.com/maria/ini_parser"
+      },
+      {
+        "name": "sa2360/toml",
+        "version": "0.1.1",
+        "description": "A TOML v1.0.0 parser and serializer for MoonBit with full toml-test compliance.",
+        "repository": "https://github.com/sa2360/moonbit-toml"
+      },
+      {
+        "name": "wccerty/moonfeaturegate",
+        "version": "0.1.3",
+        "description": "MoonBit-native feature flag evaluation, targeting, rollout, and explanation toolkit.",
+        "repository": "https://github.com/wccerty/MoonFeatureGate"
+      },
+      {
+        "name": "q0w1ertyuiop/moonflagkit",
+        "version": "0.2.0",
+        "description": "A lightweight MoonBit feature flag and progressive rollout decision engine.",
+        "repository": "https://github.com/q0w1ertyuiop/MoonFlagKit"
+      },
+      {
+        "name": "trkbt10/osenv",
+        "version": "0.1.0",
+        "description": "OS environment utilities: platform detection, safe path operations, and OS-standard directory resolution (XDG/macOS/Windows) with temp_dir support",
+        "repository": "https://github.com/trkbt10/osenv.mbt"
+      },
+      {
+        "name": "grandEarshot/moon_switch",
+        "version": "0.1.2",
+        "description": "MoonBit native CLI for switching Codex and Claude providers.",
+        "repository": "https://github.com/grandEarshot/moon-switch"
+      },
+      {
+        "name": "lenitain/kdl",
+        "version": "0.2.0",
+        "description": "KDL document language parser, formatter, query engine, and schema validation library for MoonBit",
+        "repository": "https://github.com/lenitain/kdl"
+      },
+      {
+        "name": "LuoYunxin1/moonnginx",
+        "version": "0.2.0",
+        "description": "nginx.conf directive-tree codec for MoonBit",
+        "repository": "https://github.com/LuoYunxin1/moonnginx"
+      },
+      {
+        "name": "L76148/moon-ron",
+        "version": "0.2.0",
+        "description": "A strict RON parser, serializer, formatter, and typed codec for MoonBit.",
+        "repository": "https://github.com/L76148/moon-ron"
+      },
+      {
+        "name": "ShellWen/sw_ini",
+        "version": "0.2.0",
+        "description": "High-performance INI parser for MoonBit with nested section support.",
+        "repository": "https://github.com/moonbit-community/sw-ini.git"
+      },
+      {
+        "name": "lenitain/hcl",
+        "version": "0.2.0",
+        "description": "HCL parser, formatter, and serialization library for MoonBit",
+        "repository": "https://github.com/lenitain/hcl"
+      },
+      {
+        "name": "Han-Wentao/moonplist",
+        "version": "0.1.1",
+        "description": "Typed Apple binary/XML property lists with bounded decoding and structural editing",
+        "repository": "https://github.com/Han-Wentao/moonplist"
+      },
+      {
+        "name": "LC6543/moon-ron",
+        "version": "0.1.0",
+        "description": "A strict RON parser, serializer, formatter, and typed codec for MoonBit.",
+        "repository": "https://github.com/L76148/moon-ron"
+      },
+      {
+        "name": "CGaaaaaa/MoonProgress",
+        "version": "0.1.0",
+        "description": "A configurable command-line progress bar library for MoonBit",
+        "repository": "https://github.com/consingliu/MoonProgress"
+      },
+      {
+        "name": "lqlnvj/moonbit-biogeochem",
+        "version": "0.1.2",
+        "description": "MoonBit Marine Biogeochemical Box Model Engine: Configurable NPZD, oxygen depletion, and carbon cycle simulation framework.",
+        "repository": "https://github.com/lqlnvj/moonbit-biogeochem"
+      },
+      {
+        "name": "connect0459/starlark",
+        "version": "0.5.3",
+        "description": "The Starlark configuration language, implemented in Moonbit",
+        "repository": "https://github.com/connect0459/starlark-mbt"
+      },
+      {
+        "name": "Yoorkin/command",
+        "version": "0.4.0",
+        "description": "Extensible managed effects with runtime-configurable handlers for MoonBit.",
+        "repository": "https://github.com/Yoorkin/command"
+      },
+      {
+        "name": "Lfan-ke/moonzero",
+        "version": "0.7.3",
+        "description": "moonzero — a service framework for MoonBit (← go-zero): config-driven assembly of a moonapi application with middleware, producing a runnable moonasgi AsgiApp. v0.6.2 runs real unary, server/client-streaming, and bidirectional zRPC calls over moonrpc's h2c transport (an in-process RpcChannel drives HPACK HEADERS + length-prefixed DATA + grpc-status trailers through the H2Server engine), graceful shutdown draining in-flight calls, a persisted, watchable etcd v3-shaped registry (watch, events_since catch-up, snapshot/restore) with round-robin/pick-first balancers and a load-balanced client, real file-backed registry I/O over moonbitlang/async's fs with a live filesystem watcher (native discov driver), request metrics (counter + latency histogram), and W3C traceparent propagation.",
+        "repository": "https://github.com/moonbitstack/moonzero"
+      },
+      {
+        "name": "moonbitstack/moonzero",
+        "version": "0.11.2",
+        "description": "moonzero — a service framework for MoonBit (← go-zero): config-driven assembly of a moonapi application with middleware, producing a runnable moonasgi AsgiApp. v0.6.2 runs real unary, server/client-streaming, and bidirectional zRPC calls over moonrpc's h2c transport (an in-process RpcChannel drives HPACK HEADERS + length-prefixed DATA + grpc-status trailers through the H2Server engine), graceful shutdown draining in-flight calls, a persisted, watchable etcd v3-shaped registry (watch, events_since catch-up, snapshot/restore) with round-robin/pick-first balancers and a load-balanced client, real file-backed registry I/O over moonbitlang/async's fs with a live filesystem watcher (native discov driver), request metrics (counter + latency histogram), and W3C traceparent propagation.",
+        "repository": "https://github.com/moonbitstack/moonzero"
+      },
+      {
+        "name": "kokic/YHWH",
+        "version": "0.2.0",
+        "description": "A minimal MoonBit library for sequential base-35 tags with configurable generated length.",
+        "repository": "https://codeberg.org/kokic/YHWH"
+      },
+      {
+        "name": "xiguaAp6y3/moonbit-casbin",
+        "version": "0.1.0",
+        "description": "Casbin-style authorization engine in MoonBit: model-driven policy configuration, matcher and effect evaluation, RBAC role hierarchy, and an in-memory policy store.",
+        "repository": "https://github.com/xiguaAp6y3/moonbit-casbin"
+      },
+      {
+        "name": "howtomakeaname/sumi",
+        "version": "0.3.0",
+        "description": "A UI component library for MoonBit web apps — dark & light themes, overlay motion, zero config",
+        "repository": "https://github.com/howtomakeaname/sumi.mbt"
+      },
+      {
+        "name": "Burnling-gx/moonpath",
+        "version": "0.1.1",
+        "description": "MoonPath: A Grid Pathfinding Toolkit for MoonBit. Provides BFS, Dijkstra, and A* pathfinding on 2D grid maps with configurable movement, heuristics, and terrain costs.",
+        "repository": "https://github.com/Burnling-gx/moonpath"
+      },
+      {
+        "name": "kupas/imrelay",
+        "version": "0.2.0",
+        "description": "Hermes-style agent gateway in MoonBit: bridges 14 messaging platforms (Telegram, Discord, Slack, WhatsApp, Signal, Email, Home Assistant, Mattermost, Matrix, DingTalk, Feishu/Lark, WeChat, WeCom, iMessage via BlueBubbles) into a single agent callback, with retries, chunking, typing indicators, per-chat sessions and slash commands. TOML configuration with Hermes-compatible environment-variable fallback.",
+        "repository": "https://github.com/tomasky/imrelay"
+      },
+      {
+        "name": "riantr/snn_mbt",
+        "version": "0.155.0",
+        "description": "Bit-exact MoonBit port of SpikingNeuralNetworks.jl, extended with modern training machinery. NEURONS AND PLASTICITY: IF, AdEx, Izhikevich (IZ), HH, MorrisLecar, Poisson (including InhomogeneousPoisson), WilsonCowan; Markram STP, Gerstner / MexicanHat / AntiSymmetric / vSTDP / Confavreux2025 STDP; AMPA / NMDA / GABAa / GABAb receptors; multicompartment dendritic neurons (BallAndStick, Tripod, Multipod); IF with population synaptic conductance; spike-time and current stimuli. CORE DL: Tensor struct with broadcasting + softmax / log-softmax / cross-entropy, Conv2d / MaxPool2d / GlobalAvgPool2d / ReLU / Flatten / Linear forward AND backward, ResNet foundations, generic Chain / Sequential, pre-made MLP / SimpleCNN / LeLen5 bottles, image adapter (BMP/QOI/TGA/PNG/GIF/JPEG/ICO/TIFF) via riantr/moonbit_image, 5D [T,B,C,H,W] STImage. OPTIMIZERS AND SCHEDULING: SGD, SGD-with-momentum, Adam with bias correction, AdamW, RMSprop, AdaGrad, Adafactor; StepLR, ExponentialLR, CosineAnnealingLR, ReduceLROnPlateau; BatchNorm2d with running stats and LayerNorm per-sample, both with backward. SURROGATE GRADIENTS AND ATTENTION: fast-sigmoid (Zenke & Ganguli 2018) for BPTT through IF/LIF Heaviside; GELU, exact sparse GELU via libm erff; multi-head self-attention with mask utilities; sinusoidal and learnable positional encoding; Pre-Norm transformer block; inverted dropout; SAttention unifying three spiking attention variants; LayerScale; T5-style relative position bias; SpikingAttention with full BPTT backward; SpikeFormer demo. RL: SequenceReplayBuffer for recurrent RL, DDPG, TD3, SAC, GRU/LSTM/GTrXL recurrent actors and critics, Decision Transformer, Trajectory Transformer with beam search. META-LEARNING AND CAUSAL: MAML, FOMAML, Reptile, TaskSampler; LinearGaussianSCM, DoCalculus, CounterfactualReasoning, CausalEffectEstimator. GENERATIVE: RealNVP / Glow / NormalizingFlow, VAE, IWAE, ELBO, DDPM diffusion, EnergyBasedModel with Langevin sampling, DCGAN, WGAN-GP. OTHER: Vision Transformer with trainer, EmbeddingNet / SiameseNet / SiameseTrainer, CapsuleNetwork. GRAPH NEURAL NETWORKS: Graph with COO edge list and GCN adjacency normalisation; GCN, MPNN, GIN, PNA, GAT (multi-head), Set2Set readout, EdgeGNN, H2GCN, GraphClassifier -- and FULL BACKWARD PASSES for all of them, dispatched behind a single TrainableGraphNet enum, with node-level and graph-level training steps. VERIFICATION: two runnable harnesses, since `moon test` cannot link this package on Windows (998 .mbt files exceed the 32K command-line limit). `verify/verify_gnn_grads.ps1` runs a finite-difference gradient gate over 8 dL/dh configurations, 8 dL/dW configurations, the multi-head GAT stack, a deterministic ELU-mask row, and a cross-entropy loss-vs-gradient consistency section -- judged by relative tolerance, by a kink-versus-bug component count, and against negative controls. `verify/run_gnn_train_demo.ps1` runs an end-to-end transductive two-community training demo over all five backbones with a held-out split, a shuffled-label control and a no-message-passing baseline. These harnesses found 13 real defects that the type checker and code review had both passed, including a cross-entropy loss whose sign was inverted for six releases. Float32 end to end with libm FFI (expf, tanhf, logf, sqrtf, cosf, sinf, erff).",
+        "repository": "https://gitee.com/ren-yongxiang/moonbit-snn"
+      },
+      {
+        "name": "kokic/metrics",
+        "version": "0.1.1",
+        "description": "Deterministic font metrics and text measurement for MoonBit",
+        "repository": "https://github.com/kokic/uml"
+      },
+      {
+        "name": "moonbit-community/metrics",
+        "version": "0.1.1",
+        "description": "Deterministic font metrics and text measurement for MoonBit",
+        "repository": "https://github.com/moonbit-community/uml"
+      },
+      {
+        "name": "sennenki/pretty_prompt",
+        "version": "0.1.2",
+        "description": "A pretty prompt library for Moonbit, providing an easy way to create interactive command-line interfaces with customizable prompts and input handling.",
+        "repository": "https://github.com/zvmsbackend/pretty_prompt"
+      },
+      {
+        "name": "tuya-me/flowgate",
+        "version": "0.1.0",
+        "description": "FlowGate - 3D concurrency limiter with event hooks for MoonBit",
+        "repository": "https://gitlink.org.cn/tuya/flowgate"
+      },
+      {
+        "name": "totto2727/workgraph-codex-cli",
+        "version": "0.2.1",
+        "description": "Codex CLI integration for workgraph",
+        "repository": "https://github.com/totto2727-org/workgraph"
+      },
+      {
+        "name": "uiwcvb/hocon",
+        "version": "0.25.0",
+        "description": "HOCON 配置迁移差异检查与 MoonBit 解析",
+        "repository": "https://github.com/uiwcvb/moonbit-hocon"
+      },
+      {
+        "name": "mizchi/x",
+        "version": "0.6.1",
+        "description": "Cross-platform MoonBit compatibility facades with native delegation and accelerated JS implementations for async IO, bytes, regexp, and JSON.",
+        "repository": "https://github.com/mizchi/x"
+      },
+      {
+        "name": "justjavac/microphone",
+        "version": "0.1.3",
+        "description": "Microphone capture device and session helpers.",
+        "repository": "https://github.com/justjavac/moonbit-microphone"
+      },
+      {
+        "name": "totto2727/workgraph-opencode-cli",
+        "version": "0.2.1",
+        "description": "OpenCode CLI integration for workgraph",
+        "repository": "https://github.com/totto2727-org/workgraph"
+      },
+      {
+        "name": "LF-ai-nb/caseweave",
+        "version": "0.1.1",
+        "description": "Deterministic constrained combinatorial test matrix generator for MoonBit.",
+        "repository": "https://github.com/LF-ai-nb/caseweave"
+      },
+      {
+        "name": "moonbitstack/moonquic",
+        "version": "0.3.3",
+        "description": "moonquic — the QUIC transport for MoonBit (RFC 9000/9001/9002): packets, frames, loss recovery, congestion control, streams and flow control, bytes in and events out. No sockets; the handshake is moontls' and HTTP/3 is moonhttp's.",
+        "repository": "https://github.com/moonbitstack/moonquic"
+      },
+      {
+        "name": "jjyiiuy/moonforensics",
+        "version": "0.1.0",
+        "description": "An offline, reproducible incident forensics cockpit written in MoonBit",
+        "repository": "https://github.com/jjyiiuy/moonforensics"
+      },
+      {
+        "name": "mizchi/crater-browser-http",
+        "version": "0.19.0",
+        "description": "HTTP, cache, cookie, and request sandbox helpers for crater browser",
+        "repository": "https://github.com/mizchi/crater"
+      },
+      {
+        "name": "mokomoking2501/profinet_master",
+        "version": "0.1.0",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "riantr/tesseract",
+        "version": "0.1.2",
+        "description": "Tiny multi-key JSON value database over a 4D sudoku lattice (1..215 cells per axis, 81 by default), with a SQL surface and sudoku digit constraints.",
+        "repository": "https://github.com/riantr/tesseract"
+      },
+      {
+        "name": "mldong/moon-s3",
+        "version": "0.1.2",
+        "description": "S3 client and Signature V4 implementation for MoonBit",
+        "repository": "https://github.com/mldong/moon-s3"
+      },
+      {
+        "name": "i5ting/gulp",
+        "version": "0.1.0",
+        "description": "",
+        "repository": "https://github.com/i5ting/gulp"
+      },
+      {
+        "name": "sbqrre/moonbit-mcu-hal",
+        "version": "0.2.1",
+        "description": "MoonBit Microcontroller Hardware Abstraction Layer & Simulation Suite",
+        "repository": "https://github.com/sbqrre/moonbit-mcu-hal"
+      },
+      {
+        "name": "mizchi/moomaid",
+        "version": "0.4.0",
+        "description": "Mermaid diagram renderer for MoonBit (ASCII and SVG output)",
+        "repository": "https://github.com/mizchi/moomaid"
+      },
+      {
+        "name": "mizchi/process_pool",
+        "version": "0.1.4",
+        "description": "",
+        "repository": "https://github.com/mizchi/process_pool.mbt"
+      },
+      {
+        "name": "PaiGack/ssh_client",
+        "version": "0.4.0",
+        "description": "SSHv2 client library for MoonBit with password and publickey authentication, SFTP v3, and local/remote/SOCKS5 port forwarding. / 使用 MoonBit 实现的 SSHv2 客户端库，支持密码/公钥认证、SFTP v3 文件传输及本地/远程/SOCKS5 端口转发",
+        "repository": "https://github.com/PaiGack/moonbitlang-OSC2026.git"
+      },
+      {
+        "name": "i5ting/readdirp",
+        "version": "0.1.3",
+        "description": "Directory walking for MoonBit native/LLVM targets.",
+        "repository": "https://github.com/i5ting/readdirp"
+      },
+      {
+        "name": "dimon-83/mbel",
+        "version": "0.3.7",
+        "description": "mbel — a MoonBit expression language: Jexl-compatible dynamic evaluation with an expr-lang syntax front-end, dual tree-walk/bytecode-VM engines, predicate aggregates and resource budgets.",
+        "repository": "https://github.com/dimon-83/mbel"
+      },
+      {
+        "name": "mjfmjf879/moonbit_constraint",
+        "version": "0.1.0",
+        "description": "Finite-domain constraint programming library for MoonBit",
+        "repository": "https://github.com/mjfmjf879/moonbit-constraint"
+      },
+      {
+        "name": "YM-ai-nb/rectloom",
+        "version": "0.1.0",
+        "description": "Deterministic rectangle packing and layout verification toolkit for MoonBit",
+        "repository": "https://github.com/YM-ai-nb/rectloom.git"
+      },
+      {
+        "name": "shop1111/moonohos",
+        "version": "0.3.0",
+        "description": "Build MoonBit computation libraries for HarmonyOS Native/Node-API.",
+        "repository": "https://github.com/shop1111/MoonOHOS"
+      },
+      {
+        "name": "mizchi/bitflow",
+        "version": "0.4.2",
+        "description": "Workflow engine core with Starlark-subset parser, DAG execution, and cache planning primitives.",
+        "repository": "https://github.com/mizchi/bitflow"
+      },
+      {
+        "name": "moonbit-community/proton_cli",
+        "version": "0.5.0",
+        "description": "Developer CLI for Proton desktop applications.",
+        "repository": "https://github.com/moonbit-community/proton/tree/main/cli"
+      },
+      {
+        "name": "Nanaloveyuki/orbit",
+        "version": "0.1.0-alpha.15",
+        "description": "Composable desktop application foundations for MoonBit.",
+        "repository": "https://github.com/Nanaloveyuki/orbit"
+      },
+      {
+        "name": "q2316367743/moonhttp",
+        "version": "0.6.0",
+        "description": "axios 风格的 MoonBit HTTP 客户端：实例与配置合并、四种请求体形态、流式与 SSE、自动重定向",
+        "repository": "https://github.com/q2316367743/moonhttp"
+      },
+      {
+        "name": "mizchi/wasmtime",
+        "version": "0.1.6",
+        "description": "Wasmtime C API bindings for MoonBit (native target)",
+        "repository": "https://github.com/mizchi/wasmtime.mbt"
+      },
+      {
+        "name": "mizchi/kagura_game",
+        "version": "0.6.0",
+        "description": "Gameplay rules, inventory, progression and scene transitions",
+        "repository": "https://github.com/mizchi/kagura"
+      },
+      {
+        "name": "1123Javayanglei/moonbit_claude_proxy",
+        "version": "0.1.0",
+        "description": "Claude Code Proxy - translate Claude API requests to OpenAI-compatible API calls",
+        "repository": "https://github.com/1123Javayanglei/moonbit_claude_proxy"
+      },
+      {
+        "name": "justjavac/dirs",
+        "version": "0.1.4",
+        "description": "Returns user-specific, platform-specific directory paths across Linux, macOS, and Windows.",
+        "repository": "https://github.com/justjavac/moonbit-dirs"
+      },
+      {
+        "name": "moonbit-community/dom_sanitizer",
+        "version": "0.1.0",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "PerfectPan/svgo",
+        "version": "0.3.1",
+        "description": "SVG optimizer in pure MoonBit: svgo-compatible plugin pipeline with path data optimization, colour and number cleanup, and render-diff verification",
+        "repository": "https://github.com/PerfectPan/svgo.mbt"
+      },
+      {
+        "name": "robinfang/mold",
+        "version": "0.3.0",
+        "description": "A lightweight template engine for MoonBit.",
+        "repository": "https://github.com/robinfang/mold"
+      },
+      {
+        "name": "totto2727/bw",
+        "version": "0.2.2",
+        "description": "Native MoonBit CLI for Cloudflare Browser Rendering API",
+        "repository": "https://github.com/totto2727-org/bw"
+      },
+      {
+        "name": "moonbitstack/moonkoog",
+        "version": "0.6.1",
+        "description": "moonkoog — a MoonBit port of JetBrains Koog (1.1.1): a type-safe agent-orchestration framework. The prompt/message model, LLM client contract, tool registry with a JSON-schema descriptor model, and the AIAgent tool-calling loop (Koog's singleRunStrategy), built to compose with the moonbitstack full-stack suite.",
+        "repository": "https://github.com/moonbitstack/moonkoog"
+      },
+      {
+        "name": "sennenki/rabbitify",
+        "version": "0.1.0",
+        "description": "Convert HTML document to Rabbita VDom functions",
+        "repository": "https://github.com/zvmsbackend/rabbitify"
+      },
+      {
+        "name": "shop1111/moonbindgen",
+        "version": "0.6.0",
+        "description": "Generate MoonBit native C FFI declarations from C headers with Clang.",
+        "repository": "https://github.com/shop1111/moonbindgen"
+      },
+      {
+        "name": "Atman-Angle/oas2moon_runtime",
+        "version": "0.1.0",
+        "description": "Runtime request, response, encoding, auth, and transport boundary for oas2moon clients.",
+        "repository": "https://github.com/Atman-Angle/oas2moon"
+      },
+      {
+        "name": "liying-han/moonresilience",
+        "version": "0.2.0",
+        "description": "A pure MoonBit resilience toolkit for retry, circuit breaking, rate limiting, bulkhead isolation, telemetry, and deterministic simulation.",
+        "repository": "https://github.com/liying-han/MoonResilience"
+      },
+      {
+        "name": "bobzhang/mermaid",
+        "version": "0.1.2",
+        "description": "A port of Mermaid (text-to-diagram toolkit) to MoonBit",
+        "repository": "https://github.com/bobzhang/mermaid.mbt"
+      },
+      {
+        "name": "spectacleCase/moonbook",
+        "version": "0.3.1",
+        "description": "A Markdown documentation and book generator written in MoonBit",
+        "repository": "https://github.com/spectacleCase/moonbook.git"
+      },
+      {
+        "name": "zkc-long/faultcanvas",
+        "version": "0.1.0",
+        "description": "Programmable HTTP fault proxy and stateful service virtualization gateway for MoonBit",
+        "repository": "https://github.com/zkc-long/faultcanvas"
+      },
+      {
+        "name": "moonrockz/smithy-jsonschema",
+        "version": "0.3.0",
+        "description": "Convert assembled Smithy models to JSON Schema",
+        "repository": "https://github.com/moonrockz/smithy"
+      },
+      {
+        "name": "mizchi/syntree",
+        "version": "0.2.4",
+        "description": "Incremental syntax tree and highlighting toolkit for MoonBit",
+        "repository": "https://github.com/mizchi/syntree.mbt"
+      }
+    ]
+  },
+  {
+    "file": "mooncakes-configuration.json",
+    "count": 100,
+    "modules": [
+      {
+        "name": "Noverberrain/configscope",
+        "version": "0.5.0",
+        "description": "Configuration contract compatibility checks for MoonBit",
+        "repository": "https://github.com/Noverberrain/ConfigScope.git"
+      },
+      {
+        "name": "crh12354/moonconfigkit",
+        "version": "0.1.1",
+        "description": "MoonConfigKit is a MoonBit-native INI/properties configuration merge, validation, diagnostics, and reporting toolkit.",
+        "repository": "https://github.com/crh12354/23423"
+      },
+      {
+        "name": "joanna/minitpl",
+        "version": "0.1.2",
+        "description": "A lightweight MoonBit template toolkit for rendering, variable extraction, and template validation.",
+        "repository": "https://github.com/jojochensmart-lab/minitpl"
+      },
+      {
+        "name": "pangbit/moonjsonnet",
+        "version": "0.1.0",
+        "description": "An embeddable, lazy Jsonnet interpreter for MoonBit native applications",
+        "repository": "https://github.com/pangbit/moonjsonnet"
+      },
+      {
+        "name": "CYang-dep/moonkconfig",
+        "version": "0.1.0",
+        "description": "Portable Kconfig core: typed dependency resolution, boolean choices and reproducible build configuration",
+        "repository": "https://github.com/CYang-dep/moonkconfig"
+      },
+      {
+        "name": "wccerty/moonfeaturegate",
+        "version": "0.1.3",
+        "description": "MoonBit-native feature flag evaluation, targeting, rollout, and explanation toolkit.",
+        "repository": "https://github.com/wccerty/MoonFeatureGate"
+      },
+      {
+        "name": "q0w1ertyuiop/moonflagkit",
+        "version": "0.2.0",
+        "description": "A lightweight MoonBit feature flag and progressive rollout decision engine.",
+        "repository": "https://github.com/q0w1ertyuiop/MoonFlagKit"
+      },
+      {
+        "name": "tonyfettes/amtoml",
+        "version": "0.1.0",
+        "description": "A comprehensive TOML (Tom's Obvious, Minimal Language) parser for MoonBit with full support for TOML v1.0.0 specification including tables, arrays, dotted keys, and inline tables.",
+        "repository": ""
+      },
+      {
+        "name": "lenitain/hcl",
+        "version": "0.2.0",
+        "description": "HCL parser, formatter, and serialization library for MoonBit",
+        "repository": "https://github.com/lenitain/hcl"
+      },
+      {
+        "name": "tonyfettes/toml_parser",
+        "version": "0.1.0",
+        "description": "A pure MoonBit TOML parser supporting strings, numbers, booleans, arrays, tables, and comments",
+        "repository": "https://github.com/tonyfettes/toml_parser"
+      },
+      {
+        "name": "lenitain/kdl",
+        "version": "0.2.0",
+        "description": "KDL document language parser, formatter, query engine, and schema validation library for MoonBit",
+        "repository": "https://github.com/lenitain/kdl"
+      },
+      {
+        "name": "maria/toml_parser",
+        "version": "0.1.0",
+        "description": "A complete TOML (Tom's Obvious, Minimal Language) parser implementation in MoonBit with support for all basic types, arrays, tables, and nested structures.",
+        "repository": ""
+      },
+      {
+        "name": "maria/ini_parser",
+        "version": "0.1.0",
+        "description": "A complete INI file parser for MoonBit with support for sections, multiple data types, comments, and comprehensive error handling",
+        "repository": "https://github.com/maria/ini_parser"
+      },
+      {
+        "name": "L76148/moon-ron",
+        "version": "0.2.0",
+        "description": "A strict RON parser, serializer, formatter, and typed codec for MoonBit.",
+        "repository": "https://github.com/L76148/moon-ron"
+      },
+      {
+        "name": "Han-Wentao/moonplist",
+        "version": "0.1.1",
+        "description": "Typed Apple binary/XML property lists with bounded decoding and structural editing",
+        "repository": "https://github.com/Han-Wentao/moonplist"
+      },
+      {
+        "name": "LC6543/moon-ron",
+        "version": "0.1.0",
+        "description": "A strict RON parser, serializer, formatter, and typed codec for MoonBit.",
+        "repository": "https://github.com/L76148/moon-ron"
+      },
+      {
+        "name": "123123213weqw/moon_configweave",
+        "version": "0.10.0",
+        "description": "Layered configuration merge, interpolation and provenance audit",
+        "repository": "https://github.com/123123213weqw/moon-configweave"
+      },
+      {
+        "name": "forey217/moonconfig",
+        "version": "0.2.0",
+        "description": "JSON configuration three-way review with explicit decisions and guarded patch replay",
+        "repository": "https://github.com/forey217/moonconfig"
+      },
+      {
+        "name": "moonbitlang/moon_config",
+        "version": "0.4.4",
+        "description": "MoonBit package configuration parser",
+        "repository": "https://github.com/moonbitlang/parser"
+      },
+      {
+        "name": "moonbit-community/proton_config",
+        "version": "0.5.0",
+        "description": "Typed application configuration shared by Proton and its CLI.",
+        "repository": "https://github.com/moonbit-community/proton"
+      },
+      {
+        "name": "connect0459/starlark",
+        "version": "0.5.3",
+        "description": "The Starlark configuration language, implemented in Moonbit",
+        "repository": "https://github.com/connect0459/starlark-mbt"
+      },
+      {
+        "name": "jingmo653/sshconfig-resolve",
+        "version": "0.1.0",
+        "description": "OpenSSH client configuration parser, evaluator, and explainable resolver for MoonBit.",
+        "repository": "https://github.com/jingmo653/sshconfig-resolve"
+      },
+      {
+        "name": "xiguaAp6y3/moonbit-casbin",
+        "version": "0.1.0",
+        "description": "Casbin-style authorization engine in MoonBit: model-driven policy configuration, matcher and effect evaluation, RBAC role hierarchy, and an in-memory policy store.",
+        "repository": "https://github.com/xiguaAp6y3/moonbit-casbin"
+      },
+      {
+        "name": "kupas/imrelay",
+        "version": "0.2.0",
+        "description": "Hermes-style agent gateway in MoonBit: bridges 14 messaging platforms (Telegram, Discord, Slack, WhatsApp, Signal, Email, Home Assistant, Mattermost, Matrix, DingTalk, Feishu/Lark, WeChat, WeCom, iMessage via BlueBubbles) into a single agent callback, with retries, chunking, typing indicators, per-chat sessions and slash commands. TOML configuration with Hermes-compatible environment-variable fallback.",
+        "repository": "https://github.com/tomasky/imrelay"
+      },
+      {
+        "name": "riantr/snn_mbt",
+        "version": "0.155.0",
+        "description": "Bit-exact MoonBit port of SpikingNeuralNetworks.jl, extended with modern training machinery. NEURONS AND PLASTICITY: IF, AdEx, Izhikevich (IZ), HH, MorrisLecar, Poisson (including InhomogeneousPoisson), WilsonCowan; Markram STP, Gerstner / MexicanHat / AntiSymmetric / vSTDP / Confavreux2025 STDP; AMPA / NMDA / GABAa / GABAb receptors; multicompartment dendritic neurons (BallAndStick, Tripod, Multipod); IF with population synaptic conductance; spike-time and current stimuli. CORE DL: Tensor struct with broadcasting + softmax / log-softmax / cross-entropy, Conv2d / MaxPool2d / GlobalAvgPool2d / ReLU / Flatten / Linear forward AND backward, ResNet foundations, generic Chain / Sequential, pre-made MLP / SimpleCNN / LeLen5 bottles, image adapter (BMP/QOI/TGA/PNG/GIF/JPEG/ICO/TIFF) via riantr/moonbit_image, 5D [T,B,C,H,W] STImage. OPTIMIZERS AND SCHEDULING: SGD, SGD-with-momentum, Adam with bias correction, AdamW, RMSprop, AdaGrad, Adafactor; StepLR, ExponentialLR, CosineAnnealingLR, ReduceLROnPlateau; BatchNorm2d with running stats and LayerNorm per-sample, both with backward. SURROGATE GRADIENTS AND ATTENTION: fast-sigmoid (Zenke & Ganguli 2018) for BPTT through IF/LIF Heaviside; GELU, exact sparse GELU via libm erff; multi-head self-attention with mask utilities; sinusoidal and learnable positional encoding; Pre-Norm transformer block; inverted dropout; SAttention unifying three spiking attention variants; LayerScale; T5-style relative position bias; SpikingAttention with full BPTT backward; SpikeFormer demo. RL: SequenceReplayBuffer for recurrent RL, DDPG, TD3, SAC, GRU/LSTM/GTrXL recurrent actors and critics, Decision Transformer, Trajectory Transformer with beam search. META-LEARNING AND CAUSAL: MAML, FOMAML, Reptile, TaskSampler; LinearGaussianSCM, DoCalculus, CounterfactualReasoning, CausalEffectEstimator. GENERATIVE: RealNVP / Glow / NormalizingFlow, VAE, IWAE, ELBO, DDPM diffusion, EnergyBasedModel with Langevin sampling, DCGAN, WGAN-GP. OTHER: Vision Transformer with trainer, EmbeddingNet / SiameseNet / SiameseTrainer, CapsuleNetwork. GRAPH NEURAL NETWORKS: Graph with COO edge list and GCN adjacency normalisation; GCN, MPNN, GIN, PNA, GAT (multi-head), Set2Set readout, EdgeGNN, H2GCN, GraphClassifier -- and FULL BACKWARD PASSES for all of them, dispatched behind a single TrainableGraphNet enum, with node-level and graph-level training steps. VERIFICATION: two runnable harnesses, since `moon test` cannot link this package on Windows (998 .mbt files exceed the 32K command-line limit). `verify/verify_gnn_grads.ps1` runs a finite-difference gradient gate over 8 dL/dh configurations, 8 dL/dW configurations, the multi-head GAT stack, a deterministic ELU-mask row, and a cross-entropy loss-vs-gradient consistency section -- judged by relative tolerance, by a kink-versus-bug component count, and against negative controls. `verify/run_gnn_train_demo.ps1` runs an end-to-end transductive two-community training demo over all five backbones with a held-out split, a shuffled-label control and a no-message-passing baseline. These harnesses found 13 real defects that the type checker and code review had both passed, including a cross-entropy loss whose sign was inverted for six releases. Float32 end to end with libm FFI (expf, tanhf, logf, sqrtf, cosf, sinf, erff).",
+        "repository": "https://gitee.com/ren-yongxiang/moonbit-snn"
+      },
+      {
+        "name": "totto2727/workgraph-codex-cli",
+        "version": "0.2.1",
+        "description": "Codex CLI integration for workgraph",
+        "repository": "https://github.com/totto2727-org/workgraph"
+      },
+      {
+        "name": "uiwcvb/hocon",
+        "version": "0.25.0",
+        "description": "HOCON 配置迁移差异检查与 MoonBit 解析",
+        "repository": "https://github.com/uiwcvb/moonbit-hocon"
+      },
+      {
+        "name": "justjavac/microphone",
+        "version": "0.1.3",
+        "description": "Microphone capture device and session helpers.",
+        "repository": "https://github.com/justjavac/moonbit-microphone"
+      },
+      {
+        "name": "mizchi/bit_config",
+        "version": "0.48.0",
+        "description": "Git config file parser (gix-config equivalent)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "totto2727/workgraph-opencode-cli",
+        "version": "0.2.1",
+        "description": "OpenCode CLI integration for workgraph",
+        "repository": "https://github.com/totto2727-org/workgraph"
+      },
+      {
+        "name": "LF-ai-nb/caseweave",
+        "version": "0.1.1",
+        "description": "Deterministic constrained combinatorial test matrix generator for MoonBit.",
+        "repository": "https://github.com/LF-ai-nb/caseweave"
+      },
+      {
+        "name": "moonbitstack/moonquic",
+        "version": "0.3.3",
+        "description": "moonquic — the QUIC transport for MoonBit (RFC 9000/9001/9002): packets, frames, loss recovery, congestion control, streams and flow control, bytes in and events out. No sockets; the handshake is moontls' and HTTP/3 is moonhttp's.",
+        "repository": "https://github.com/moonbitstack/moonquic"
+      },
+      {
+        "name": "moonbit-community/ini",
+        "version": "0.2.3",
+        "description": "High-performance INI parser for MoonBit with nested section support.",
+        "repository": "https://github.com/moonbit-community/ini.git"
+      },
+      {
+        "name": "mokomoking2501/profinet_master",
+        "version": "0.1.0",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "jjyiiuy/moonforensics",
+        "version": "0.1.0",
+        "description": "An offline, reproducible incident forensics cockpit written in MoonBit",
+        "repository": "https://github.com/jjyiiuy/moonforensics"
+      },
+      {
+        "name": "PaiGack/ssh_client",
+        "version": "0.4.0",
+        "description": "SSHv2 client library for MoonBit with password and publickey authentication, SFTP v3, and local/remote/SOCKS5 port forwarding. / 使用 MoonBit 实现的 SSHv2 客户端库，支持密码/公钥认证、SFTP v3 文件传输及本地/远程/SOCKS5 端口转发",
+        "repository": "https://github.com/PaiGack/moonbitlang-OSC2026.git"
+      },
+      {
+        "name": "dimon-83/mbel",
+        "version": "0.3.7",
+        "description": "mbel — a MoonBit expression language: Jexl-compatible dynamic evaluation with an expr-lang syntax front-end, dual tree-walk/bytecode-VM engines, predicate aggregates and resource budgets.",
+        "repository": "https://github.com/dimon-83/mbel"
+      },
+      {
+        "name": "i5ting/gulp",
+        "version": "0.1.0",
+        "description": "",
+        "repository": "https://github.com/i5ting/gulp"
+      },
+      {
+        "name": "sbqrre/moonbit-mcu-hal",
+        "version": "0.2.1",
+        "description": "MoonBit Microcontroller Hardware Abstraction Layer & Simulation Suite",
+        "repository": "https://github.com/sbqrre/moonbit-mcu-hal"
+      },
+      {
+        "name": "mjfmjf879/moonbit_constraint",
+        "version": "0.1.0",
+        "description": "Finite-domain constraint programming library for MoonBit",
+        "repository": "https://github.com/mjfmjf879/moonbit-constraint"
+      },
+      {
+        "name": "shop1111/moonohos",
+        "version": "0.3.0",
+        "description": "Build MoonBit computation libraries for HarmonyOS Native/Node-API.",
+        "repository": "https://github.com/shop1111/MoonOHOS"
+      },
+      {
+        "name": "mizchi/syntree",
+        "version": "0.2.4",
+        "description": "Incremental syntax tree and highlighting toolkit for MoonBit",
+        "repository": "https://github.com/mizchi/syntree.mbt"
+      },
+      {
+        "name": "dowdiness/svg-dsl",
+        "version": "0.1.0",
+        "description": "SVG DSL for programmatic SVG generation in MoonBit",
+        "repository": "https://github.com/dowdiness/svg-dsl"
+      },
+      {
+        "name": "moonbit-community/proton",
+        "version": "0.5.0",
+        "description": "MoonBit bindings for the Proton native desktop runtime.",
+        "repository": "https://github.com/moonbit-community/proton"
+      },
+      {
+        "name": "justjavac/proton_config",
+        "version": "0.1.8",
+        "description": "Typed config parser for Proton moon.proton and moon.ext files.",
+        "repository": "https://github.com/moonbit-community/proton"
+      },
+      {
+        "name": "totto2727/admiral",
+        "version": "0.6.5",
+        "description": "Async-first declarative CLI builder for MoonBit, inspired by gunshi",
+        "repository": "https://github.com/totto2727-org/admiral"
+      },
+      {
+        "name": "mizchi/bitx_bitconfig",
+        "version": "0.48.0",
+        "description": "bit-specific config (extension module for mizchi/bit)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "Kaida-Amethyst/readline",
+        "version": "0.1.2",
+        "description": "readline library for MoonBit",
+        "repository": "https://github.com/Kaida-Amethyst/readline.mbt"
+      },
+      {
+        "name": "bobzhang/asciidoctor",
+        "version": "0.3.4",
+        "description": "A port of Asciidoctor (AsciiDoc processor) to MoonBit",
+        "repository": "https://github.com/bobzhang/asciidoctor.mbt"
+      },
+      {
+        "name": "totto2727/codex-sdk",
+        "version": "0.4.1",
+        "description": "MoonBit SDK for embedding the Codex agent in workflows and applications",
+        "repository": "https://github.com/totto2727-org/codex-sdk"
+      },
+      {
+        "name": "Nanaloveyuki/orbit",
+        "version": "0.1.0-alpha.15",
+        "description": "Composable desktop application foundations for MoonBit.",
+        "repository": "https://github.com/Nanaloveyuki/orbit"
+      },
+      {
+        "name": "q2316367743/moonhttp",
+        "version": "0.6.0",
+        "description": "axios 风格的 MoonBit HTTP 客户端：实例与配置合并、四种请求体形态、流式与 SSE、自动重定向",
+        "repository": "https://github.com/q2316367743/moonhttp"
+      },
+      {
+        "name": "mizchi/wasmtime",
+        "version": "0.1.6",
+        "description": "Wasmtime C API bindings for MoonBit (native target)",
+        "repository": "https://github.com/mizchi/wasmtime.mbt"
+      },
+      {
+        "name": "mizchi/crater-webdriver-bidi",
+        "version": "0.19.0",
+        "description": "WebDriver BiDi adapter module for crater browser integration",
+        "repository": "https://github.com/mizchi/crater"
+      },
+      {
+        "name": "totto2727/bw",
+        "version": "0.2.2",
+        "description": "Native MoonBit CLI for Cloudflare Browser Rendering API",
+        "repository": "https://github.com/totto2727-org/bw"
+      },
+      {
+        "name": "grandEarshot/moon_switch",
+        "version": "0.1.2",
+        "description": "MoonBit native CLI for switching Codex and Claude providers.",
+        "repository": "https://github.com/grandEarshot/moon-switch"
+      },
+      {
+        "name": "cli/csplit",
+        "version": "0.1.1",
+        "description": "csplit command for MoonX.",
+        "repository": "https://github.com/moonbit-community/cmd"
+      },
+      {
+        "name": "Lyhdsba/moonforge",
+        "version": "0.1.3",
+        "description": "A MoonBit-native incremental task runner for small builds, codegen workflows, and local CI orchestration.",
+        "repository": "https://github.com/Lyhdsba/MoonForge"
+      },
+      {
+        "name": "KKKIIO/agconf",
+        "version": "0.5.0",
+        "description": "",
+        "repository": "https://github.com/kkkiio/agconf"
+      },
+      {
+        "name": "Kaida-Amethyst/llama",
+        "version": "0.2.0",
+        "description": "llama.cpp bindings for Moonbit",
+        "repository": "https://github.com/Kaida-Amethyst/llama.mbt"
+      },
+      {
+        "name": "mokomoking2501/isoproject",
+        "version": "0.1.0",
+        "description": "Headless engineering project model for Isochronon",
+        "repository": ""
+      },
+      {
+        "name": "btlqql/moon_tera",
+        "version": "0.3.0",
+        "description": "A deterministic Tera-style template engine for MoonBit",
+        "repository": "https://github.com/btlqql/moon_tera.git"
+      },
+      {
+        "name": "Atman-Angle/oas2moon_runtime",
+        "version": "0.1.0",
+        "description": "Runtime request, response, encoding, auth, and transport boundary for oas2moon clients.",
+        "repository": "https://github.com/Atman-Angle/oas2moon"
+      },
+      {
+        "name": "kupas/pm3",
+        "version": "0.1.7",
+        "description": "A language-agnostic process manager (PM2-like) with built-in log rotation",
+        "repository": "https://github.com/tomasky/pm3"
+      },
+      {
+        "name": "kupas/mcpbox",
+        "version": "0.1.3",
+        "description": "A self-contained MCP client CLI for discovering and calling Model Context Protocol servers",
+        "repository": "https://github.com/tomasky/mcpbox"
+      },
+      {
+        "name": "Yu-zh/cvc5.mbt",
+        "version": "0.1.0",
+        "description": "Native MoonBit bindings for the cvc5 SMT solver",
+        "repository": "https://github.com/Yu-zh/cvc5.mbt"
+      },
+      {
+        "name": "sundaysebasidian-byte/moonabnf",
+        "version": "0.1.0",
+        "description": "Byte-oriented ABNF AST, validated compilation and budgeted recognition",
+        "repository": "https://github.com/sundaysebasidian-byte/MoonABNF"
+      },
+      {
+        "name": "spectacleCase/moonbook",
+        "version": "0.3.1",
+        "description": "A Markdown documentation and book generator written in MoonBit",
+        "repository": "https://github.com/spectacleCase/moonbook.git"
+      },
+      {
+        "name": "zkc-long/faultcanvas",
+        "version": "0.1.0",
+        "description": "Programmable HTTP fault proxy and stateful service virtualization gateway for MoonBit",
+        "repository": "https://github.com/zkc-long/faultcanvas"
+      },
+      {
+        "name": "moonrockz/smithy-build",
+        "version": "0.3.0",
+        "description": "Smithy build projections and plugins",
+        "repository": "https://github.com/moonrockz/smithy"
+      },
+      {
+        "name": "moonrockz/smithy-jsonschema",
+        "version": "0.3.0",
+        "description": "Convert assembled Smithy models to JSON Schema",
+        "repository": "https://github.com/moonrockz/smithy"
+      },
+      {
+        "name": "Yoorkin/get_moonhome",
+        "version": "0.1.0",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "moonbit-community/proton_auto_launch",
+        "version": "0.5.0",
+        "description": "Cross-platform auto-launch helpers for MoonBit, inspired by Teamwork/node-auto-launch.",
+        "repository": "https://github.com/moonbit-community/proton/tree/main/sys/auto_launch"
+      },
+      {
+        "name": "bobzhang/toml",
+        "version": "0.4.3",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "mizchi/oci_wasm",
+        "version": "0.5.1",
+        "description": "WebAssembly package registry client",
+        "repository": "https://github.com/mizchi/oci_wasm"
+      },
+      {
+        "name": "Milky2018/wgpu_mbt",
+        "version": "0.16.2",
+        "description": "This repo contains a MoonBit port of the `wgpu-native` C API (WebGPU)",
+        "repository": "https://github.com/moonbit-community/wgpu-mbt.git"
+      },
+      {
+        "name": "moonrockz/krueger",
+        "version": "0.8.0",
+        "description": "Parser and parsing utilities for Elm and Elm-like dialects (e.g. Morphir) in MoonBit",
+        "repository": "https://github.com/moonrockz/krueger"
+      },
+      {
+        "name": "bobzhang/myshell",
+        "version": "0.3.0",
+        "description": "A small shell-free process EDSL for MoonBit",
+        "repository": "https://github.com/bobzhang/myshell"
+      },
+      {
+        "name": "justjavac/auto_launch",
+        "version": "0.1.7",
+        "description": "Cross-platform auto-launch helpers for MoonBit, inspired by Teamwork/node-auto-launch.",
+        "repository": "https://github.com/justjavac/moonbit-auto-launch"
+      },
+      {
+        "name": "colmugx/reader",
+        "version": "0.4.0",
+        "description": "An implementation of Reader Monad in Moonbit",
+        "repository": "https://github.com/colmugx/reader-monad"
+      },
+      {
+        "name": "moonbit-community/postgres",
+        "version": "0.1.2",
+        "description": "A secure, easy-to-use PostgreSQL client library for MoonBit with an included connection pool.",
+        "repository": "https://github.com/moonbit-community/postgres.mbt"
+      },
+      {
+        "name": "mizchi/astra",
+        "version": "0.23.4",
+        "description": "Mountable Mars middleware for static site generation",
+        "repository": "https://github.com/mizchi/luna.mbt"
+      },
+      {
+        "name": "mizchi/actrun",
+        "version": "0.32.0",
+        "description": "MVP GitHub Actions-compatible push CI runner with bitflow lowering, native execution, and bit workspace materialization.",
+        "repository": "https://github.com/mizchi/actrun"
+      },
+      {
+        "name": "gaato/dave",
+        "version": "0.1.1",
+        "description": "Safe native MoonBit bindings for Discord's official libdave C API",
+        "repository": "https://github.com/gaato/dave.mbt"
+      },
+      {
+        "name": "moonbit-community/moon_cpal",
+        "version": "0.11.8",
+        "description": "A MoonBit port (subset) of RustAudio/cpal.",
+        "repository": "https://github.com/moonbit-community/moon_cpal"
+      },
+      {
+        "name": "moonbit-community/proton_package",
+        "version": "0.5.0",
+        "description": "Host-native desktop application packaging library and CLI.",
+        "repository": "https://github.com/moonbit-community/proton/tree/main/package"
+      },
+      {
+        "name": "hnlyxiaobing/toml",
+        "version": "0.4.9",
+        "description": "A TOML parser implementation in MoonBit (fork of bobzhang/toml with array-of-tables fix)",
+        "repository": "https://github.com/hnlyxiaobing/toml"
+      },
+      {
+        "name": "justjavac/proton",
+        "version": "0.1.14",
+        "description": "MoonBit bindings for the Proton native desktop runtime.",
+        "repository": "https://github.com/moonbit-community/proton"
+      },
+      {
+        "name": "lampclaw/i18n",
+        "version": "0.9.3",
+        "description": "Typed internationalization, MF2 formatting, and catalog tooling for MoonBit",
+        "repository": "https://github.com/lampclaw/moonbit-i18n"
+      },
+      {
+        "name": "cogna-dev/x",
+        "version": "0.1.2",
+        "description": "The experimental monorepo for real-world MoonBit packages",
+        "repository": "https://github.com/cogna-dev/x"
+      },
+      {
+        "name": "mldong/moon-token",
+        "version": "0.1.13",
+        "description": "DDD-layered login-state and session toolkit for MoonBit: multi-device sessions, access/refresh rotation, exact logout reasons (kicked / superseded / expired never collapse into one error), permission and role checks, route guard for web handlers",
+        "repository": "https://github.com/mldong/moon-token"
+      },
+      {
+        "name": "Arcelyth/aitne",
+        "version": "0.4.19",
+        "description": "A lightweight and high-performance reactive web framework.",
+        "repository": "https://github.com/Arcelyth/aitne"
+      },
+      {
+        "name": "wzzc-dev/moui_cli",
+        "version": "0.2.4",
+        "description": "Standalone project generator and environment doctor for MoUI",
+        "repository": "https://github.com/wzzc-dev/MoUI.git"
+      },
+      {
+        "name": "cybershang/agent-telemetry",
+        "version": "0.1.6",
+        "description": "",
+        "repository": "https://github.com/cybershang/agent-telemetry"
+      },
+      {
+        "name": "conglinyizhi/toml",
+        "version": "0.1.0",
+        "description": "Nightly-compatible TOML parser for MoonBit, maintained from moonbit-community/toml-parser",
+        "repository": "https://github.com/conglinyizhi/toml-mbt"
+      },
+      {
+        "name": "Lfan-ke/moonzero",
+        "version": "0.7.3",
+        "description": "moonzero — a service framework for MoonBit (← go-zero): config-driven assembly of a moonapi application with middleware, producing a runnable moonasgi AsgiApp. v0.6.2 runs real unary, server/client-streaming, and bidirectional zRPC calls over moonrpc's h2c transport (an in-process RpcChannel drives HPACK HEADERS + length-prefixed DATA + grpc-status trailers through the H2Server engine), graceful shutdown draining in-flight calls, a persisted, watchable etcd v3-shaped registry (watch, events_since catch-up, snapshot/restore) with round-robin/pick-first balancers and a load-balanced client, real file-backed registry I/O over moonbitlang/async's fs with a live filesystem watcher (native discov driver), request metrics (counter + latency histogram), and W3C traceparent propagation.",
+        "repository": "https://github.com/moonbitstack/moonzero"
+      },
+      {
+        "name": "bzhangui/hooklab",
+        "version": "0.3.0-rc.5",
+        "description": "Self-hosted webhook security and reliable event-delivery platform in MoonBit.",
+        "repository": "https://github.com/bzhangui/hooklab"
+      },
+      {
+        "name": "Freakz2z/tracecite",
+        "version": "0.8.0",
+        "description": "Maintain Markdown references, code excerpts and source snapshots",
+        "repository": "https://github.com/Freakz2z/tracecite"
+      },
+      {
+        "name": "Mitsuha11zz/MoonChartSVG",
+        "version": "0.1.5",
+        "description": "纯 MoonBit 实现的 SVG 图表生成库，支持柱状图、折线图、饼图、散点图、雷达图、面积图、堆叠柱状图、水平柱状图、环形图共9种图表类型，零依赖，Builder API 设计。",
+        "repository": "https://gitlink.org.cn/Mitsuha/MoonChartSVG"
+      },
+      {
+        "name": "aurasuisui/indexmap",
+        "version": "0.4.0",
+        "description": "A hash map that preserves insertion order - MoonBit port of Rust's indexmap",
+        "repository": "https://github.com/aurasuisui/moonbit-indexmap"
+      }
+    ]
+  },
+  {
+    "file": "mooncakes-hyperrealm.json",
+    "count": 0,
+    "modules": []
+  },
+  {
+    "file": "mooncakes-ini.json",
+    "count": 100,
+    "modules": [
+      {
+        "name": "moonbit-community/ini",
+        "version": "0.2.3",
+        "description": "High-performance INI parser for MoonBit with nested section support.",
+        "repository": "https://github.com/moonbit-community/ini.git"
+      },
+      {
+        "name": "ShellWen/sw_ini",
+        "version": "0.2.0",
+        "description": "High-performance INI parser for MoonBit with nested section support.",
+        "repository": "https://github.com/moonbit-community/sw-ini.git"
+      },
+      {
+        "name": "maria/ini_parser",
+        "version": "0.1.0",
+        "description": "A complete INI file parser for MoonBit with support for sections, multiple data types, comments, and comprehensive error handling",
+        "repository": "https://github.com/maria/ini_parser"
+      },
+      {
+        "name": "crh12354/moonconfigkit",
+        "version": "0.1.1",
+        "description": "MoonConfigKit is a MoonBit-native INI/properties configuration merge, validation, diagnostics, and reporting toolkit.",
+        "repository": "https://github.com/crh12354/23423"
+      },
+      {
+        "name": "shangwuxi/moonini",
+        "version": "0.1.1",
+        "description": "Lossless INI concrete syntax and surgical source editing",
+        "repository": "https://github.com/shangwuxi/moonini"
+      },
+      {
+        "name": "oilleelssq-wq/moon-cpio",
+        "version": "0.1.0",
+        "description": "Safe cpio parsing, streaming, deterministic writing, and CLI extraction.",
+        "repository": "https://github.com/oilleelssq-wq/moon-cpio"
+      },
+      {
+        "name": "CAIMEOX/lazy",
+        "version": "0.1.0",
+        "description": "Lazy Initialized Value",
+        "repository": "https://github.com/CAIMEOX/lazy.git"
+      },
+      {
+        "name": "2d5rrr333/moonbridge",
+        "version": "0.1.0",
+        "description": "The 'wasm owns state, JS is a thin shell' architecture as a reusable kit: a generic Session with an init/dispatch JSON protocol (state + effects envelope), plus a dependency-free browser runtime. The MoonBit core is the only decision point; the DOM shell only renders and executes effects.",
+        "repository": "https://github.com/2d5rrr333/moonbridge"
+      },
+      {
+        "name": "lampclaw/lampo",
+        "version": "0.1.0",
+        "description": "A MoonBit UI runtime for WeChat MiniApp Skyline with pure Elm-style authoring, component-scoped state, and generated MiniApp host commands.",
+        "repository": "https://github.com/wenfeizou/lampo"
+      },
+      {
+        "name": "mizchi/bit_bootstrap",
+        "version": "0.48.0",
+        "description": "Native-stub bootstrap helpers (stdio guard)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "Arcelyth/aitne",
+        "version": "0.4.19",
+        "description": "A lightweight and high-performance reactive web framework.",
+        "repository": "https://github.com/Arcelyth/aitne"
+      },
+      {
+        "name": "emadurandal/rhodonite_app_sdl3",
+        "version": "0.1.8",
+        "description": "SDL3 native app runtime helpers for RhodoniteMBT.",
+        "repository": "https://github.com/emadurandal/RhodoniteMBT"
+      },
+      {
+        "name": "WB-ai-nb/reviewproof-kit",
+        "version": "0.3.1",
+        "description": "MoonBit-native review feedback, overlap disclosure and resubmission proof toolkit",
+        "repository": "https://github.com/WB-ai-nb/harborcheck.git"
+      },
+      {
+        "name": "mizchi/bit_repo_ops",
+        "version": "0.48.0",
+        "description": "Repository-level operations (revparse, etc.)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "mizchi/bit_runtime",
+        "version": "0.48.0",
+        "description": "Runtime helpers (storage_runtime, etc.)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "cybershang/agent-telemetry",
+        "version": "0.1.6",
+        "description": "",
+        "repository": "https://github.com/cybershang/agent-telemetry"
+      },
+      {
+        "name": "kokic/momoka",
+        "version": "0.7.3",
+        "description": "Create a minimal MoonBit module",
+        "repository": "https://github.com/kokic/momoka"
+      },
+      {
+        "name": "chnlkw/moonxi-net-gpu",
+        "version": "0.1.1",
+        "description": "GPU backend: CUDA/cuDNN tensor operations and training for moonxi-net",
+        "repository": "https://github.com/moonxi-net/moonxi-net"
+      },
+      {
+        "name": "KKKIIO/selene_raylib",
+        "version": "0.37.5",
+        "description": "Native raylib backend for Selene.",
+        "repository": "https://github.com/kkkiio/selene.git"
+      },
+      {
+        "name": "tonyfettes/tree_sitter_sql",
+        "version": "0.1.26",
+        "description": "Tree-sitter Grammar for SQL",
+        "repository": "git+https://github.com/derekstride/tree-sitter-sql.git"
+      },
+      {
+        "name": "cli/cmp",
+        "version": "0.2.1",
+        "description": "cmp command for MoonX.",
+        "repository": "https://github.com/moonbit-community/cmd"
+      },
+      {
+        "name": "cli/expand",
+        "version": "0.1.2",
+        "description": "expand command for MoonX.",
+        "repository": "https://github.com/moonbit-community/cmd"
+      },
+      {
+        "name": "klaseca/sdl",
+        "version": "0.1.3",
+        "description": "MoonBit bindings for SDL",
+        "repository": "https://github.com/klaseca/sdl-mbt"
+      },
+      {
+        "name": "mizchi/kagura_platform",
+        "version": "0.6.0",
+        "description": "Backend-agnostic windowing/platform contracts for Kagura (PlatformDriver trait, surface tokens, native/web hook injection points; extracted from kagura_engine)",
+        "repository": "https://github.com/mizchi/kagura"
+      },
+      {
+        "name": "vectie/moonbook",
+        "version": "0.1.1",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "mizchi/native_runtime_hooks",
+        "version": "0.6.0",
+        "description": "Native platform integration for Kagura: windowing, WebGPU, audio, capture and host services",
+        "repository": "https://github.com/mizchi/kagura"
+      },
+      {
+        "name": "sacckey/moon8bit",
+        "version": "0.1.0",
+        "description": "A minimal retro 2D game engine for MoonBit with text-first assets, deterministic runtime, and compact APIs for fast human/AI iteration.",
+        "repository": "https://github.com/sacckey/moon8bit"
+      },
+      {
+        "name": "totto2727/c-plugin",
+        "version": "0.2.1",
+        "description": "Native MoonBit Claude/Cursor/Codex plugin skill manager",
+        "repository": "https://github.com/totto2727-org/monorepo"
+      },
+      {
+        "name": "length-super/moonctl",
+        "version": "0.2.0",
+        "description": "Finite-state CTL model checking with replayable witnesses and counterexamples",
+        "repository": "https://github.com/length-super/moonctl"
+      },
+      {
+        "name": "ljs448/moonbitJobShop",
+        "version": "0.2.0",
+        "description": "Extensible job-shop scheduling models and heuristics for MoonBit.",
+        "repository": "https://github.com/ljs448/moonbitJobShop"
+      },
+      {
+        "name": "darkmi/mooncaptcha",
+        "version": "0.1.0",
+        "description": "",
+        "repository": "https://github.com/darkmi/MoonCaptcha"
+      },
+      {
+        "name": "jqlssg/moonmultigrid",
+        "version": "0.1.0",
+        "description": "Matrix-free geometric multigrid for rectangular 2D diffusion-reaction problems",
+        "repository": "https://github.com/jqlssg/moonmultigrid"
+      },
+      {
+        "name": "Ljh684/MoonParse",
+        "version": "0.1.4",
+        "description": "MoonBit 解析器组合子库 — 与生态中其他 combinator 不同：(1)内置完整 JSON 解析器（JsonValue 枚举+双向序列化）和 TOML 解析器，开箱即用；(2)支持二进制解析（u8-u64/LEB128/计数字符串），覆盖 Protobuf 等场景；(3)11 种格式化输出（ANSI/Syslog RFC5424/GELF/JSON/XML）；(4)行列号位置追踪+ErrorContext 累积错误上下文。零依赖",
+        "repository": "https://gitlink.org.cn/a678b789/MoonParse"
+      },
+      {
+        "name": "Yoorkin/shiki",
+        "version": "0.1.2",
+        "description": "shiki highlighter for rabbita",
+        "repository": "https://github.com/moonbit-community/rabbita"
+      },
+      {
+        "name": "mizchi/bitx_subdir",
+        "version": "0.48.0",
+        "description": "Subdirectory clone (extension module for mizchi/bit)",
+        "repository": "https://github.com/mizchi/bit-vcs"
+      },
+      {
+        "name": "mldong/jeeflow-core",
+        "version": "0.1.52",
+        "description": "jeeflow workflow engine core (MoonBit port, zero registry deps)",
+        "repository": "https://github.com/mldong/jeeflow-moon"
+      },
+      {
+        "name": "bobzhang/contacts",
+        "version": "0.3.4",
+        "description": "",
+        "repository": "https://github.com/moonbit-community/isomorphic"
+      },
+      {
+        "name": "cogna-dev/mcp-sdk",
+        "version": "0.1.0",
+        "description": "MoonBit implementation of the Model Context Protocol (MCP)",
+        "repository": "https://github.com/cogna-dev/mcp-sdk"
+      },
+      {
+        "name": "mizchi/lsp",
+        "version": "0.1.3",
+        "description": "LSP (Language Server Protocol) implementation for MoonBit",
+        "repository": "https://github.com/mizchi/lsp.mbt"
+      },
+      {
+        "name": "ushironoko/mdclip",
+        "version": "0.4.0",
+        "description": "Preview clipboard markdown as GitHub-styled HTML in browser",
+        "repository": "https://github.com/ushironoko/mdclip"
+      },
+      {
+        "name": "klaseca/sdl-sys",
+        "version": "0.1.2",
+        "description": "Low-level MoonBit bindings for SDL C API",
+        "repository": "https://github.com/klaseca/sdl-mbt"
+      },
+      {
+        "name": "2d5rrr333/mtab",
+        "version": "0.5.0",
+        "description": "MoonBit-powered browser start page: clock with lunar calendar, bookmark grid, multi-engine search, wallpapers — all core logic in MoonBit (wasm-gc), DOM as a thin shell.",
+        "repository": "https://github.com/2d5rrr333/mtab"
+      },
+      {
+        "name": "HK-SHAO/dsp",
+        "version": "0.1.4",
+        "description": "Numeric kernel of atools: FFT, STFT codec and phase reconstruction, compiled to WASM for direct browser use",
+        "repository": "https://github.com/HK-SHAO/atools"
+      },
+      {
+        "name": "xz-xuezhe/moonblox-cli",
+        "version": "0.2.0",
+        "description": "MoonBlox command-line tool",
+        "repository": "https://github.com/xz-xuezhe/moonblox"
+      },
+      {
+        "name": "2d5rrr333/moonwebtest",
+        "version": "0.1.0",
+        "description": "Test toolkit for MoonBit wasm-gc web apps: a Node harness that drives your wasm exports over the JSON bridge, a headless-Chromium runner for DOM assertions, and moon-level envelope checks. The tools test themselves against the bundled demo app.",
+        "repository": "https://github.com/2d5rrr333/moonwebtest"
+      },
+      {
+        "name": "bobzhang/peg",
+        "version": "0.1.0",
+        "description": "A MoonBit port of PEG.js: parser generator for MoonBit",
+        "repository": "https://github.com/bobzhang/peg.mbt"
+      },
+      {
+        "name": "t-ujiie-g/yxl",
+        "version": "0.7.1",
+        "description": "A YAML-driven Excel (.xlsx) compiler and CLI — manage spreadsheets as version-controllable YAML with reuse/dedup, built on bobzhang/mbtexcel.",
+        "repository": "https://github.com/t-ujiie-g/yxl"
+      },
+      {
+        "name": "mldong/moon-file-storage-s3",
+        "version": "0.1.1",
+        "description": "S3 platform adapter for moon-file-storage",
+        "repository": "https://github.com/mldong/moon-file-storage"
+      },
+      {
+        "name": "mldong/moon-file-storage-qiniu",
+        "version": "0.1.1",
+        "description": "Qiniu Kodo platform adapter for moon-file-storage",
+        "repository": "https://github.com/mldong/moon-file-storage"
+      },
+      {
+        "name": "daqing/moon-xmpp",
+        "version": "0.10.0",
+        "description": "An XMPP client library for MoonBit",
+        "repository": "https://github.com/daqing/moon-xmpp"
+      },
+      {
+        "name": "moonbit-community/moon-new",
+        "version": "0.1.0",
+        "description": "A MoonBit project generator with support for Git repository templates.",
+        "repository": "https://github.com/moonbit-community/moon-new"
+      },
+      {
+        "name": "dtzrttp/moonpropertydb",
+        "version": "0.1.0",
+        "description": "An embedded property graph database written in MoonBit.",
+        "repository": "https://github.com/dtzrttp/MoonPropertyDB"
+      },
+      {
+        "name": "mldong/moon-file-storage-oss",
+        "version": "0.1.0",
+        "description": "Alibaba Cloud OSS platform adapter for moon-file-storage",
+        "repository": "https://github.com/mldong/moon-file-storage"
+      },
+      {
+        "name": "mizchi/crater-renderer",
+        "version": "0.19.0",
+        "description": "Renderer and VRT packages for crater",
+        "repository": "https://github.com/mizchi/crater"
+      },
+      {
+        "name": "colmugx/mcp",
+        "version": "0.18.0",
+        "description": "Type-safe MCP SDK in MoonBit with server/client support and dual transport (STDIO/HTTP)",
+        "repository": "https://github.com/colmugx/mcp.mbt"
+      },
+      {
+        "name": "colmugx/acp",
+        "version": "0.3.0",
+        "description": "Type-safe Agent Client Protocol (ACP) SDK for MoonBit.",
+        "repository": "https://github.com/colmugx/acp.mbt"
+      },
+      {
+        "name": "peter-jerry-ye/wasi",
+        "version": "0.25.0",
+        "description": "wasip1 implementation + experimental wrapper (async/sync) for Moonbit",
+        "repository": "https://github.com/moonbit-community/wasip1"
+      },
+      {
+        "name": "Nanaloveyuki/ajni",
+        "version": "0.3.1",
+        "description": "Checked bidirectional Java/MoonBit JNI runtime and Android host bridge.",
+        "repository": "https://github.com/Nanaloveyuki/ajni"
+      },
+      {
+        "name": "marianoguerra/llm",
+        "version": "0.4.2",
+        "description": "A dialect-agnostic LLM IR, one wire mapping per provider protocol, a data-driven provider registry, and a transport a browser can implement",
+        "repository": "https://github.com/marianoguerra/llm-mb"
+      },
+      {
+        "name": "moonbit-community/rabbita_tui",
+        "version": "0.1.2",
+        "description": "Native terminal UI toolkit built around The Elm Architecture",
+        "repository": "https://github.com/moonbit-community/rabbita_tui"
+      },
+      {
+        "name": "gmlewis/fonts-i",
+        "version": "0.19.19",
+        "description": "A collection of hard-coded font data in MoonBit with font names starting with 'i'.",
+        "repository": "https://github.com/gmlewis/mbt-fonts-i"
+      },
+      {
+        "name": "brickfrog/moontrace",
+        "version": "0.14.0",
+        "description": "Structured tracing for MoonBit with spans, structured fields, pluggable subscribers.",
+        "repository": "https://github.com/brickfrog/moontrace"
+      },
+      {
+        "name": "FrozenLemonTee/TerminalEvent",
+        "version": "0.1.0",
+        "description": "C++ terminal event backend with a stable C FFI surface",
+        "repository": "https://github.com/FrozenLemonTee/TerminalEvent"
+      },
+      {
+        "name": "bobzhang/zip",
+        "version": "0.1.1",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "lampclaw/minimoon",
+        "version": "0.3.1",
+        "description": "A MoonBit UI runtime for WeChat MiniApp Skyline with Elm-style state machines, Val-based UI composition, transactional local state, and generated MiniApp host commands.",
+        "repository": "https://github.com/lucavance/minimoon"
+      },
+      {
+        "name": "moonbitstack/moonquic",
+        "version": "0.3.3",
+        "description": "moonquic — the QUIC transport for MoonBit (RFC 9000/9001/9002): packets, frames, loss recovery, congestion control, streams and flow control, bytes in and events out. No sockets; the handshake is moontls' and HTTP/3 is moonhttp's.",
+        "repository": "https://github.com/moonbitstack/moonquic"
+      },
+      {
+        "name": "bobzhang/bap",
+        "version": "0.4.0",
+        "description": "",
+        "repository": "https://github.com/bobzhang/bap.mbt"
+      },
+      {
+        "name": "f4ah6o/dsh",
+        "version": "0.1.28",
+        "description": "A MoonBit port of DeepSeek Harness with gpui.mbt UI and capability APIs.",
+        "repository": "https://github.com/f4ah6o/dsh.mbt"
+      },
+      {
+        "name": "lepus-apps/lepus",
+        "version": "0.2.5",
+        "description": "A modern desktop application framework based on web technologies.",
+        "repository": "https://github.com/lepus-apps/lepus"
+      },
+      {
+        "name": "bobzhang/gallery",
+        "version": "0.2.3",
+        "description": "",
+        "repository": "https://github.com/moonbit-community/isomorphic"
+      },
+      {
+        "name": "mizchi/moonix",
+        "version": "0.2.1",
+        "description": "[EXPERIMENTAL] Virtual POSIX layer for MoonBit - in-memory filesystem, process emulation, and git-backed versioning for WASM",
+        "repository": "https://github.com/mizchi/moonix"
+      },
+      {
+        "name": "mizchi/crater-browser-native",
+        "version": "0.19.0",
+        "description": "Native V8 host adapter for crater browser runtime",
+        "repository": "https://github.com/mizchi/crater"
+      },
+      {
+        "name": "KKKIIO/selene_webgpu",
+        "version": "0.37.5",
+        "description": "Default backend for Selene game engine.",
+        "repository": "https://github.com/kkkiio/selene.git"
+      },
+      {
+        "name": "oyjh0381/moonoci",
+        "version": "0.1.4",
+        "description": "Deterministic OCI image layout builder and validator for MoonBit",
+        "repository": "https://github.com/oyjh0381/MoonBit"
+      },
+      {
+        "name": "brickfrog/pippa",
+        "version": "0.1.0",
+        "description": "A terminal UI framework for MoonBit, inspired by bubbletea (Go) and Elm architecture. Provides a Model-Update-View pattern with typed messages, ANSI rendering, and composable components.",
+        "repository": "https://github.com/brickfrog/pippa"
+      },
+      {
+        "name": "wedarp/moonbit-abc",
+        "version": "0.1.6",
+        "description": "A source-aware ABC notation parser, validator, AST JSON serializer, and pretty printer.",
+        "repository": "https://github.com/wedarp/moonbit-abc"
+      },
+      {
+        "name": "moonbitlang/typst",
+        "version": "0.1.7",
+        "description": "A port of the Typst typesetting engine to MoonBit.",
+        "repository": "https://github.com/moonbitlang/typst.mbt"
+      },
+      {
+        "name": "Lyl66655/moonbit-workflow-engine",
+        "version": "0.1.4",
+        "description": "A hierarchical finite state machine (HSM) and workflow execution engine for MoonBit",
+        "repository": "https://github.com/Lyl66655/moonbit-statemachine"
+      },
+      {
+        "name": "superbigcup325/jumbit",
+        "version": "0.1.3",
+        "description": "a MoonBit rewrite of zoxide: jump to directories in a few keystrokes",
+        "repository": "https://github.com/superbigcup325/jumbit"
+      },
+      {
+        "name": "Kaida-Amethyst/llama",
+        "version": "0.2.0",
+        "description": "llama.cpp bindings for Moonbit",
+        "repository": "https://github.com/Kaida-Amethyst/llama.mbt"
+      },
+      {
+        "name": "Zjyyer/moonbit-klt-tracker",
+        "version": "0.1.4",
+        "description": "Deterministic sparse KLT feature tracking for grayscale frame buffers.",
+        "repository": "https://github.com/Zjyyer/moonbit-klt-tracker"
+      },
+      {
+        "name": "Ag108/MoonReduce",
+        "version": "0.2.0",
+        "description": "Deterministic failure-preserving testcase reduction for MoonBit projects",
+        "repository": ""
+      },
+      {
+        "name": "vicTop-cw/mcpconftest",
+        "version": "0.8.0",
+        "description": "MCP protocol conformance probe — checks any MCP server (stdio or WebSocket) against the spec. 15 check categories, 4 report formats (JSON/Markdown/HTML/JUnit), per-check timing, multi-server parallel probe, CI gate, MCP stdio server + CLI (js/native).",
+        "repository": "https://github.com/VictorTop/mcpconftest"
+      },
+      {
+        "name": "mldong/moon-file-storage",
+        "version": "0.1.1",
+        "description": "File storage models, the platform and recorder ports, and the service facade",
+        "repository": "https://github.com/mldong/moon-file-storage"
+      },
+      {
+        "name": "hcjbat/moonbit-notary",
+        "version": "0.1.0",
+        "description": "Reusable MoonBit library and CLI for electronic evidence manifests, integrity verification, audit trails, and compliance reporting",
+        "repository": "https://github.com/hcjbat/moonbit-notary"
+      },
+      {
+        "name": "pqx123-lgtm/moonbit-vrp-solver",
+        "version": "0.2.1",
+        "description": "Vehicle-routing heuristics in pure MoonBit, with CVRP and VRPTW support.",
+        "repository": "https://github.com/pqx123-lgtm/moonbit-vrp-solver"
+      },
+      {
+        "name": "bobzhang/mermaid",
+        "version": "0.1.2",
+        "description": "A port of Mermaid (text-to-diagram toolkit) to MoonBit",
+        "repository": "https://github.com/bobzhang/mermaid.mbt"
+      },
+      {
+        "name": "rinnein/dan-any-mbt",
+        "version": "0.2.0",
+        "description": "MoonBit port of the dan-any danmaku conversion library",
+        "repository": "https://github.com/rinnein/dan-any-mbt.git"
+      },
+      {
+        "name": "tlhuecdkoyg/MoonCDC",
+        "version": "0.1.0",
+        "description": "Durable SQLite change capture and resumable incremental projections for MoonBit.",
+        "repository": "https://github.com/tlhuecdkoyg/MoonCDC"
+      },
+      {
+        "name": "zkc-long/faultcanvas",
+        "version": "0.1.0",
+        "description": "Programmable HTTP fault proxy and stateful service virtualization gateway for MoonBit",
+        "repository": "https://github.com/zkc-long/faultcanvas"
+      },
+      {
+        "name": "xziheng/testcontainers",
+        "version": "0.1.0",
+        "description": "Throwaway Docker containers for MoonBit integration tests",
+        "repository": "https://github.com/kkkiio/testcontainers-mbt"
+      },
+      {
+        "name": "mldong/moon-hutool",
+        "version": "0.1.6",
+        "description": "Hutool-style utility library for MoonBit: all packages depend only on moonbitlang/core (no FFI, fully synchronous); the two exceptions both build on official `moonbitlang/async` — `sched` (cron timer firing, three targets) and `http` (injectable HTTP transport port, native+wasm only)",
+        "repository": "https://github.com/mldong/moon-hutool"
+      },
+      {
+        "name": "Suquster/moonbit-pathfinding",
+        "version": "0.2.0",
+        "description": "A MoonBit pathfinding and graph algorithms library with executable documentation, runtime-checked proof predicates, and multi-backend verification gates. Built for OSC 2026.",
+        "repository": "https://github.com/Suquster/moonbit-pathfinding"
+      },
+      {
+        "name": "moonbitlang/async",
+        "version": "0.22.5",
+        "description": "Asynchronous programming library for MoonBit",
+        "repository": "https://github.com/moonbitlang/async"
+      },
+      {
+        "name": "moonbitlang/parser",
+        "version": "0.4.5",
+        "description": "AST and parsers for the MoonBit programming language",
+        "repository": "https://github.com/moonbitlang/parser"
+      },
+      {
+        "name": "moonbitlang/yacc",
+        "version": "0.7.25",
+        "description": "A LR(1) parser generator for MoonBit programming language.",
+        "repository": "https://github.com/moonbitlang/moonyacc"
+      },
+      {
+        "name": "moonbit-community/cmark",
+        "version": "0.4.12",
+        "description": "A CommonMark toolkit for MoonBit",
+        "repository": "https://github.com/moonbit-community/cmark.mbt"
+      },
+      {
+        "name": "Milky2018/moon_elk",
+        "version": "0.3.2",
+        "description": "A MoonBit port of Eclipse Layout Kernel (ELK).",
+        "repository": "https://github.com/moonbit-community/moon_elk.git"
+      },
+      {
+        "name": "moonbit-community/graphviz",
+        "version": "0.1.10",
+        "description": "Graphviz rewrite in MoonBit",
+        "repository": "https://github.com/moonbit-community/graphviz"
+      },
+      {
+        "name": "mizchi/npm_typed",
+        "version": "0.1.18",
+        "description": "Typed npm library bindings(40+) for js backend",
+        "repository": "https://github.com/mizchi/npm_typed.mbt"
+      }
+    ]
+  },
+  {
+    "file": "mooncakes-lib-config.json",
+    "count": 41,
+    "modules": [
+      {
+        "name": "hnlyxiaobing/MBOpenClacky",
+        "version": "0.3.1",
+        "description": "AI Agent CLI tool rewritten in MoonBit",
+        "repository": "https://github.com/hnlyxiaobing/MBOpenClacky"
+      },
+      {
+        "name": "connect0459/starlark",
+        "version": "0.5.3",
+        "description": "The Starlark configuration language, implemented in Moonbit",
+        "repository": "https://github.com/connect0459/starlark-mbt"
+      },
+      {
+        "name": "tuya-me/flowgate",
+        "version": "0.1.0",
+        "description": "FlowGate - 3D concurrency limiter with event hooks for MoonBit",
+        "repository": "https://gitlink.org.cn/tuya/flowgate"
+      },
+      {
+        "name": "dowdiness/svg-dsl",
+        "version": "0.1.0",
+        "description": "SVG DSL for programmatic SVG generation in MoonBit",
+        "repository": "https://github.com/dowdiness/svg-dsl"
+      },
+      {
+        "name": "Haoxincode/moonbash",
+        "version": "0.1.0",
+        "description": "Zero-dependency pure-memory POSIX Shell sandbox",
+        "repository": "https://github.com/Haoxincode/MoonBash"
+      },
+      {
+        "name": "eanzhao/pi-moonbit",
+        "version": "0.1.5",
+        "description": "AI coding agent toolkit in MoonBit. Ships the `pimbt` CLI with 7 LLM providers (OpenAI / Anthropic / Gemini / Mistral / Bedrock / Vertex / Azure), a unified streaming abstraction, an agent loop with tool calls and compaction, a session-tree coding agent with built-in tools, three CLI modes (interactive / print / RPC), and one-command NyxID integration for credential-brokered LLM access.",
+        "repository": "https://github.com/eanzhao/pi-moonbit"
+      },
+      {
+        "name": "Xiao-li-He/MoonMarkMind",
+        "version": "0.1.0",
+        "description": "Markdown mind-map toolkit and browser application built with MoonBit",
+        "repository": "https://github.com/Xiao-li-He/MoonMarkMind"
+      },
+      {
+        "name": "golemcloud/golem_sdk_tools",
+        "version": "0.6.0",
+        "description": "Code generation tools for the Golem SDK for MoonBit",
+        "repository": "https://github.com/golemcloud/moonbit-sdk"
+      },
+      {
+        "name": "paveg/molt",
+        "version": "0.1.8",
+        "description": "Simple HTTP load testing CLI built with MoonBit",
+        "repository": "https://github.com/paveg/molt"
+      },
+      {
+        "name": "KKKIIO/agconf",
+        "version": "0.5.0",
+        "description": "",
+        "repository": "https://github.com/kkkiio/agconf"
+      },
+      {
+        "name": "poipoiiii/agent-runtime",
+        "version": "0.1.0",
+        "description": "Lightweight AI Agent Runtime based on MoonBit",
+        "repository": "https://github.com/poipoiiii/MoonBit_ws"
+      },
+      {
+        "name": "Yu-zh/cvc5.mbt",
+        "version": "0.1.0",
+        "description": "Native MoonBit bindings for the cvc5 SMT solver",
+        "repository": "https://github.com/Yu-zh/cvc5.mbt"
+      },
+      {
+        "name": "dowdiness/graphviz",
+        "version": "0.1.0",
+        "description": "Parser, layout engine, and SVG renderer for Graphviz DOT graphs",
+        "repository": "https://github.com/dowdiness/graphviz"
+      },
+      {
+        "name": "elzup/peeler",
+        "version": "0.1.2",
+        "description": "Bracket parser for MoonBit - parse nested bracket structures into tree nodes",
+        "repository": "https://github.com/elzup/peeler.mbt"
+      },
+      {
+        "name": "lin2077-zeming/moonxz",
+        "version": "0.4.4",
+        "description": "Pure MoonBit XZ/LZMA/LZMA2 compression and decompression toolkit",
+        "repository": "https://github.com/lin2077-zeming/MoonXZ"
+      },
+      {
+        "name": "ywz1314/sessionlog",
+        "version": "0.2.4",
+        "description": "A deterministic MoonBit model and analytics library for rehabilitation session logs.",
+        "repository": "https://github.com/ywz1314/moonbit-sessionlog"
+      },
+      {
+        "name": "IvanAXu/BlackBoxOptimization",
+        "version": "0.1.0",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "ZSeanYves/cygpath",
+        "version": "0.1.0",
+        "description": "A MoonBit implementation of Cygwin-style path conversion (in development).",
+        "repository": "https://github.com/moonbit-community/cygpath"
+      },
+      {
+        "name": "hgetty/gaitlab",
+        "version": "0.1.2",
+        "description": "MoonBit Gait Lab: A gait analysis and metrics library for running, postoperative rehabilitation, and elderly screening.",
+        "repository": "https://github.com/hgetty/moonbit-gaitlab"
+      },
+      {
+        "name": "moonbit-community/proton_package",
+        "version": "0.5.0",
+        "description": "Host-native desktop application packaging library and CLI.",
+        "repository": "https://github.com/moonbit-community/proton/tree/main/package"
+      },
+      {
+        "name": "jdjjttr/montecarlo",
+        "version": "0.1.0",
+        "description": "Reproducible financial Monte Carlo simulation framework in MoonBit",
+        "repository": "https://github.com/jdjjttr/moonbit-montecarlo"
+      },
+      {
+        "name": "mhh12345678/injuryrisk",
+        "version": "0.2.0",
+        "description": "An explainable training-load and recovery risk engine with CSV ingestion, policy rules, reports, and deterministic batch screening.",
+        "repository": "https://github.com/mhh12345678/moonbit-injuryrisk"
+      },
+      {
+        "name": "zxwrrg/tradedocs",
+        "version": "0.1.0",
+        "description": "MoonBit library for international trade document normalization, validation, and cross-document consistency checks",
+        "repository": "https://github.com/zxwrrg/moonbit-tradedocs"
+      },
+      {
+        "name": "oboard/mocket",
+        "version": "0.10.2",
+        "description": "A web framework for MoonBit.",
+        "repository": "https://github.com/oboard/mocket"
+      },
+      {
+        "name": "mizchi/sqlc_gen_moonbit",
+        "version": "0.4.0",
+        "description": "sqlc plugin for MoonBit",
+        "repository": "https://github.com/mizchi/sqlc_gen_moonbit"
+      },
+      {
+        "name": "morning-start/mbtgraph",
+        "version": "0.1.3",
+        "description": "MoonBit 图算法库 - 完整的图数据结构和算法实现",
+        "repository": "https://github.com/morning-start/mbtgraph"
+      },
+      {
+        "name": "hiroyannnn/yuru-kit",
+        "version": "0.1.0",
+        "description": "Shared plumbing for yuru-poll and yuru-come: live chat readers (Twitch, YouTube, stdin), a TypeSafe Jev client, .env loading and QR codes",
+        "repository": "https://github.com/hiroyannnn/yuru-kit"
+      },
+      {
+        "name": "walkzzz/moon_hydro",
+        "version": "0.8.1",
+        "description": "沐澜水文 - 基于MoonBit的分布式新安江模型+浅水方程水动力耦合流域洪水智能预报系统",
+        "repository": "https://github.com/toadium/moon_hydro"
+      },
+      {
+        "name": "Milky2018/diago",
+        "version": "0.3.6",
+        "description": "A diagram toolkit for MoonBit with Dagre, ELK, and Railway layout engines, rendering SVG, ASCII, and Unicode outputs.",
+        "repository": "https://github.com/moonbit-community/diago"
+      },
+      {
+        "name": "walkzzz/image",
+        "version": "0.5.0",
+        "description": "MoonBit image library: pure MoonBit backend for native/wasm-gc/js/wasm multi-target support.",
+        "repository": "https://github.com/toadium/stb-image"
+      },
+      {
+        "name": "668xin/moonbit-chart",
+        "version": "0.2.0",
+        "description": "A native MoonBit SVG chart library with light/dark theme, CLI tool and Markdown to HTML converter",
+        "repository": "https://github.com/668xin/moonbit-chart"
+      },
+      {
+        "name": "vitro/engine",
+        "version": "0.8.0",
+        "description": "MoonBit implementation of the Vitro C teaching engine: 137 diagnostic codes, 135 opcodes, full AST family, byte-for-byte parity with the Rust oracle",
+        "repository": "https://github.com/rustin-beep/Vitro"
+      },
+      {
+        "name": "jtenner/starshine",
+        "version": "0.3.0",
+        "description": "WebAssembly parsing, validation, encoding, and optimization toolkit",
+        "repository": "https://github.com/jtenner/starshine-mb"
+      },
+      {
+        "name": "wflixu/Orion",
+        "version": "0.2.0",
+        "description": "Derive + Codegen ORM for MoonBit. Schema DSL, type-safe CRUD, Query Builder.",
+        "repository": "https://github.com/wflixu/Orion"
+      },
+      {
+        "name": "lfbnntr/moonbit-fish-stock",
+        "version": "0.1.2",
+        "description": "Fishery stock assessment and management strategy simulation library for MoonBit",
+        "repository": "https://github.com/lfbnntr/moonbit-fish-stock"
+      },
+      {
+        "name": "co63oc/moonbit_promptkit",
+        "version": "0.1.7",
+        "description": "The MoonBit-implemented AI model SDK supports OpenAI compatible interfaces and is compatible with multiple platforms.",
+        "repository": "https://gitlink.org.cn/co63oc/moonbit_promptkit"
+      },
+      {
+        "name": "lkdrt/palette_forge",
+        "version": "0.1.0",
+        "description": "面向设计系统的高级调色与调和工具 - Advanced Color Palette & Harmony Engine for Design Systems in MoonBit",
+        "repository": "https://github.com/lkdrt/moonbit-palette-forge"
+      },
+      {
+        "name": "moonbit-community/graphviz",
+        "version": "0.1.10",
+        "description": "Graphviz rewrite in MoonBit",
+        "repository": "https://github.com/moonbit-community/graphviz"
+      },
+      {
+        "name": "zploc/loci",
+        "version": "0.1.0",
+        "description": "Deterministic hashing, Merkle tree sealing, FST swarms, and AI inhabitation substrate for the loci runtime",
+        "repository": "https://github.com/zpc-sh/loci"
+      },
+      {
+        "name": "bobzhang/hol_light",
+        "version": "0.1.0",
+        "description": "A MoonBit port of the HOL Light theorem prover",
+        "repository": "https://github.com/bobzhang/hol-light.mbt"
+      },
+      {
+        "name": "mizchi/veri",
+        "version": "0.2.0",
+        "description": "Proof models, verified runtime APIs, and differential checks for MoonBit",
+        "repository": "https://github.com/mizchi/veri"
+      }
+    ]
+  },
+  {
+    "file": "mooncakes-libconfig.json",
+    "count": 3,
+    "modules": [
+      {
+        "name": "hnlyxiaobing/MBOpenClacky",
+        "version": "0.3.1",
+        "description": "AI Agent CLI tool rewritten in MoonBit",
+        "repository": "https://github.com/hnlyxiaobing/MBOpenClacky"
+      },
+      {
+        "name": "bobzhang/bap",
+        "version": "0.4.0",
+        "description": "",
+        "repository": "https://github.com/bobzhang/bap.mbt"
+      },
+      {
+        "name": "dtzrttp/moonbit-rtl",
+        "version": "0.2.5",
+        "description": "A Verilog-2001 RTL parser, hierarchy analyzer, and lint tool written in MoonBit.",
+        "repository": "https://github.com/dtzrttp/moonbit-rtl"
+      }
+    ]
+  },
+  {
+    "file": "mooncakes-toml.json",
+    "count": 55,
+    "modules": [
+      {
+        "name": "bobzhang/toml",
+        "version": "0.4.3",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "moonbit-community/toml",
+        "version": "0.5.0",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "bob/toml",
+        "version": "0.1.6",
+        "description": "A TOML parser implementation in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "hnlyxiaobing/toml",
+        "version": "0.4.9",
+        "description": "A TOML parser implementation in MoonBit (fork of bobzhang/toml with array-of-tables fix)",
+        "repository": "https://github.com/hnlyxiaobing/toml"
+      },
+      {
+        "name": "conglinyizhi/toml",
+        "version": "0.1.0",
+        "description": "Nightly-compatible TOML parser for MoonBit, maintained from moonbit-community/toml-parser",
+        "repository": "https://github.com/conglinyizhi/toml-mbt"
+      },
+      {
+        "name": "tonyfettes/tree_sitter_toml",
+        "version": "0.1.26",
+        "description": "TOML grammar for tree-sitter",
+        "repository": "https://github.com/tree-sitter-grammars/tree-sitter-toml"
+      },
+      {
+        "name": "tonyfettes/toml_parser",
+        "version": "0.1.0",
+        "description": "A pure MoonBit TOML parser supporting strings, numbers, booleans, arrays, tables, and comments",
+        "repository": "https://github.com/tonyfettes/toml_parser"
+      },
+      {
+        "name": "maria/toml_parser",
+        "version": "0.1.0",
+        "description": "A complete TOML (Tom's Obvious, Minimal Language) parser implementation in MoonBit with support for all basic types, arrays, tables, and nested structures.",
+        "repository": ""
+      },
+      {
+        "name": "conglinyizhi/toml-cli",
+        "version": "0.3.3",
+        "description": "Command-line tool to parse, validate, and format TOML files",
+        "repository": "https://github.com/conglinyizhi/toml-mbt"
+      },
+      {
+        "name": "bobzhang/toml_cli",
+        "version": "0.2.0",
+        "description": "Command-line tool to parse, validate, and format TOML files",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "yufenfei111/toml-mbt",
+        "version": "0.2.0",
+        "description": "Format-preserving TOML inspection and safe editing workbench for MoonBit",
+        "repository": "https://github.com/yufenfei111/toml-mbt"
+      },
+      {
+        "name": "moonbit-community/toml_cli",
+        "version": "0.2.1",
+        "description": "Command-line tool to parse, validate, and format TOML files",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "sa2360/toml",
+        "version": "0.1.1",
+        "description": "A TOML v1.0.0 parser and serializer for MoonBit with full toml-test compliance.",
+        "repository": "https://github.com/sa2360/moonbit-toml"
+      },
+      {
+        "name": "tonyfettes/amtoml",
+        "version": "0.1.0",
+        "description": "A comprehensive TOML (Tom's Obvious, Minimal Language) parser for MoonBit with full support for TOML v1.0.0 specification including tables, arrays, dotted keys, and inline tables.",
+        "repository": ""
+      },
+      {
+        "name": "moonbitstack/moontoml",
+        "version": "0.1.0",
+        "description": "moontoml — TOML 1.0.0 for MoonBit. Reads and writes the format MoonBit's own moon.mod and moon.pkg are written in, into the same `Json` tree every other reader in this family produces: tables and arrays of tables, dotted keys, the four string forms, the four date-time forms, and integers in four bases.",
+        "repository": "https://github.com/moonbitstack/moontoml"
+      },
+      {
+        "name": "Ljh684/MoonParse",
+        "version": "0.1.4",
+        "description": "MoonBit 解析器组合子库 — 与生态中其他 combinator 不同：(1)内置完整 JSON 解析器（JsonValue 枚举+双向序列化）和 TOML 解析器，开箱即用；(2)支持二进制解析（u8-u64/LEB128/计数字符串），覆盖 Protobuf 等场景；(3)11 种格式化输出（ANSI/Syslog RFC5424/GELF/JSON/XML）；(4)行列号位置追踪+ErrorContext 累积错误上下文。零依赖",
+        "repository": "https://gitlink.org.cn/a678b789/MoonParse"
+      },
+      {
+        "name": "MINGtoMING/datetime",
+        "version": "0.1.0",
+        "description": "Parsing and stringifying datetime values in TOML format",
+        "repository": "https://github.com/MINGtoMING/datetime-mbt"
+      },
+      {
+        "name": "thy1016/moonspace",
+        "version": "0.1.0",
+        "description": "Deterministic agent space kernel for MoonBit: TOML space contracts, gate-enforced code generation, Mealy-pure transitions, effect-interpreter runtime, and verification sandbox.",
+        "repository": "https://www.gitlink.org.cn/thy7/mbt.space"
+      },
+      {
+        "name": "moonbitstack/moondate",
+        "version": "0.1.0",
+        "description": "moondate — dates, times, instants, durations and cron expressions for MoonBit. The proleptic Gregorian calendar with the arithmetic that goes with it; RFC 3339, the four shapes TOML names, HTTP's IMF-fixdate and ASN.1's two time forms, read and written; and a cron package that answers when an expression fires next.",
+        "repository": "https://github.com/moonbitstack/moondate"
+      },
+      {
+        "name": "kupas/imrelay",
+        "version": "0.2.0",
+        "description": "Hermes-style agent gateway in MoonBit: bridges 14 messaging platforms (Telegram, Discord, Slack, WhatsApp, Signal, Email, Home Assistant, Mattermost, Matrix, DingTalk, Feishu/Lark, WeChat, WeCom, iMessage via BlueBubbles) into a single agent callback, with retries, chunking, typing indicators, per-chat sessions and slash commands. TOML configuration with Hermes-compatible environment-variable fallback.",
+        "repository": "https://github.com/tomasky/imrelay"
+      },
+      {
+        "name": "grandEarshot/moon_switch",
+        "version": "0.1.2",
+        "description": "MoonBit native CLI for switching Codex and Claude providers.",
+        "repository": "https://github.com/grandEarshot/moon-switch"
+      },
+      {
+        "name": "bobzhang/portable_cli",
+        "version": "0.1.12",
+        "description": "Portable MoonBit CLI examples that compile to WASIp1 and run across WASM runtimes.",
+        "repository": "https://github.com/bobzhang/portable_cli"
+      },
+      {
+        "name": "Lyhdsba/moonforge",
+        "version": "0.1.3",
+        "description": "A MoonBit-native incremental task runner for small builds, codegen workflows, and local CI orchestration.",
+        "repository": "https://github.com/Lyhdsba/MoonForge"
+      },
+      {
+        "name": "kupas/pm3",
+        "version": "0.1.7",
+        "description": "A language-agnostic process manager (PM2-like) with built-in log rotation",
+        "repository": "https://github.com/tomasky/pm3"
+      },
+      {
+        "name": "JM-ai-n/moonfolio",
+        "version": "0.1.0",
+        "description": "MoonBit-native Markdown metadata contract and content folio toolkit.",
+        "repository": "https://github.com/JM-ai-n/moonfolio.git"
+      },
+      {
+        "name": "spectacleCase/moonbook",
+        "version": "0.3.1",
+        "description": "A Markdown documentation and book generator written in MoonBit",
+        "repository": "https://github.com/spectacleCase/moonbook.git"
+      },
+      {
+        "name": "bobzhang/lexer",
+        "version": "0.3.0",
+        "description": "A generic lexer library for handwritten lexers in MoonBit",
+        "repository": "https://github.com/moonbit-community/toml-parser"
+      },
+      {
+        "name": "kokic/uml",
+        "version": "0.4.2",
+        "description": "",
+        "repository": "https://github.com/kokic/uml"
+      },
+      {
+        "name": "moonbit-community/uml",
+        "version": "0.4.3",
+        "description": "",
+        "repository": "https://github.com/moonbit-community/uml"
+      },
+      {
+        "name": "mizchi/sol_adapter_cloudflare",
+        "version": "0.23.4",
+        "description": "Cloudflare adapter utilities for Sol",
+        "repository": "https://github.com/mizchi/luna.mbt"
+      },
+      {
+        "name": "Yu-zh/data",
+        "version": "0.2.1",
+        "description": "A serde-shaped serialization framework: one data model, many formats",
+        "repository": "https://github.com/Yu-zh/data"
+      },
+      {
+        "name": "chensuiyi/bm2",
+        "version": "0.6.0",
+        "description": "A lightweight Linux process manager for Bun and Node.js applications, written in MoonBit",
+        "repository": "https://github.com/chenbimo/bm2"
+      },
+      {
+        "name": "123123213weqw/moon_pyversion",
+        "version": "0.4.1",
+        "description": "Pure MoonBit toolkit for Python versions, metadata, indexes, locks and auditable candidate selection.",
+        "repository": "https://github.com/123123213weqw/moon-pyversion"
+      },
+      {
+        "name": "moonbit-community/uml_cli",
+        "version": "0.1.0",
+        "description": "Command-line tool to render PlantUML diagrams as SVG",
+        "repository": "https://github.com/moonbit-community/uml"
+      },
+      {
+        "name": "klaseca/genmit",
+        "version": "0.2.0",
+        "description": "Generate AI-assisted commit messages from staged Git changes",
+        "repository": "https://github.com/klaseca/genmit"
+      },
+      {
+        "name": "gmlewis/spin-moonbit-sdk",
+        "version": "0.55.4",
+        "description": "Experimental Spin SDK for the MoonBit programming language.",
+        "repository": "https://github.com/gmlewis/spin-moonbit-sdk"
+      },
+      {
+        "name": "totto2727/admiral",
+        "version": "0.6.5",
+        "description": "Async-first declarative CLI builder for MoonBit, inspired by gunshi",
+        "repository": "https://github.com/totto2727-org/admiral"
+      },
+      {
+        "name": "totto2727/x",
+        "version": "0.7.0",
+        "description": "Focused utility collections, traits, and value types for MoonBit",
+        "repository": "https://github.com/totto2727-org/x"
+      },
+      {
+        "name": "Arcelyth/aitne",
+        "version": "0.4.19",
+        "description": "A lightweight and high-performance reactive web framework.",
+        "repository": "https://github.com/Arcelyth/aitne"
+      },
+      {
+        "name": "cogna-dev/sbom",
+        "version": "0.1.1",
+        "description": "Software Composition Analysis - SBOM generation and dependency management",
+        "repository": "https://github.com/cogna-dev/sbom"
+      },
+      {
+        "name": "mizchi/flaker",
+        "version": "0.3.1",
+        "description": "flaker core computation engine",
+        "repository": "https://github.com/mizchi/flaker"
+      },
+      {
+        "name": "himeno/mopress",
+        "version": "0.4.0",
+        "description": "A modern documentation and static site generator for the MoonBit ecosystem, inspired by mdBook and Hakyll",
+        "repository": "https://github.com/biyuehu/mopress"
+      },
+      {
+        "name": "moonrockz/gleam-parser",
+        "version": "0.5.1",
+        "description": "Parser and parsing utilities for the Gleam programming language in MoonBit",
+        "repository": "https://github.com/moonrockz/gleam-parser"
+      },
+      {
+        "name": "hnlyxiaobing/MBOpenClacky",
+        "version": "0.3.1",
+        "description": "AI Agent CLI tool rewritten in MoonBit",
+        "repository": "https://github.com/hnlyxiaobing/MBOpenClacky"
+      },
+      {
+        "name": "ChaonanShen/moonbit-mqtt-broker",
+        "version": "0.4.0",
+        "description": "A lightweight MQTT 3.1.1 and opt-in MQTT 5 broker implemented in MoonBit.",
+        "repository": "https://github.com/ChaonanShen/moonbit-mqtt-broker"
+      },
+      {
+        "name": "moonrockz/notebooks",
+        "version": "0.1.0",
+        "description": "Immutable Jupyter and DIB notebooks with shared navigation and traversal",
+        "repository": "https://github.com/moonrockz/moon-lander"
+      },
+      {
+        "name": "mizchi/syntree",
+        "version": "0.2.4",
+        "description": "Incremental syntax tree and highlighting toolkit for MoonBit",
+        "repository": "https://github.com/mizchi/syntree.mbt"
+      },
+      {
+        "name": "ZSeanYves/markitdown",
+        "version": "0.5.3",
+        "description": "A MoonBit-native document-to-Markdown converter with multi-format parsing, metadata, assets, batch conversion, and validation tooling",
+        "repository": "https://github.com/ZSeanYves/markitdown.git"
+      },
+      {
+        "name": "Suquster/moonbit-pathfinding",
+        "version": "0.2.0",
+        "description": "A MoonBit pathfinding and graph algorithms library with executable documentation, runtime-checked proof predicates, and multi-backend verification gates. Built for OSC 2026.",
+        "repository": "https://github.com/Suquster/moonbit-pathfinding"
+      },
+      {
+        "name": "Tino-hue/depsight",
+        "version": "0.6.0",
+        "description": "Dependency health diagnostic tool for the MoonBit ecosystem",
+        "repository": "https://github.com/Tino-hue/moonmark"
+      },
+      {
+        "name": "moonbitlang/typst",
+        "version": "0.1.7",
+        "description": "A port of the Typst typesetting engine to MoonBit.",
+        "repository": "https://github.com/moonbitlang/typst.mbt"
+      },
+      {
+        "name": "ZSeanYves/doc_parser",
+        "version": "0.1.1",
+        "description": "MoonBit-native document structure foundation for source-native parsing, inspect, validation, and custom tooling",
+        "repository": "https://github.com/ZSeanYves/markitdown.git"
+      },
+      {
+        "name": "gmlewis/ray-tracer",
+        "version": "0.10.44",
+        "description": "",
+        "repository": "https://github.com/gmlewis/moonbit-ray-tracer"
+      },
+      {
+        "name": "vectie/moonbook",
+        "version": "0.1.1",
+        "description": "",
+        "repository": ""
+      },
+      {
+        "name": "lfbnntr/moonbit-fish-stock",
+        "version": "0.1.2",
+        "description": "Fishery stock assessment and management strategy simulation library for MoonBit",
+        "repository": "https://github.com/lfbnntr/moonbit-fish-stock"
+      }
+    ]
+  }
+]

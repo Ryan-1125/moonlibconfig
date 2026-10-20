@@ -1,0 +1,7 @@
+/_build/
+/.local/
+/.mooncakes/
+/target/
+/tools/.consumer/
+credentials.json
+*.log

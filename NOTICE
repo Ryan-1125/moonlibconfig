@@ -1,0 +1,8 @@
+moonlibconfig
+Original MoonBit implementation, 2026.
+
+Format reference: hyperrealm/libconfig v1.8.2
+https://github.com/hyperrealm/libconfig/tree/v1.8.2
+Upstream libconfig is Copyright (C) Mark A. Lindner, LGPL-2.1-or-later.
+This project does not incorporate upstream implementation or test source.
+Upstream license evidence in docs/evidence retains its original terms.

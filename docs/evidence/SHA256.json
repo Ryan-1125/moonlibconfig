@@ -1,0 +1,46 @@
+[
+  {
+    "file": "mooncakes-config.json",
+    "Hash": "8C05C6CCAC516D2F2688B25AABE4A1F99889F4ED5441FF9A8D2D2F4A56ED47B0"
+  },
+  {
+    "file": "mooncakes-configuration.json",
+    "Hash": "C5FF44B7238CFEC4166475C0663048BF9A4CD5F69FEE644681CD8D376D5089AE"
+  },
+  {
+    "file": "mooncakes-hyperrealm.json",
+    "Hash": "F9E22C7864D1B01FC24CC2BE08FB0FBE7F22B0BDABC787AACC25F26BADB23076"
+  },
+  {
+    "file": "mooncakes-ini.json",
+    "Hash": "D80F489669E8E3EFEBAE2EEAB8F7E03E014FF9556F5F37F534AD636F1030B233"
+  },
+  {
+    "file": "mooncakes-lib-config.json",
+    "Hash": "E22219B86DD1AA9195ED491295AF131E6FA2D84474BDA8ED8279F76765E95145"
+  },
+  {
+    "file": "mooncakes-libconfig.json",
+    "Hash": "D520770580B304C6602301B4920DAF74D49B2412FEFD133F4612A690D93D11B8"
+  },
+  {
+    "file": "mooncakes-toml.json",
+    "Hash": "E3BB65653203B0168ABCFBE410D9CA511E0110A984CCABE9B8907EBE4302638D"
+  },
+  {
+    "file": "search-summary.json",
+    "Hash": "394749A2DDFA8B9BC70A6850BB4F5CBCBE78402DD73C33BD25A3459F722D3616"
+  },
+  {
+    "file": "upstream-tags.json",
+    "Hash": "6FD9B88248376B19A5DA3F4752C56A1D350BE9A12E888035425E8AF30DAD2CFE"
+  },
+  {
+    "file": "upstream-v1.8.2-LICENSE.txt",
+    "Hash": "FEDA14EFDA8D4FCCE5494F69B13F9431E52BC497C56CD249707C40764E7B0977"
+  },
+  {
+    "file": "upstream-v1.8.2-source-notice.txt",
+    "Hash": "AF573B46FBFF9AA331E2B98ED9119827076A137E6F6A3E36D3DA97AB59070D99"
+  }
+]

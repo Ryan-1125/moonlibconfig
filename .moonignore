@@ -1,0 +1,10 @@
+/.git/
+/.local/
+/_build/
+/target/
+/docs/evidence/
+/tools/
+/MoonBit-跨项目交接.md
+/AGENTS.md
+credentials.json
+*.log
