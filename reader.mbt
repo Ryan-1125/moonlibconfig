@@ -1,5 +1,5 @@
 ///|
-struct Reader {
+priv struct Reader {
   data : Bytes
   limits : Limits
   mut pos : Int32
