@@ -1,0 +1,12 @@
+{
+  "module": "Ryan-1125/moonlibconfig",
+  "version": "0.1.0",
+  "dependency_source": "Mooncakes registry; no workspace or local path override",
+  "examples_per_target": 3,
+  "targets": [
+    "wasm-gc",
+    "js",
+    "native"
+  ],
+  "result": "passed"
+}

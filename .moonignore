@@ -9,5 +9,7 @@
 /.github/
 /docs/EVALUATION.md
 /docs/DEVELOPMENT.md
+/docs/shenbao.md
+/docs/moonlibconfig-申报书-AI辅助稿.md
 credentials.json
 *.log

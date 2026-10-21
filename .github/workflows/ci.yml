@@ -53,3 +53,7 @@ jobs:
           ./tools/Get-Upstream.ps1
           ./tools/Build-Oracle.ps1
           node tools/differential.mjs
+      - name: Published README examples
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./tools/Test-RegistryConsumer.ps1
