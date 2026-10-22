@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "status": "success",
+  "result": {
+    "module": "Ryan-1125/moonlibconfig",
+    "version": "0.2.0",
+    "yanked": false,
+    "yanked_reason": null,
+    "latest_version": "0.2.0",
+    "metadata": {
+      "name": "Ryan-1125/moonlibconfig",
+      "version": "0.2.0",
+      "repository": "https://github.com/Ryan-1125/moonlibconfig",
+      "readme": "README.md",
+      "license": "Apache-2.0",
+      "keywords": [
+        "libconfig",
+        "configuration",
+        "parser"
+      ],
+      "description": "A pure MoonBit reader and writer for a documented subset of libconfig 1.8.2",
+      "warn-list": "-implicit_impl_as_method",
+      "checksum": "c5bf2869c3cd9c9162a527bb7a9073c177cf3b6db79c15968691b751fcf82a31",
+      "created_at": "2026-10-22T16:57:48.603743+08:00"
+    },
+    "versions": [
+      {
+        "version": "0.2.0",
+        "yanked": false,
+        "yanked_reason": null
+      },
+      {
+        "version": "0.1.0",
+        "yanked": false,
+        "yanked_reason": null
+      }
+    ],
+    "downloads": 7
+  },
+  "messages": []
+}
