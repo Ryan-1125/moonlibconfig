@@ -33,3 +33,5 @@ tools/expected-differences-windows.json 固定以上八项的完整输入、双�
 - Value容器为可访问的MoonBit Array；replaced复制修改路径上的容器，不深复制未修改分支。writer检查手动构造的非法树，并用限制截断循环引用。
 - get_path、parse_path和replaced均执行256段路径上限；parse_path还受默认输入字节上限约束。
 - with_member/without_member用于合法group的新增、替换、删除，保留顺序且不修改源容器。新值的完整结构/资源校验仍由writer负责；这些接口不会自动修复调用方手工构造的非法树。
+- 0.2.0提供validate独立检查手工配置树，错误路径用于显示；无效字段名的路径不保证能作为lookup输入。列表/数组编辑复制容器，但不对任意嵌套的新值做完整资源校验；使用validate检查最终树。
+- Document记录原输入字段/值的起始字节位置，语法报错带上下文路径。严格类型查询定位原值，缺失节点定位最近已知父节点。Document位置是解析时快照，不随root返回的共享容器被修改而更新。

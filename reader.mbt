@@ -6,6 +6,9 @@ priv struct Reader {
   mut line : Int32
   mut column : Int32
   mut nodes : Int32
+  mut trace : Bool
+  locations : Map[String, SourceLocation]
+  mut current_path : String
 }
 
 ///|
@@ -22,7 +25,17 @@ fn Reader::new(data : Bytes, limits : Limits) -> Reader raise ConfigError {
   if data.length() > limits.max_input {
     raise failure("input_limit", "input exceeds byte limit")
   }
-  { data, limits, pos: 0, line: 1, column: 1, nodes: 0, }
+  {
+    data,
+    limits,
+    pos: 0,
+    line: 1,
+    column: 1,
+    nodes: 0,
+    trace: false,
+    locations: Map([]),
+    current_path: "",
+  }
 }
 
 ///|
@@ -51,7 +64,11 @@ fn Reader::advance(self : Reader) -> Unit {
 fn Reader::error(self : Reader, code : String, message : String) -> ConfigError {
   ConfigError({
     code,
-    message,
+    message: if self.trace && self.current_path != "" {
+      "at " + self.current_path + ": " + message
+    } else {
+      message
+    },
     offset: self.pos,
     line: self.line,
     column: self.column,

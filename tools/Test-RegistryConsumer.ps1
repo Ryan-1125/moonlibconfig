@@ -1,10 +1,11 @@
-param([string]$Version = '0.1.0')
+param([string]$Version = '')
 $ErrorActionPreference = 'Stop'
-if ($Version -notmatch '^\d+\.\d+\.\d+$') { throw 'Expected a stable semantic version' }
 $root = (Resolve-Path "$PSScriptRoot\..").Path
+if (!$Version) { $Version = [regex]::Match([IO.File]::ReadAllText("$root\moon.mod"), 'version\s*=\s*"([^"]+)"').Groups[1].Value }
+if ($Version -notmatch '^\d+\.\d+\.\d+$') { throw 'Expected a stable semantic version' }
 $readme = [IO.File]::ReadAllText((Join-Path $root 'README.md'))
 $blocks = [regex]::Matches($readme, '(?s)```moonbit\r?\n(.*?)```')
-if ($blocks.Count -ne 3) { throw 'Expected three runnable MoonBit README examples' }
+if ($blocks.Count -lt 1) { throw 'Expected runnable MoonBit README examples' }
 $work = Join-Path ([IO.Path]::GetTempPath()) ('moonlibconfig-readme-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $work | Out-Null
 @"

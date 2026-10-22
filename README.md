@@ -1,14 +1,14 @@
 # moonlibconfig
 
 [![CI](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml/badge.svg)](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)
-[![Mooncakes](https://img.shields.io/badge/Mooncakes-0.1.0-orange)](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.1.0)
+[![Mooncakes](https://img.shields.io/badge/Mooncakes-0.2.0-orange)](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.2.0)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 **MoonBit 原生 libconfig 格式配置库**，提供解析、类型化查询、配置编辑和规范化写出能力。
 
 适合读取已有 C/C++ 应用的 libconfig 配置、生成部署参数，以及在 Wasm、JavaScript 和 native 后端复用配置处理逻辑。核心由纯 MoonBit 实现，不依赖 C/C++ FFI，文件读取和保存由调用方负责。
 
-[Mooncakes 包](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.1.0) · [GitHub 仓库](https://github.com/Ryan-1125/moonlibconfig) · [使用场景](docs/USE_CASES.md) · [兼容性说明](docs/COMPATIBILITY.md)
+[Mooncakes 包](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.2.0) · [GitHub 仓库](https://github.com/Ryan-1125/moonlibconfig) · [使用场景](docs/USE_CASES.md) · [兼容性说明](docs/COMPATIBILITY.md)
 
 ## 特性
 
@@ -24,7 +24,7 @@
 在使用这个库的 MoonBit 工程中执行：
 
 ```sh
-moon add Ryan-1125/moonlibconfig@0.1.0
+moon add Ryan-1125/moonlibconfig@0.2.0
 ```
 
 下方示例保存为 `config_test.mbt`，在对应包的 `moon.pkg` 中加入测试导入：
@@ -84,6 +84,9 @@ moon test
 | 路径解析与查询 | `parse_path`、`lookup`、`get_path` |
 | 成员与索引查询 | `get_member`、`at` |
 | 配置编辑 | `replaced`、`with_member`、`without_member` |
+| 列表/数组编辑 | `inserted`、`appended`、`removed_at` |
+| 独立校验 | `validate`，返回带路径的 `ValidationIssue` 数组 |
+| 源位置与类型诊断 | `parse_document`、`parse_document_bytes`、`Document.location`、`Document.get_*` |
 | 类型提取 | `as_int`、`as_int64`、`as_double`、`as_bool`、`as_string`、`as_bytes` |
 | 类型名称 | `kind` |
 
@@ -155,12 +158,12 @@ moon run examples/service --target wasm-gc
 
 | 验证项 | 结果 |
 | --- | --- |
-| 核心与边界测试 | 31项，覆盖三后端 |
+| 核心与边界测试 | 40项，覆盖三后端 |
 | GitHub Actions | Ubuntu、Windows：检查、三后端构建/测试、示例、API及打包 |
 | 真实上游差分 | 140个输入，8项精确记录的差异 |
 | 共同范围双向读写 | 110个输入通过 |
 | 实际 ZIP 独立消费 | Wasm GC、JS、Windows native 通过 |
-| Mooncakes 0.1.0 独立消费 | 注册表下载安装及三后端 API 调用通过 |
+| Mooncakes 0.2.0 独立消费 | 注册表下载安装及三后端 API 调用通过 |
 
 真实上游参照使用固定提交构建的外部程序；测试比较接受/拒绝、值结构、类型与数据。详见 [验证记录](docs/VERIFICATION.md)及 [CI](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
 
@@ -174,6 +177,36 @@ moon test --target js --deny-warn
 moon test --target native --deny-warn
 moon info
 moon package --list
+```
+
+## 0.2.0：容器编辑、独立校验与源位置
+
+`inserted(index, value)` 在索引前插入，索引等于长度时追加；`appended(value)` 追加；`removed_at(index)` 删除已有元素。所有操作复制容器并保留原顺序。array 区分32/64位整数，只接受同类型标量；list 可包含任意配置值。索引越界或类型不符均返回明确错误。
+
+`validate(root, limits~)` 不分配序列化文本，检查根类型、名称、重复键、数组元素类型、非有限浮点、NUL及深度/节点/字符串预算。返回多个带路径的问题；遇到全局节点预算时停止遍历，超深分支单独截断。空路径代表根；非法字段名的路径仅用于显示，不保证可用于lookup。此接口的max_input不作为输出预算，文本输入/输出预算由parse/stringify执行。手工修改后的配置应先校验再写出。
+
+`parse_document`/`parse_document_bytes` 保留字段名和值的起始位置。`location` 接受同样的点号/下标路径；`get_int`、`get_int64`、`get_double`、`get_bool`、`get_bytes`、`get_string` 提供严格查询。类型错误包含路径、期望类型、实际类型和原值位置；字段缺失时使用最近已知父节点的位置。Document位置是原始输入的快照，后续修改共享值树不会重新计算位置，也不用于保真编辑。
+
+```moonbit
+///|
+test "edit validate and locate configuration" {
+  let doc = @config.parse_document("service={port=9000;} peers=(\"one\",\"two\")")
+  assert_eq(doc.get_int("service.port"), 9000)
+  assert_true(doc.location("service.port") != None)
+  let peers = doc.lookup("peers")
+    .inserted(1, @config.Text(b"backup"))
+    .appended(@config.Text(b"last"))
+    .removed_at(0)
+  let root = doc.root().replaced(@config.parse_path("peers"), peers)
+  assert_eq(@config.validate(root), [])
+  assert_eq(@config.parse(@config.stringify(root)), root)
+  let invalid = @config.Group([
+    ("ports", @config.ScalarArray([@config.Integer(1), @config.Integer64(2L)])),
+  ])
+  let issues = @config.validate(invalid)
+  assert_eq(issues[0].path, "ports[1]")
+  assert_eq(issues[0].code, "array_type")
+}
 ```
 
 ## 许可证与参考

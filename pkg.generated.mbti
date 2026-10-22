@@ -10,9 +10,15 @@ pub fn parse(String, limits? : Limits) -> Value raise ConfigError
 
 pub fn parse_bytes(Bytes, limits? : Limits) -> Value raise ConfigError
 
+pub fn parse_document(String, limits? : Limits) -> Document raise ConfigError
+
+pub fn parse_document_bytes(Bytes, limits? : Limits) -> Document raise ConfigError
+
 pub fn parse_path(String) -> Array[Segment] raise ConfigError
 
 pub fn stringify(Value, limits? : Limits) -> String raise ConfigError
+
+pub fn validate(Value, limits? : Limits) -> Array[ValidationIssue] raise ConfigError
 
 // Errors
 pub suberror ConfigError {
@@ -28,6 +34,20 @@ pub(all) struct Diagnostic {
   column : Int32
 } derive(Eq, @debug.Debug)
 
+pub struct Document {
+  tree : Value
+  locations : Map[String, SourceLocation]
+}
+pub fn Document::get_bool(Self, String) -> Bool raise ConfigError
+pub fn Document::get_bytes(Self, String) -> Bytes raise ConfigError
+pub fn Document::get_double(Self, String) -> Double raise ConfigError
+pub fn Document::get_int(Self, String) -> Int32 raise ConfigError
+pub fn Document::get_int64(Self, String) -> Int64 raise ConfigError
+pub fn Document::get_string(Self, String) -> String raise ConfigError
+pub fn Document::location(Self, String) -> SourceLocation? raise ConfigError
+pub fn Document::lookup(Self, String) -> Value raise ConfigError
+pub fn Document::root(Self) -> Value
+
 pub(all) struct Limits {
   max_input : Int32
   max_depth : Int32
@@ -41,6 +61,23 @@ pub(all) enum Segment {
   Index(Int32)
 } derive(Eq, @debug.Debug)
 
+pub(all) struct SourceLocation {
+  setting : SourcePosition
+  value : SourcePosition
+} derive(Eq, @debug.Debug)
+
+pub(all) struct SourcePosition {
+  offset : Int32
+  line : Int32
+  column : Int32
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ValidationIssue {
+  path : String
+  code : String
+  message : String
+} derive(Eq, @debug.Debug)
+
 pub(all) enum Value {
   Integer(Int32)
   Integer64(Int64)
@@ -51,6 +88,7 @@ pub(all) enum Value {
   ScalarArray(Array[Value])
   List(Array[Value])
 } derive(Eq, @debug.Debug)
+pub fn Value::appended(Self, Self) -> Self raise ConfigError
 pub fn Value::as_bool(Self) -> Bool raise ConfigError
 pub fn Value::as_bytes(Self) -> Bytes raise ConfigError
 pub fn Value::as_double(Self) -> Double raise ConfigError
@@ -60,8 +98,10 @@ pub fn Value::as_string(Self) -> String raise ConfigError
 pub fn Value::at(Self, Int32) -> Self raise ConfigError
 pub fn Value::get_member(Self, String) -> Self raise ConfigError
 pub fn Value::get_path(Self, ArrayView[Segment]) -> Self raise ConfigError
+pub fn Value::inserted(Self, Int32, Self) -> Self raise ConfigError
 pub fn Value::kind(Self) -> String
 pub fn Value::lookup(Self, String) -> Self raise ConfigError
+pub fn Value::removed_at(Self, Int32) -> Self raise ConfigError
 pub fn Value::replaced(Self, ArrayView[Segment], Self) -> Self raise ConfigError
 pub fn Value::with_member(Self, String, Self) -> Self raise ConfigError
 pub fn Value::without_member(Self, String) -> Self raise ConfigError

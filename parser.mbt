@@ -26,6 +26,7 @@ fn Reader::settings(
   self : Reader,
   depth : Int32,
   closing : Int32,
+  path~ : String = "",
 ) -> Array[(String, Value)] raise ConfigError {
   let items : Array[(String, Value)] = []
   let names : Map[String, Bool] = Map([])
@@ -39,7 +40,10 @@ fn Reader::settings(
     if self.peek() == -1 {
       raise self.error("unexpected_eof", "unclosed group")
     }
+    let setting = self.position()
     let name = self.name()
+    let child = if self.trace { member_path(path, name) } else { "" }
+    self.current_path = child
     if names.contains(name) {
       raise self.error("duplicate_name", "duplicate setting: " + name)
     }
@@ -49,7 +53,14 @@ fn Reader::settings(
       raise self.error("unexpected_token", "expected = or :")
     }
     self.advance()
-    let value = self.value(depth)
+    let value = self.value(depth, path=child)
+    if self.trace {
+      match self.locations.get(child) {
+        Some(location) =>
+          self.locations[child] = { setting, value: location.value, }
+        None => ()
+      }
+    }
     items.push((name, value))
     self.skip()
     if self.peek() == 59 || self.peek() == 44 {
@@ -64,7 +75,28 @@ fn Reader::settings(
 }
 
 ///|
-fn Reader::value(self : Reader, depth : Int32) -> Value raise ConfigError {
+fn Reader::value(
+  self : Reader,
+  depth : Int32,
+  path~ : String = "",
+) -> Value raise ConfigError {
+  self.skip()
+  let position = self.position()
+  self.current_path = path
+  let value = self.read_value(depth, path)
+  self.current_path = path
+  if self.trace {
+    self.locations[path] = { setting: position, value: position, }
+  }
+  value
+}
+
+///|
+fn Reader::read_value(
+  self : Reader,
+  depth : Int32,
+  path : String,
+) -> Value raise ConfigError {
   self.skip()
   if self.nodes >= self.limits.max_nodes {
     raise self.error("node_limit", "value count exceeds limit")
@@ -85,7 +117,7 @@ fn Reader::value(self : Reader, depth : Int32) -> Value raise ConfigError {
     }
     self.advance()
     if c == 123 {
-      return Group(self.settings(depth + 1, 125))
+      return Group(self.settings(depth + 1, 125, path~))
     }
     let close = if c == 91 { 93 } else { 41 }
     let values : Array[Value] = []
@@ -95,7 +127,12 @@ fn Reader::value(self : Reader, depth : Int32) -> Value raise ConfigError {
         (self.peek() == 123 || self.peek() == 91 || self.peek() == 40) {
         raise self.error("array_type", "array elements must be scalars")
       }
-      let v = self.value(depth + 1)
+      let child = if self.trace {
+        path + "[" + values.length().to_string() + "]"
+      } else {
+        ""
+      }
+      let v = self.value(depth + 1, path=child)
       if c == 91 && values.length() > 0 && values[0].kind() != v.kind() {
         raise self.error(
           "array_type", "array elements must have the same scalar type",

@@ -1,8 +1,10 @@
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path "$PSScriptRoot\..").Path
+$version = [regex]::Match([IO.File]::ReadAllText("$root\moon.mod"), 'version\s*=\s*"([^"]+)"').Groups[1].Value
+if (!$version) { throw 'Module version not found' }
 & moon -C $root package --list
 if ($LASTEXITCODE -ne 0) { throw 'Packaging failed' }
-$archive = Join-Path $root '_build\publish\Ryan-1125-moonlibconfig-0.1.0.zip'
+$archive = Join-Path $root "_build\publish\Ryan-1125-moonlibconfig-$version.zip"
 $work = Join-Path ([IO.Path]::GetTempPath()) ('moonlibconfig-consumer-' + [guid]::NewGuid().ToString('N'))
 $library = Join-Path $work 'library'
 $app = Join-Path $work 'app'
@@ -13,8 +15,8 @@ members = ["library", "app"]
 '@ | Set-Content -LiteralPath "$work\moon.work" -Encoding utf8
 @'
 name = "local/libconfig-consumer"
-import { "Ryan-1125/moonlibconfig@0.1.0" }
-'@ | Set-Content -LiteralPath "$app\moon.mod" -Encoding utf8
+import { "Ryan-1125/moonlibconfig@VERSION_PLACEHOLDER" }
+'@ | ForEach-Object { $_.Replace('VERSION_PLACEHOLDER', $version) } | Set-Content -LiteralPath "$app\moon.mod" -Encoding utf8
 @'
 import { "Ryan-1125/moonlibconfig" @config } for "test"
 '@ | Set-Content -LiteralPath "$app\moon.pkg" -Encoding utf8
@@ -35,6 +37,9 @@ test "packaged public API consumer" {
 }
 '@ | Set-Content -LiteralPath "$app\consumer_test.mbt" -Encoding utf8
 foreach ($target in @('wasm-gc','js','native')) {
+  $readme = [IO.File]::ReadAllText("$root\README.md")
+  $blocks = [regex]::Matches($readme, '(?s)```moonbit\r?\n(.*?)```')
+  ($blocks | ForEach-Object { $_.Groups[1].Value }) -join "`n" | Set-Content -LiteralPath "$app\readme_test.mbt" -Encoding utf8
   & moon -C $app test --target $target --deny-warn
   if ($LASTEXITCODE -ne 0) { throw "Packaged consumer failed on $target" }
 }
