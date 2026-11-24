@@ -132,6 +132,12 @@ test "apply explicit resource limits" {
 }
 ```
 
+## 兼容目标与验收
+
+本项目交付libconfig 1.8.2共同接受范围内的值树与类型互操作。多文件配置采用宿主展开后传入内存文本的接入方式；原始@include输入明确返回unsupported_include。八项差分中，六项属于拒绝输入，两项涉及非十进制整数的跨实现值或接受范围，不能计入共同往返成功集合。
+
+[完整验收契约](docs/ACCEPTANCE.md)逐项列明多文件处理方式、八项差分影响、输入向量及复现命令。110个共同范围输入的双向读写与本库自身往返是分别验证的结果。
+
 ## 兼容范围
 
 格式参照固定为 **hyperrealm/libconfig v1.8.2**。项目提供明确范围内的独立实现：
@@ -214,3 +220,11 @@ test "edit validate and locate configuration" {
 本项目原创代码使用 [Apache-2.0](LICENSE)。
 
 格式参考 [hyperrealm/libconfig v1.8.2](https://github.com/hyperrealm/libconfig/tree/v1.8.2)，上游源码许可证为 **LGPL-2.1-or-later**。MoonBit 实现依据公开格式文档独立编写；没有复制或翻译上游解析器及测试源码。上游程序仅作为外部行为参照使用，来源和参考范围见 [NOTICE](NOTICE)。
+
+## 原应用语义保真编辑与兼容目标
+
+仓库新增 replace_source_value(input, path, replacement) 原文定点编辑接口：保留目标值之外的原始字节，避免未修改字段因数值重解释发生改变。该新增接口以仓库源码为使用入口，已发布0.2.0的接口以其版本文档为准。
+
+真实案例由libconfig 1.8.2先读取配置，MoonBit仅将port从9000改为8080，再由同一个libconfig应用读取并比较全部字段。0xFFFFFFFFL在原应用中前后均为Int64(-1)，其他大整数、字节字符串和嵌套值保持不变。复现：node tools/semantic-edit.mjs；证据：docs/evidence/semantic-edit-windows.json。
+
+完整兼容目标是覆盖libconfig 1.8.2格式、文本包含语义及目标应用的数据解释，并以原应用回读验证编辑语义；共同接受的输入是阶段性测试集合，不是兼容终点。现有规范化值树接口与原文定点编辑采用不同契约：返回既有配置给原应用时优先使用后者。不能从有限测试推断对任意输入完全兼容。

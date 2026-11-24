@@ -16,6 +16,8 @@ pub fn parse_document_bytes(Bytes, limits? : Limits) -> Document raise ConfigErr
 
 pub fn parse_path(String) -> Array[Segment] raise ConfigError
 
+pub fn replace_source_value(Bytes, String, Value, limits? : Limits) -> Bytes raise ConfigError
+
 pub fn stringify(Value, limits? : Limits) -> String raise ConfigError
 
 pub fn validate(Value, limits? : Limits) -> Array[ValidationIssue] raise ConfigError
@@ -101,6 +103,8 @@ pub fn Value::get_path(Self, ArrayView[Segment]) -> Self raise ConfigError
 pub fn Value::inserted(Self, Int32, Self) -> Self raise ConfigError
 pub fn Value::kind(Self) -> String
 pub fn Value::lookup(Self, String) -> Self raise ConfigError
+pub fn Value::lookup_optional(Self, String) -> Self? raise ConfigError
+pub fn Value::lookup_or(Self, String, Self) -> Self raise ConfigError
 pub fn Value::removed_at(Self, Int32) -> Self raise ConfigError
 pub fn Value::replaced(Self, ArrayView[Segment], Self) -> Self raise ConfigError
 pub fn Value::with_member(Self, String, Self) -> Self raise ConfigError

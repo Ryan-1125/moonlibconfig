@@ -65,6 +65,7 @@ fn Reader::text(self : Reader) -> Bytes raise ConfigError {
       output.push(c.to_byte())
     }
     self.advance()
+    self.last_text_end = self.pos
     self.skip()
   }
   Bytes::from_array(output)

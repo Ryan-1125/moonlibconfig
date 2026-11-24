@@ -1,0 +1,103 @@
+{
+  "reference": "libconfig 1.8.2 Windows/MSVC",
+  "operation": "replace port 9000 with 8080; return original text to same application",
+  "input": "mask=0xFFFFFFFFL; bits=0x100000000L; port=9000; text=\"\\xFF\"; nested={ok=true;};",
+  "output": "mask=0xFFFFFFFFL; bits=0x100000000L; port=8080; text=\"\\xFF\"; nested={ok=true;};",
+  "before": [
+    "group",
+    [
+      [
+        "6d61736b",
+        [
+          "integer64",
+          "-1"
+        ]
+      ],
+      [
+        "62697473",
+        [
+          "integer64",
+          "4294967296"
+        ]
+      ],
+      [
+        "706f7274",
+        [
+          "integer",
+          "9000"
+        ]
+      ],
+      [
+        "74657874",
+        [
+          "string",
+          "ff"
+        ]
+      ],
+      [
+        "6e6573746564",
+        [
+          "group",
+          [
+            [
+              "6f6b",
+              [
+                "boolean",
+                true
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "after": [
+    "group",
+    [
+      [
+        "6d61736b",
+        [
+          "integer64",
+          "-1"
+        ]
+      ],
+      [
+        "62697473",
+        [
+          "integer64",
+          "4294967296"
+        ]
+      ],
+      [
+        "706f7274",
+        [
+          "integer",
+          "8080"
+        ]
+      ],
+      [
+        "74657874",
+        [
+          "string",
+          "ff"
+        ]
+      ],
+      [
+        "6e6573746564",
+        [
+          "group",
+          [
+            [
+              "6f6b",
+              [
+                "boolean",
+                true
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "result": "all unrelated values and types preserved"
+}

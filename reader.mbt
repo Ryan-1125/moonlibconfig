@@ -6,6 +6,7 @@ priv struct Reader {
   mut line : Int32
   mut column : Int32
   mut nodes : Int32
+  mut last_text_end : Int32
   mut trace : Bool
   locations : Map[String, SourceLocation]
   mut current_path : String
@@ -32,6 +33,7 @@ fn Reader::new(data : Bytes, limits : Limits) -> Reader raise ConfigError {
     line: 1,
     column: 1,
     nodes: 0,
+    last_text_end: 0,
     trace: false,
     locations: Map([]),
     current_path: "",
