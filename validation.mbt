@@ -1,10 +1,11 @@
 ///|
 /// A semantic/resource issue in a caller-constructed configuration. Empty path is root.
+#derive(Debug, Eq)
 pub(all) struct ValidationIssue {
   path : String
   code : String
   message : String
-} derive(Debug, Eq)
+}
 
 ///|
 priv struct Validator {

@@ -1,17 +1,19 @@
 ///|
 /// A zero-based byte offset and one-based line/byte-column in the original input.
+#derive(Debug, Eq)
 pub(all) struct SourcePosition {
   offset : Int32
   line : Int32
   column : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 /// Starting positions of a setting name and its value. List elements use the same position.
+#derive(Debug, Eq)
 pub(all) struct SourceLocation {
   setting : SourcePosition
   value : SourcePosition
-} derive(Debug, Eq)
+}
 
 ///|
 /// Parsed values and original source locations. Locations do not follow subsequent edits.

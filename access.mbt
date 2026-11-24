@@ -1,9 +1,10 @@
 ///|
 /// A typed path avoids ambiguity between named members and indices.
+#derive(Debug, Eq)
 pub(all) enum Segment {
   Key(String)
   Index(Int32)
-} derive(Debug, Eq)
+}
 
 ///|
 /// Parse paths such as server.port, peers[0].host or peers.[0].host.

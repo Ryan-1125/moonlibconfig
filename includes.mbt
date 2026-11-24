@@ -1,16 +1,18 @@
 ///|
 /// Resolver supplies stable canonical identity and bytes. The library performs no I/O.
+#derive(Debug, Eq)
 pub(all) struct IncludeFile {
   id : String
   content : Bytes
-} derive(Debug, Eq)
+}
 
 ///|
 /// Original file and byte coordinates, distinct from expanded coordinates.
+#derive(Debug, Eq)
 pub(all) struct SourceOrigin {
   source : String
   position : SourcePosition
-} derive(Debug, Eq)
+}
 
 ///|
 pub struct OriginChunk {

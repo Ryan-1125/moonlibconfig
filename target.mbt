@@ -1,9 +1,10 @@
 ///|
 /// Explicit numeric interpretation. Existing APIs retain their original Portable behavior.
+#derive(Debug, Eq)
 pub(all) enum NumericPolicy {
   Portable
   Libconfig182
-} derive(Debug, Eq)
+}
 
 ///|
 /// Parse with libconfig 1.8.2 numeric interpretation, including signed conversion before L.

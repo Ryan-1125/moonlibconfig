@@ -31,18 +31,20 @@ pub fn stringify(Value, limits? : Limits) -> String raise ConfigError
 pub fn validate(Value, limits? : Limits) -> Array[ValidationIssue] raise ConfigError
 
 // Errors
+#derive(@debug.Debug)
 pub suberror ConfigError {
   ConfigError(Diagnostic)
-} derive(@debug.Debug)
+}
 
 // Types and methods
+#derive(Eq, @debug.Debug)
 pub(all) struct Diagnostic {
   code : String
   message : String
   offset : Int32
   line : Int32
   column : Int32
-} derive(Eq, @debug.Debug)
+}
 
 pub struct Document {
   tree : Value
@@ -58,10 +60,11 @@ pub fn Document::location(Self, String) -> SourceLocation? raise ConfigError
 pub fn Document::lookup(Self, String) -> Value raise ConfigError
 pub fn Document::root(Self) -> Value
 
+#derive(Eq, @debug.Debug)
 pub(all) struct IncludeFile {
   id : String
   content : Bytes
-} derive(Eq, @debug.Debug)
+}
 
 pub struct IncludedDocument {
   document : Document
@@ -73,18 +76,20 @@ pub fn IncludedDocument::origin(Self, String) -> SourceOrigin? raise ConfigError
 pub fn IncludedDocument::root(Self) -> Value
 pub fn IncludedDocument::source(Self, String) -> Bytes?
 
+#derive(Eq, @debug.Debug)
 pub(all) struct Limits {
   max_input : Int32
   max_depth : Int32
   max_nodes : Int32
   max_string : Int32
-} derive(Eq, @debug.Debug)
+}
 pub fn Limits::default() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) enum NumericPolicy {
   Portable
   Libconfig182
-} derive(Eq, @debug.Debug)
+}
 
 pub struct OriginChunk {
   first : Int32
@@ -93,33 +98,39 @@ pub struct OriginChunk {
   offset : Int32
 }
 
+#derive(Eq, @debug.Debug)
 pub(all) enum Segment {
   Key(String)
   Index(Int32)
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) struct SourceLocation {
   setting : SourcePosition
   value : SourcePosition
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) struct SourceOrigin {
   source : String
   position : SourcePosition
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) struct SourcePosition {
   offset : Int32
   line : Int32
   column : Int32
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) struct ValidationIssue {
   path : String
   code : String
   message : String
-} derive(Eq, @debug.Debug)
+}
 
+#derive(Eq, @debug.Debug)
 pub(all) enum Value {
   Integer(Int32)
   Integer64(Int64)
@@ -129,7 +140,7 @@ pub(all) enum Value {
   Group(Array[(String, Value)])
   ScalarArray(Array[Value])
   List(Array[Value])
-} derive(Eq, @debug.Debug)
+}
 pub fn Value::appended(Self, Self) -> Self raise ConfigError
 pub fn Value::as_bool(Self) -> Bool raise ConfigError
 pub fn Value::as_bytes(Self) -> Bytes raise ConfigError

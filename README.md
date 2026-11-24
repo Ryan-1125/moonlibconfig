@@ -128,6 +128,8 @@ test "edit containers validate and read defaults" {
 
 ## 验收与复现
 
+仓库源码使用moonc 0.10.22及对应标准库，并适配新版格式器的#derive语法。本机旧SDK保持原样，可通过tools/Use-ProjectToolchain.ps1在进程级使用项目.local中的隔离工具链，例如 `./tools/Use-ProjectToolchain.ps1 test --target native --deny-warn`。CI使用官方当前工具链。Mooncakes 0.3.0包已在0.10.16和0.10.22工具链中分别完成消费验证。
+
 | 层次 | 测试契约 |
 | --- | --- |
 | 目标模式读取 | 固定140个输入，要求接受/拒绝和类型/值与真实v1.8.2一致 |

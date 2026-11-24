@@ -93,8 +93,14 @@ fn Reader::atom(self : Reader) -> Value raise ConfigError {
       }
     }
     let digits = @utf8.decode_lossy(self.data[start + 2:end])
-    let bits = @string.parse_uint64(digits, base~) catch {
-      _ => raise self.error("integer_overflow", "integer exceeds 64 bits")
+    let radix = base.to_uint64()
+    let mut bits = 0UL
+    for byte in @utf8.encode(digits) {
+      let value = hex_digit(byte.to_int()).to_uint64()
+      if bits > (18446744073709551615UL - value) / radix {
+        raise self.error("integer_overflow", "integer exceeds 64 bits")
+      }
+      bits = bits * radix + value
     }
     if self.policy == Libconfig182 {
       if bits > 9223372036854775807UL {

@@ -1,5 +1,6 @@
 ///|
 /// A typed libconfig value. Text stores bytes, including non-UTF-8 escapes.
+#derive(Debug, Eq)
 pub(all) enum Value {
   Integer(Int32)
   Integer64(Int64)
@@ -9,16 +10,17 @@ pub(all) enum Value {
   Group(Array[(String, Value)])
   ScalarArray(Array[Value])
   List(Array[Value])
-} derive(Debug, Eq)
+}
 
 ///|
 /// Resource limits count input/string bytes and value nodes (excluding root).
+#derive(Debug, Eq)
 pub(all) struct Limits {
   max_input : Int32
   max_depth : Int32
   max_nodes : Int32
   max_string : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 /// Conservative defaults for in-memory configuration files.
@@ -28,19 +30,21 @@ pub fn Limits::default() -> Limits {
 
 ///|
 /// Locations are one-based lines/byte-columns; offset is zero-based bytes.
+#derive(Debug, Eq)
 pub(all) struct Diagnostic {
   code : String
   message : String
   offset : Int32
   line : Int32
   column : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 /// Parsing, access and writing errors share a structured diagnostic.
+#derive(Debug)
 pub suberror ConfigError {
   ConfigError(Diagnostic)
-} derive(Debug)
+}
 
 ///|
 /// Stable type names; array element checking uses the exact scalar type.
