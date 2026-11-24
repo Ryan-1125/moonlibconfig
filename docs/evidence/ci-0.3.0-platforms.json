@@ -1,0 +1,55 @@
+{
+  "version": "0.3.0",
+  "run": 45392319038,
+  "commit": "2669be779a99cda91ba3a2be3ba6ef67ad2ce7d3",
+  "url": "https://github.com/Ryan-1125/moonlibconfig/actions/runs/45392319038",
+  "conclusion": "success",
+  "platforms": [
+    {
+      "id": 138438966181,
+      "name": "test (windows-latest)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Independent ZIP consumer",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real upstream comparison",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux real upstream and application readback",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Published README examples",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 138438966709,
+      "name": "test (ubuntu-latest)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Independent ZIP consumer",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Real upstream comparison",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Linux real upstream and application readback",
+          "conclusion": "success"
+        },
+        {
+          "name": "Published README examples",
+          "conclusion": "skipped"
+        }
+      ]
+    }
+  ]
+}

@@ -67,3 +67,13 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: ./tools/Test-RegistryConsumer.ps1
+      - name: Preserve compatibility reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: compatibility-${{ runner.os }}
+          path: |
+            .local/differential/report.json
+            .local/target-differential/report.json
+            .local/semantic-edit/report.json
+          if-no-files-found: error
+          retention-days: 90
