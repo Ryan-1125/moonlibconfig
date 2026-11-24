@@ -6,7 +6,9 @@
 
 Windows真实上游已验证八个原应用回读场景，包含修改数值本身、字符串、数组、嵌套、浮点及被包含子文件；除目标值外均逐字段保持类型和值。证据见evidence/target-differential-windows-0.3.0.json和evidence/semantic-edit-windows-0.3.0.json。
 
-同一差分及回读脚本已纳入Ubuntu/Windows CI；Linux结果以相应实际运行记录为准，不由Windows结果推断。发布与全新工程消费在完成后补充独立证据。
+同一差分及回读脚本已纳入Ubuntu/Windows CI；Linux结果以相应实际运行记录为准，不由Windows结果推断。
+
+0.3.0于2026-11-24发布，publish返回200 OK，服务端元数据确认版本与校验值c685271d0543fa989cee9735b7ba9edd6ad8c493734f3b1f148cbc16aa4eace6。全新无workspace/本地路径覆盖的工程从Mooncakes实际下载0.3.0，四个README示例在Wasm GC、JS、Windows native全部通过，包含目标数值、多文件来源与原文编辑。证据见evidence/registry-release-0.3.0.json和evidence/readme-registry-0.3.0.json。
 
 ## 0.2.0 — 2026-10-22
 
