@@ -1,6 +1,6 @@
 name = "Ryan-1125/moonlibconfig"
 
-version = "0.2.0"
+version = "0.3.0"
 
 repository = "https://github.com/Ryan-1125/moonlibconfig"
 

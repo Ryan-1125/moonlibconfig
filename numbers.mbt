@@ -96,6 +96,22 @@ fn Reader::atom(self : Reader) -> Value raise ConfigError {
     let bits = @string.parse_uint64(digits, base~) catch {
       _ => raise self.error("integer_overflow", "integer exceeds 64 bits")
     }
+    if self.policy == Libconfig182 {
+      if bits > 9223372036854775807UL {
+        raise self.error(
+          "integer_overflow", "libconfig 1.8.2 signed integer range exceeded",
+        )
+      }
+      let signed = if bits >= 2147483648UL && bits <= 4294967295UL {
+        bits.to_int().to_int64()
+      } else {
+        bits.reinterpret_as_int64()
+      }
+      if long || signed < -2147483648L || signed > 2147483647L {
+        return Integer64(signed)
+      }
+      return Integer(signed.to_int())
+    }
     if long || n > max32 {
       return Integer64(bits.reinterpret_as_int64())
     }
@@ -109,9 +125,18 @@ fn Reader::atom(self : Reader) -> Value raise ConfigError {
       raise self.error("invalid_number", "float cannot have integer suffix")
     }
     let v = @string.parse_double(number) catch {
-      _ => raise self.error("invalid_number", "invalid floating point number")
+      _ =>
+        if self.policy == Libconfig182 {
+          if number.has_prefix("-") {
+            -1.0 / 0.0
+          } else {
+            1.0 / 0.0
+          }
+        } else {
+          raise self.error("invalid_number", "invalid floating point number")
+        }
     }
-    if v.is_inf() || v.is_nan() {
+    if (v.is_inf() || v.is_nan()) && self.policy != Libconfig182 {
       raise self.error("float_overflow", "non-finite float")
     }
     Float(v)

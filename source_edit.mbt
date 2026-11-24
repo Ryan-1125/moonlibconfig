@@ -10,7 +10,7 @@ pub fn replace_source_value(
   replacement : Value,
   limits~ : Limits = Limits::default(),
 ) -> Bytes raise ConfigError {
-  let document = parse_document_bytes(input, limits~)
+  let document = parse_target(input, limits~)
   ignore(document.lookup(path))
   if path == "" {
     raise failure(
@@ -21,6 +21,7 @@ pub fn replace_source_value(
     raise failure("missing_member", "source location missing")
   }
   let reader = Reader::new(input, limits)
+  reader.policy = Libconfig182
   reader.pos = location.value.offset
   reader.line = location.value.line
   reader.column = location.value.column
@@ -34,6 +35,11 @@ pub fn replace_source_value(
   if output.length() > limits.max_input {
     raise failure("output_limit", "edited source exceeds byte limit")
   }
-  ignore(parse_bytes(output, limits~))
+  let rewritten = parse_target(output, limits~)
+  if rewritten.lookup(path) != replacement {
+    raise failure(
+      "target_value_mismatch", "target application would interpret replacement differently",
+    )
+  }
   return output
 }

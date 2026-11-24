@@ -1,0 +1,7 @@
+import {
+  "Ryan-1125/moonlibconfig" @config,
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/json",
+}
+
+pkgtype(kind: "executable")

@@ -1,44 +1,44 @@
-# libconfig 1.8.2 兼容目标与验收契约
+# 兼容目标与重新申报验收矩阵
 
-## 交付目标
+## 最终目标
 
-moonlibconfig交付纯MoonBit的内存配置处理核心：解析、类型化查询、配置编辑、独立校验、源位置诊断和规范化写出。格式基线固定为hyperrealm/libconfig v1.8.2；参照程序固定提交a42cb47c1526a4f2ed025fcbb2289863375bc898，当前真实差分平台为Windows x64/MSVC。
+覆盖libconfig 1.8.2格式、默认文本包含及目标应用数据解释。库继续由MoonBit承担解析、编辑、校验、展开与定位；应用仅提供内容和保存策略。阶段性共同范围不作为最终兼容终点。
 
-兼容目标是**共同接受输入的值树与类型互操作**。比较范围包括Int32/Int64、浮点、布尔、字符串字节、group成员和array/list结构。文本排版、注释和原数值进制不作为相等条件。
+## 当前0.3.0验收
 
-## 多文件配置处理契约
-
-当前公开发布版本0.2.0的parse、parse_bytes、parse_document接口接收完整的内存配置内容，不进行文件读取或include展开。含原始@include指令的输入返回unsupported_include，而不是跳过指令后继续产生不完整配置。
-
-多文件应用通过宿主读取并按libconfig的文本包含语义展开，再将展开后的内容交给本库；文件路径、递归、循环与展开总量由宿主负责。这是接入方式，不是库内置include解析器的声明。库内Document位置对应实际传入文本，宿主展开后的来源映射也由宿主维护。
-
-验收用例I1：直接解析包含@include的根配置或嵌套group，均明确返回unsupported_include，不调用磁盘接口，不返回部分成功的树。若申报的目标是“库内置多文件include”，则必须另行实现回调、来源映射、循环及预算测试后再将该能力列为交付项。
-
-## 八项差分对往返的具体影响
-
-| 用例 | 本库结果 | 对值与类型往返的影响 |
+| 编号 | 用例与操作 | 成功条件 |
 | --- | --- | --- |
-| 未闭合块注释 | 拒绝 | 不产生值树，不计入成功往返集合 |
-| 未知Unicode样式转义 | 拒绝 | 不产生值树，不以静默替换掩盖上游原字符串 |
-| 十六进制转义含非法字符 | 拒绝 | 不产生值树 |
-| 十六进制转义不足两位 | 拒绝 | 不产生值树 |
-| 字符串NUL及后缀 | 拒绝 | 避免上游C字符串查询截断后与本库字节数据不同 |
-| 0xFFFFFFFFL | 本库Int64(4294967295)，实测上游Int64(-1) | **跨实现值不同**，不属于共同值一致集合；本库内部往返保持4294967295L |
-| 0xffffffffffffffff | 本库Int64(-1)，实测上游拒绝 | **接受范围不同**，不属于共同输入集合；本库内部写出-1L可保留值和类型 |
-| 1e999 | 拒绝 | 不将无穷大当作可互操作的有限浮点值 |
+| N1 | 0xFFFFFFFFL、0xffffffffffffffff、前导零及32/64位边界 | 目标模式与上游类型、值及接受/拒绝一致 |
+| S1 | 原八项差分的完整语料 | 目标模式140输入读取零差异，旧模式保留独立规则 |
+| W1 | 双方规范化输出再交给对方 | 116输入值和类型保持一致；非有限浮点单列 |
+| E1 | 修改port | 原应用重读仅port变化，包括mask的大整数值不变 |
+| E2 | 修改mask本身为4294967295L | 原应用观察到请求的Int64值，其他值/类型不变 |
+| E3 | 修改字符串、字节串、数组、嵌套布尔、浮点 | 分别逐字段比较预期树；负零等非目标值保持 |
+| I1 | 根级、group、list、嵌套include | 回调参数、展开树及原文件位置正确 |
+| I2 | alias规范身份循环、深度、累计字节、重复键、缺文件 | 明确失败，不能返回部分成功配置 |
+| I3 | 修改child.cfg中的service.bits，根包含关系保留 | 同一上游应用从原根重读，仅service.bits改变 |
 
-因此，不能把“本库自身往返成功”写成“与上游对任意输入一致”。与参照程序交换上述大整数时，使用十进制4294967295L、-1L，显式固定64位类型。
+N1/I1/I2等由compatibility_wbtest.mbt验证。E1-E3/I3由真实libconfig消费者执行，共8个原应用回读场景；不是用本库自往返冒充互操作。
 
-## 可复现验收用例
+## 八项差分的处置
 
-| 编号 | 输入/操作 | 验收结果与入口 |
-| --- | --- | --- |
-| I1 | 根级或group中的@include | unsupported_include；submission_wbtest.mbt |
-| V1 | 1与1L、同构array、异构list、嵌套group | 解析后值与类型符合固定预期；maturity_wbtest.mbt、parser_wbtest.mbt |
-| V2 | 查询、增删改、stringify后重读 | 编辑后树相等，原树保留；editing_wbtest.mbt、maturity_wbtest.mbt |
-| V3 | 非UTF-8字节、浮点负零 | 字节和数值符号保留；unicode_wbtest.mbt、writer_wbtest.mbt |
-| D1 | 上表六项拒绝输入 | 明确失败，不计为互操作成功；submission_wbtest.mbt |
-| D2 | 两项非十进制整数 | 分别验证本库固定预期与自身往返；上游结果由真实差分工具检查 |
-| X1 | 140个原创固定/生成输入 | 对比双方接受/拒绝和树；110个共同范围输入通过双向写出/读取 |
+两项数字差异已在parse_target中匹配上游，原文编辑也采用目标策略。其余六项读取规则同样按目标行为处理。旧parse接口保留0.2.0规则，兼顾现有用户，不将旧模式八项差异写成新目标模式仍存在的差异。
 
-执行moon test运行本库固定验收用例。运行tools/Get-Upstream.ps1、tools/Build-Oracle.ps1及node tools/differential.mjs复现真实上游验证。适配器使用17位浮点精度、科学记数法和默认十进制写出格式。完整结果见COMPATIBILITY.md与evidence/differential-windows.json。
+1e999可被目标和上游读为无穷大，但不是规范化写出成功的输入。已明确记录读取与写出的不同结果；原文修改另行验证未修改非有限值保留。不能把这项用例算入116项双向成功。
+
+## 原应用案例
+
+原始文件包含mask=0xFFFFFFFFL、bits=0x100000000L、port=9000、ratio=-0.0、字节字符串、普通字符串、数组和嵌套配置。原程序先读取并记录完整类型化树；MoonBit逐次修改一个目标值；同一原程序再读取。预期树只替换指定路径，所有其他节点包括类型均逐项相等。
+
+多文件案例由原程序从含@include的根读取，MoonBit回调展开并验证来源；只写回被修改子文件，根文件及包含关系不变，再由原程序重读比较。
+
+## 复现
+
+1. moon test --target wasm-gc / js / native：固定语义、资源和模糊回归。
+2. Windows运行tools/Get-Upstream.ps1、tools/Build-Oracle.ps1；Linux运行bash tools/Build-Oracle-Unix.sh。
+3. node tools/differential.mjs：旧模式回归。
+4. node tools/differential.mjs --target-profile：目标模式读取及双向写出。
+5. node tools/semantic-edit.mjs：八场景真实原应用回读。
+6. tools/Test-Consumer.ps1：实际ZIP消费；tools/Test-RegistryConsumer.ps1：发布版本消费。
+
+CI在Ubuntu和Windows运行真实参照测试。证据按平台保存，已执行结果见VERIFICATION.md；固定语料不推断未执行环境，也不代表任意合法输入已经穷尽。

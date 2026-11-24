@@ -1,230 +1,164 @@
 # moonlibconfig
 
 [![CI](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml/badge.svg)](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)
-[![Mooncakes](https://img.shields.io/badge/Mooncakes-0.2.0-orange)](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.2.0)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+[![Mooncakes](https://img.shields.io/badge/Mooncakes-0.3.0-orange)](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.3.0)
 
-**MoonBit 原生 libconfig 格式配置库**，提供解析、类型化查询、配置编辑和规范化写出能力。
+**纯 MoonBit 的 libconfig 配置处理库**：读取、严格查询、配置编辑、校验、源位置、回调式多文件包含及原文定点修改。
 
-适合读取已有 C/C++ 应用的 libconfig 配置、生成部署参数，以及在 Wasm、JavaScript 和 native 后端复用配置处理逻辑。核心由纯 MoonBit 实现，不依赖 C/C++ FFI，文件读取和保存由调用方负责。
+固定参照 **hyperrealm/libconfig v1.8.2**。完整格式兼容是演进目标，验收按读取结果、写出能力、原应用回读三层分别记录；固定语料通过不等于任意输入已完全兼容。
 
-[Mooncakes 包](https://mooncakes.io/docs/Ryan-1125/moonlibconfig@0.2.0) · [GitHub 仓库](https://github.com/Ryan-1125/moonlibconfig) · [使用场景](docs/USE_CASES.md) · [兼容性说明](docs/COMPATIBILITY.md)
+## 安装与使用
 
-## 特性
-
-- **保留配置类型**：区分32位整数、64位整数、浮点数、布尔值、字符串，以及 group、同类型标量 array 和异构 list。
-- **读取 libconfig 文本**：支持嵌套配置、三类注释、字符串转义与拼接、尾逗号、多进制整数和64位整数标记。
-- **查询和编辑**：支持命名成员、列表/数组索引、路径查询、严格类型提取，以及字段新增、替换和删除。
-- **保存字符串字节**：保留非 UTF-8 内容；需要 MoonBit String 时显式执行严格 UTF-8 解码。
-- **确定性写出**：生成可重读的规范化 ASCII 文本，保留值及类型，正确处理转义和浮点负零。
-- **明确的错误和限制**：提供错误码、消息、字节位置，以及输入、输出、嵌套、节点和字符串大小限制。
-
-## 安装
-
-在使用这个库的 MoonBit 工程中执行：
+在消费工程执行：
 
 ```sh
-moon add Ryan-1125/moonlibconfig@0.2.0
+moon add Ryan-1125/moonlibconfig@0.3.0
 ```
 
-下方示例保存为 `config_test.mbt`，在对应包的 `moon.pkg` 中加入测试导入：
+下面代码保存为 `config_test.mbt`，在对应的 `moon.pkg` 中导入：
 
 ```text
-import {
-  "Ryan-1125/moonlibconfig" @config,
-} for "test"
+import { "Ryan-1125/moonlibconfig" @config } for "test"
 ```
 
-业务源码使用同一包时，去掉导入声明后的 `for "test"`。
+业务源码调用时去掉 `for "test"`。运行 `moon test` 可执行示例。
 
-## 快速开始
+### 目标应用一致的数值解释
 
-解析配置、查询节点、修改端口、新增字段，再写出并重读：
+`parse_target(Bytes)` 返回带位置的 Document，采用 libconfig 1.8.2 目标解释。部分非十进制整数先作32位符号转换再应用L后缀，超出有符号64位的值报错。
 
 ```moonbit
 ///|
-test "read edit and write service configuration" {
-  let source = @config.parse(
-    "service={port=9000;enabled=true;} peers=({host=\"localhost\";weight=1L;})",
-  )
-  assert_eq(source.lookup("service.port").as_int(), 9000)
-  assert_eq(source.lookup("peers[0].host").as_string(), "localhost")
-  assert_eq(source.lookup("peers.[0].weight").as_int64(), 1L)
-
-  let service = source.lookup("service").with_member("workers", @config.Integer(4))
-  let changed = source
-    .replaced(@config.parse_path("service"), service)
-    .replaced(@config.parse_path("service.port"), @config.Integer(8080))
-
-  let output = @config.stringify(changed)
-  let reloaded = @config.parse(output)
-  assert_eq(reloaded.lookup("service.port").as_int(), 8080)
-  assert_eq(reloaded.lookup("service.workers").as_int(), 4)
-  assert_eq(source.lookup("service.port").as_int(), 9000)
-
-  let removed = service.without_member("workers")
-  assert_eq(removed, source.lookup("service"))
+test "target interpretation and normalized readback" {
+  let doc = @config.parse_target(b"mask=0xFFFFFFFFL; bits=0x100000000L; port=9000;")
+  assert_eq(doc.get_int64("mask"), -1L)
+  assert_eq(doc.get_int64("bits"), 4294967296L)
+  let root = doc.root().replaced(@config.parse_path("port"), @config.Integer(8080))
+  assert_eq(@config.parse_target_text(@config.stringify(root)).root(), root)
 }
 ```
 
-运行示例测试：
+现有 `parse`、`parse_bytes`、`parse_document` 保留原先的严格、可移植规则，兼顾已有使用者。与原 libconfig 应用交换配置时显式使用 `parse_target` 或 `parse_with_includes`；不要混用两套数值解释。两种入口的规则及历史差异见[兼容性说明](docs/COMPATIBILITY.md)。
 
-```sh
-moon test
+### 编辑既有配置，保留无关字段语义
+
+`replace_source_value` 用目标策略读取，仅替换指定值的原始区间，其余字节原样保留；写出前再次检查目标解释下的值和类型是否等于请求的替换值。字符串拼接与注释、数值进制等无关内容保留。
+
+```moonbit
+///|
+test "edit original text without reinterpreting unrelated values" {
+  let original = b"mask=0xFFFFFFFFL; port=9000; title=\"moon\";"
+  let edited = @config.replace_source_value(original, "port", @config.Integer(8080))
+  assert_eq(edited, b"mask=0xFFFFFFFFL; port=8080; title=\"moon\";")
+  assert_eq(@config.parse_target(edited).get_int64("mask"), -1L)
+  let changed_mask = @config.replace_source_value(edited, "mask", @config.Integer64(4294967295L))
+  assert_eq(@config.parse_target(changed_mask).get_int64("mask"), 4294967295L)
+}
 ```
 
-编辑操作复制修改路径上的容器，保留原有成员顺序，新字段追加到末尾；未修改的分支共享。删除不存在的字段会报 `missing_member`。
+树级 `stringify` 输出确定性ASCII、十进制整数、显式L和字节转义，保留值树而不保留排版。应用要求保留原文时使用定点编辑接口。
 
-## 类型与 API
+### 多文件配置：应用提供内容，库负责展开与定位
+
+`parse_with_includes` 在指令出现的位置展开文本，支持根级、group及list中的包含。指令单独占行，路径为单行双引号字面量。库接收 `resolve(parent_id, requested_path) -> IncludeFile` 回调，不访问文件系统。
+
+回调负责路径/访问策略并返回稳定的规范ID；库负责递归、规范ID循环检测、累计加载字节/展开字节限制、重复键解析和原文件定位。默认包含深度10，最大32，根深度为0。同一ID对应不同内容会报错。每次加载均计入累计预算。
+
+```moonbit
+///|
+test "resolve files and locate original child values" {
+  let root : @config.IncludeFile = {
+    id: "root.cfg",
+    content: b"service={\n@include \"child.cfg\"\n}\n",
+  }
+  let doc = @config.parse_with_includes(root, (parent, requested) => {
+    if parent != "root.cfg" || requested != "child.cfg" {
+      raise @config.resolver_error("unknown source")
+    }
+    { id: "child.cfg", content: b"port=9000; mask=0xFFFFFFFFL;" }
+  })
+  assert_eq(doc.root().lookup("service.port").as_int(), 9000)
+  assert_eq(doc.root().lookup("service.mask").as_int64(), -1L)
+  guard doc.origin("service.port") is Some(origin) else { fail("missing origin") }
+  assert_eq(origin.source, "child.cfg")
+  assert_eq((origin.position.line, origin.position.column), (1, 6))
+}
+```
+
+`origin` 返回原文件ID及字节位置；跨文件错误携带来源ID。EOF缺值错误定位最近的有效输入字节。修改子文件时，用其原内容调用 `replace_source_value`，保存到对应文件，保留根文件及包含关系。通配符、目录权限和虚拟文件系统属于回调的应用策略；库不隐式猜测路径。
+
+### 配置树、校验和严格默认值
+
+group、同类型标量array和异构list分别建模；Int32/Int64不隐式转换。编辑接口复制修改的容器，未改变分支共享。
+
+```moonbit
+///|
+test "edit containers validate and read defaults" {
+  let root = @config.parse("service={port=9000} peers=(\"one\",\"two\")")
+  let peers = root.lookup("peers").inserted(1, @config.Text(b"backup")).removed_at(0)
+  let updated = root.replaced(@config.parse_path("peers"), peers)
+  assert_eq(@config.validate(updated), [])
+  assert_eq(updated.lookup_or("workers", @config.Integer(4)), @config.Integer(4))
+  assert_eq(updated.lookup_optional("absent"), None)
+  assert_eq(@config.parse(@config.stringify(updated)), updated)
+}
+```
+
+`lookup_optional` 只把不存在的成员/索引作为None；`lookup_or` 仅对缺失使用默认值。已有值类型不符、非法路径、沿标量继续查询仍报错，不用默认值掩盖配置错误。
+
+`validate` 独立检查根、名称、重复键、array类型、NUL、有限浮点及节点/深度/字符串预算，返回带路径的多项问题。达到全局节点预算时终止，超深分支单独截断。校验不分配序列化文本，max_input的文本预算由解析/写出入口执行。
+
+## 类型、错误及预算
 
 | 能力 | 接口 |
 | --- | --- |
-| 文本/字节解析 | `parse`、`parse_bytes` |
-| 规范化写出 | `stringify` |
-| 路径解析与查询 | `parse_path`、`lookup`、`get_path` |
-| 成员与索引查询 | `get_member`、`at` |
-| 配置编辑 | `replaced`、`with_member`、`without_member` |
-| 列表/数组编辑 | `inserted`、`appended`、`removed_at` |
-| 独立校验 | `validate`，返回带路径的 `ValidationIssue` 数组 |
-| 源位置与类型诊断 | `parse_document`、`parse_document_bytes`、`Document.location`、`Document.get_*` |
-| 类型提取 | `as_int`、`as_int64`、`as_double`、`as_bool`、`as_string`、`as_bytes` |
-| 类型名称 | `kind` |
+| 目标应用解析 | `parse_target`、`parse_with_includes` |
+| 严格可移植解析 | `parse`、`parse_bytes`、`parse_document`、`parse_document_bytes` |
+| 读取与默认值 | `lookup`、`get_path`、`get_member`、`at`、`lookup_optional`、`lookup_or` |
+| 树编辑 | `replaced`、`with_member`、`without_member`、`inserted`、`appended`、`removed_at` |
+| 输出及校验 | `stringify`、`replace_source_value`、`validate` |
+| 类型读取 | `as_int`、`as_int64`、`as_double`、`as_bool`、`as_bytes`、`as_string` |
+| 定位 | `Document.location`、`Document.get_*`、`IncludedDocument.origin` |
 
-整数提取采用严格类型规则：`as_int64` 不会隐式接收32位整数。`ScalarArray` 只接受同一类型的标量；`List` 可包含不同类型的值及嵌套容器。
+错误通过 `ConfigError(Diagnostic)` 返回，含code、message、offset、line、column。行/字节列从1开始，offset从0开始。Document及include位置是原输入快照，不随共享容器的后续修改更新。
 
-`Text(Bytes)` 保存字符串字节，`as_string` 进行严格 UTF-8 解码；无效 UTF-8 返回 `invalid_utf8`。`as_bytes` 可直接提取原始字节。完整签名见 [公开 API](pkg.generated.mbti)。
+默认输入/输出1 MiB、容器64层、节点100000、解码后字符串256 KiB，查询路径256段。`Limits`可调整预算，容器深度上限256。Include累计输入与展开输出分别执行max_input预算，容器/节点预算在最终配置树上执行。
 
-## 错误与资源限制
+目标模式按原应用读取NUL之前的C字符串内容，保留未知转义原文，并匹配EOF块注释行为。浮点溢出可读为无穷大；规范化写出明确报错，不能把不可写值计作成功往返。原文编辑可保留无关的这类字段。
 
-错误通过 `ConfigError(Diagnostic)` 返回。`Diagnostic` 包含 `code`、`message`、`offset`、`line`、`column`；解析位置以字节计，行列从1开始，offset从0开始。查询和写出错误采用默认位置。
+## 验收与复现
 
-```moonbit
-///|
-test "handle a missing setting" {
-  let root = @config.parse("port=9000")
-  let code = try {
-    ignore(root.lookup("missing"))
-    "accepted"
-  } catch {
-    @config.ConfigError(d) => d.code
-  }
-  assert_eq(code, "missing_member")
-}
-```
-
-| 限制 | 默认值 |
+| 层次 | 测试契约 |
 | --- | --- |
-| 输入/规范化输出 | 1 MiB |
-| 容器嵌套 | 64层，根 group 不计入 |
-| 值节点 | 100000个，根 group 不计入 |
-| 解码后单字符串 | 256 KiB |
-| 查询/替换路径 | 256段 |
+| 目标模式读取 | 固定140个输入，要求接受/拒绝和类型/值与真实v1.8.2一致 |
+| 目标模式写出 | 116个输入双向读写；单独记录1个非有限浮点不可规范化写出的用例 |
+| 旧模式回归 | 原140个输入及8项明确规则保留，保护既有行为 |
+| 原应用编辑回读 | 8个场景，仅指定字段变化，其他值与类型逐字段相等 |
+| 多文件工作流 | 递归展开、子文件编辑、原应用重读、来源、循环、总量及失败测试 |
+| 工程化 | 三后端测试、ZIP/注册表独立消费、种子模糊回归及双平台CI |
 
-通过 `Limits` 调整解析和写出上限，容器嵌套最多设置为256层。例如：
-
-```moonbit
-///|
-test "apply explicit resource limits" {
-  let limits = { ..@config.Limits::default(), max_input: 4096, max_depth: 16 }
-  let root = @config.parse("port=9000", limits~)
-  assert_eq(root.lookup("port").as_int(), 9000)
-  assert_eq(@config.parse(@config.stringify(root, limits~)), root)
-}
-```
-
-## 兼容目标与验收
-
-本项目交付libconfig 1.8.2共同接受范围内的值树与类型互操作。多文件配置采用宿主展开后传入内存文本的接入方式；原始@include输入明确返回unsupported_include。八项差分中，六项属于拒绝输入，两项涉及非十进制整数的跨实现值或接受范围，不能计入共同往返成功集合。
-
-[完整验收契约](docs/ACCEPTANCE.md)逐项列明多文件处理方式、八项差分影响、输入向量及复现命令。110个共同范围输入的双向读写与本库自身往返是分别验证的结果。
-
-## 兼容范围
-
-格式参照固定为 **hyperrealm/libconfig v1.8.2**。项目提供明确范围内的独立实现：
-
-- `@include` 返回 `unsupported_include`，不触发文件读取或路径展开。
-- 未知或不完整转义、NUL 字节和非有限浮点明确拒绝。
-- 写出使用十进制数值和规范化排版，不保留原始注释、空白及进制。
-- 两项非十进制整数行为与实测 Windows 上游存在差异；交换大整数时优先使用十进制及显式 `L` 后缀。
-
-完整行为、8项实测差异及双方结果见 [兼容性说明](docs/COMPATIBILITY.md)。资源限制同样适用于调用方手工构造的配置树。
-
-## 示例与验证
-
-从源码直接运行端到端服务配置示例：
+测试覆盖不构成对任意配置完全兼容的证明。[完整兼容目标及验收矩阵](docs/ACCEPTANCE.md)记录验证范围、平台、规则与来源；[验证记录](docs/VERIFICATION.md)保存执行结果；[CHANGELOG](CHANGELOG.md)记录版本变化。
 
 ```sh
 git clone https://github.com/Ryan-1125/moonlibconfig.git
 cd moonlibconfig
 moon update
-moon run examples/service --target wasm-gc
-```
-
-该示例读取服务参数、修改端口、规范化写出并重读，异常时返回非零状态。
-
-| 验证项 | 结果 |
-| --- | --- |
-| 核心与边界测试 | 40项，覆盖三后端 |
-| GitHub Actions | Ubuntu、Windows：检查、三后端构建/测试、示例、API及打包 |
-| 真实上游差分 | 140个输入，8项精确记录的差异 |
-| 共同范围双向读写 | 110个输入通过 |
-| 实际 ZIP 独立消费 | Wasm GC、JS、Windows native 通过 |
-| Mooncakes 0.2.0 独立消费 | 注册表下载安装及三后端 API 调用通过 |
-
-真实上游参照使用固定提交构建的外部程序；测试比较接受/拒绝、值结构、类型与数据。详见 [验证记录](docs/VERIFICATION.md)及 [CI](https://github.com/Ryan-1125/moonlibconfig/actions/workflows/ci.yml)。
-
-本地检查：
-
-```sh
 moon fmt --check
 moon check --deny-warn
 moon test --target wasm-gc --deny-warn
 moon test --target js --deny-warn
 moon test --target native --deny-warn
-moon info
-moon package --list
+moon run examples/service --target wasm-gc
 ```
 
-## 0.2.0：容器编辑、独立校验与源位置
+Windows参照构建：运行 `tools/Get-Upstream.ps1`、`tools/Build-Oracle.ps1`。Linux参照构建：`bash tools/Build-Oracle-Unix.sh`。随后执行：
 
-`inserted(index, value)` 在索引前插入，索引等于长度时追加；`appended(value)` 追加；`removed_at(index)` 删除已有元素。所有操作复制容器并保留原顺序。array 区分32/64位整数，只接受同类型标量；list 可包含任意配置值。索引越界或类型不符均返回明确错误。
-
-`validate(root, limits~)` 不分配序列化文本，检查根类型、名称、重复键、数组元素类型、非有限浮点、NUL及深度/节点/字符串预算。返回多个带路径的问题；遇到全局节点预算时停止遍历，超深分支单独截断。空路径代表根；非法字段名的路径仅用于显示，不保证可用于lookup。此接口的max_input不作为输出预算，文本输入/输出预算由parse/stringify执行。手工修改后的配置应先校验再写出。
-
-`parse_document`/`parse_document_bytes` 保留字段名和值的起始位置。`location` 接受同样的点号/下标路径；`get_int`、`get_int64`、`get_double`、`get_bool`、`get_bytes`、`get_string` 提供严格查询。类型错误包含路径、期望类型、实际类型和原值位置；字段缺失时使用最近已知父节点的位置。Document位置是原始输入的快照，后续修改共享值树不会重新计算位置，也不用于保真编辑。
-
-```moonbit
-///|
-test "edit validate and locate configuration" {
-  let doc = @config.parse_document("service={port=9000;} peers=(\"one\",\"two\")")
-  assert_eq(doc.get_int("service.port"), 9000)
-  assert_true(doc.location("service.port") != None)
-  let peers = doc.lookup("peers")
-    .inserted(1, @config.Text(b"backup"))
-    .appended(@config.Text(b"last"))
-    .removed_at(0)
-  let root = doc.root().replaced(@config.parse_path("peers"), peers)
-  assert_eq(@config.validate(root), [])
-  assert_eq(@config.parse(@config.stringify(root)), root)
-  let invalid = @config.Group([
-    ("ports", @config.ScalarArray([@config.Integer(1), @config.Integer64(2L)])),
-  ])
-  let issues = @config.validate(invalid)
-  assert_eq(issues[0].path, "ports[1]")
-  assert_eq(issues[0].code, "array_type")
-}
+```sh
+node tools/differential.mjs
+node tools/differential.mjs --target-profile
+node tools/semantic-edit.mjs
 ```
 
-## 许可证与参考
+## 开源与参考
 
-本项目原创代码使用 [Apache-2.0](LICENSE)。
-
-格式参考 [hyperrealm/libconfig v1.8.2](https://github.com/hyperrealm/libconfig/tree/v1.8.2)，上游源码许可证为 **LGPL-2.1-or-later**。MoonBit 实现依据公开格式文档独立编写；没有复制或翻译上游解析器及测试源码。上游程序仅作为外部行为参照使用，来源和参考范围见 [NOTICE](NOTICE)。
-
-## 原应用语义保真编辑与兼容目标
-
-仓库新增 replace_source_value(input, path, replacement) 原文定点编辑接口：保留目标值之外的原始字节，避免未修改字段因数值重解释发生改变。该新增接口以仓库源码为使用入口，已发布0.2.0的接口以其版本文档为准。
-
-真实案例由libconfig 1.8.2先读取配置，MoonBit仅将port从9000改为8080，再由同一个libconfig应用读取并比较全部字段。0xFFFFFFFFL在原应用中前后均为Int64(-1)，其他大整数、字节字符串和嵌套值保持不变。复现：node tools/semantic-edit.mjs；证据：docs/evidence/semantic-edit-windows.json。
-
-完整兼容目标是覆盖libconfig 1.8.2格式、文本包含语义及目标应用的数据解释，并以原应用回读验证编辑语义；共同接受的输入是阶段性测试集合，不是兼容终点。现有规范化值树接口与原文定点编辑采用不同契约：返回既有配置给原应用时优先使用后者。不能从有限测试推断对任意输入完全兼容。
+原创MoonBit代码采用 [Apache-2.0](LICENSE)。参照项目 [hyperrealm/libconfig v1.8.2](https://github.com/hyperrealm/libconfig/tree/v1.8.2) 的源码采用 LGPL-2.1-or-later。实现独立编写，格式及已验证的上游行为为设计依据，不复制或翻译上游实现与测试源码。参考范围及原始授权见 [NOTICE](NOTICE)。

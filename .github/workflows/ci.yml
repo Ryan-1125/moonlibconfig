@@ -53,6 +53,15 @@ jobs:
           ./tools/Get-Upstream.ps1
           ./tools/Build-Oracle.ps1
           node tools/differential.mjs
+          node tools/differential.mjs --target-profile
+          node tools/semantic-edit.mjs
+      - name: Linux real upstream and application readback
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          bash tools/Build-Oracle-Unix.sh
+          node tools/differential.mjs
+          node tools/differential.mjs --target-profile
           node tools/semantic-edit.mjs
       - name: Published README examples
         if: runner.os == 'Windows'

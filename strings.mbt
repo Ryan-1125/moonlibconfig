@@ -33,28 +33,42 @@ fn Reader::text(self : Reader) -> Bytes raise ConfigError {
           114 => 13
           116 => 9
           118 => 11
-          120 => {
-            self.advance()
-            let hi = hex_digit(self.peek())
-            if hi < 0 {
-              raise self.error(
-                "invalid_escape", "expected two hexadecimal digits",
-              )
+          120 | 88 =>
+            if self.policy == Libconfig182 &&
+              (
+                hex_digit(self.peek(ahead=1)) < 0 ||
+                hex_digit(self.peek(ahead=2)) < 0
+              ) {
+              output.push(b'\\')
+              self.peek()
+            } else {
+              self.advance()
+              let hi = hex_digit(self.peek())
+              if hi < 0 {
+                raise self.error(
+                  "invalid_escape", "expected two hexadecimal digits",
+                )
+              }
+              self.advance()
+              let lo = hex_digit(self.peek())
+              if lo < 0 {
+                raise self.error(
+                  "invalid_escape", "expected two hexadecimal digits",
+                )
+              }
+              hi * 16 + lo
             }
-            self.advance()
-            let lo = hex_digit(self.peek())
-            if lo < 0 {
-              raise self.error(
-                "invalid_escape", "expected two hexadecimal digits",
-              )
+          _ =>
+            if self.policy == Libconfig182 && self.peek() != -1 {
+              output.push(b'\\')
+              self.peek()
+            } else {
+              raise self.error("invalid_escape", "unknown string escape")
             }
-            hi * 16 + lo
-          }
-          _ => raise self.error("invalid_escape", "unknown string escape")
         }
         self.advance()
       }
-      if c == 0 {
+      if c == 0 && self.policy != Libconfig182 {
         raise self.error(
           "unsupported_nul", "NUL bytes are not representable by libconfig string APIs",
         )
@@ -67,6 +81,13 @@ fn Reader::text(self : Reader) -> Bytes raise ConfigError {
     self.advance()
     self.last_text_end = self.pos
     self.skip()
+  }
+  if self.policy == Libconfig182 {
+    for i = 0; i < output.length(); i = i + 1 {
+      if output[i] == b'\x00' {
+        return Bytes::from_array(output[0:i])
+      }
+    }
   }
   Bytes::from_array(output)
 }

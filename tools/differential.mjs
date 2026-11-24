@@ -4,9 +4,11 @@ import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const work = resolve(root, '.local/differential');
+const targetProfile=process.argv.includes('--target-profile');
+const bridge=targetProfile?'tools/target-bridge':'tools/bridge';
+const work = resolve(root, targetProfile?'.local/target-differential':'.local/differential');
 mkdirSync(work, { recursive: true });
-const oracle = resolve(root, '.local/upstream/oracle.exe');
+const oracle = resolve(root, process.platform==='win32'?'.local/upstream/oracle.exe':'.local/upstream/oracle');
 const cases = [
   '', 'a=1', 'a=1 b=2', 'a:1;', 'a=1,', 'a=1;;',
   'a={} b=[] c=()', 'a={b=({x=1},[2,3],true)}', 'a=[1,2,]', 'a=(1,2L,true,)',
@@ -32,12 +34,12 @@ for(let i=0;i<32;i++) {
 }
 const byteLiteral = b => 'b"' + [...b].map(n => '\\x'+n.toString(16).padStart(2,'0')).join('') + '"';
 const moonCases = cases.map(x => byteLiteral(Buffer.from(x)));
-const casesFile=resolve(root,'tools/bridge/cases.mbt');
+const casesFile=resolve(root,bridge+'/cases.mbt');
 const originalCases=readFileSync(casesFile);
 try {
 writeFileSync(casesFile, `// Generated from original differential inputs.\n///|\nfn cases() -> Array[Bytes] { [${moonCases.join(',\n')}] }\n`);
 function runMoon() {
-  const result = spawnSync('moon', ['run','tools/bridge','--target','js','--quiet'], {cwd:root,encoding:'utf8',shell:process.platform==='win32'});
+  const result = spawnSync('moon', ['run',bridge,'--target','js','--quiet'], {cwd:root,encoding:'utf8',shell:process.platform==='win32'});
   if(result.status!==0) throw new Error(result.stderr || result.stdout);
   return result.stdout.trim().split(/\r?\n/).map(x=>JSON.parse(x));
 }
@@ -51,7 +53,7 @@ function readOracle(input, name) {
 }
 function same(a,b) {
   if(a[0]!==b[0]) return false;
-  if(a[0]==='float') return Object.is(Number(a[1]),Number(b[1]));
+  if(a[0]==='float') { const n=x=>x==='inf'?Infinity:x==='-inf'?-Infinity:Number(x); return Object.is(n(a[1]),n(b[1])); }
   if(['group','array','list'].includes(a[0])) {
     if(a[1].length!==b[1].length) return false;
     return a[1].every((x,i)=> a[0]==='group' ? x[0]===b[1][i][0]&&same(x[1],b[1][i][1]) : same(x,b[1][i]));
@@ -62,12 +64,14 @@ const actual=runMoon();
 if(actual.length!==cases.length) throw new Error('missing MoonBit results');
 const records=[];
 const upstreamOutputs=[];
+const nonSerializable=[];
 for(let i=0;i<cases.length;i++) {
   const expected=readOracle(cases[i],'input-'+i), result=actual[i];
   let issue=null;
   if(expected.ok!==result[0]) issue='acceptance';
   else if(expected.ok && !same(expected.tree,result[1])) issue='tree';
-  if(expected.ok && result[0] && same(expected.tree,result[1])) {
+  if(expected.ok && result[0] && same(expected.tree,result[1]) && result[2]===null) nonSerializable.push(i);
+  if(expected.ok && result[0] && same(expected.tree,result[1]) && result[2]!==null) {
     const back=readOracle(result[2],'moon-output-'+i);
     if(!back.ok || !same(expected.tree,back.tree)) issue='moon-output';
     upstreamOutputs.push({index:i,bytes:expected.output,tree:expected.tree});
@@ -82,14 +86,14 @@ for(let i=0;i<upstreamOutputs.length;i++) {
   if(!reread[i][0]||!same(source.tree,reread[i][1])) records[source.index].issue='upstream-output';
 }
 const differences=records.filter(x=>x.issue);
-writeFileSync(resolve(work,'report.json'),JSON.stringify({version:'1.8.2',commit:'a42cb47c1526a4f2ed025fcbb2289863375bc898',cases:cases.length,roundtrips:upstreamOutputs.length,differences,records},null,2));
-const expectedFile=resolve(root,'tools/expected-differences-windows.json');
+writeFileSync(resolve(work,'report.json'),JSON.stringify({version:'1.8.2',commit:'a42cb47c1526a4f2ed025fcbb2289863375bc898',cases:cases.length,roundtrips:upstreamOutputs.length,nonSerializable,differences,records},null,2));
+const expectedFile=resolve(root,targetProfile?'tools/expected-differences-target.json':'tools/expected-differences-windows.json');
 let documented=[];
 try { documented=JSON.parse(readFileSync(expectedFile,'utf8')); } catch {}
 const signature=x=>JSON.stringify([x.input,x.upstreamAccepted,x.moonAccepted,x.issue,x.upstream,x.moon]);
 const unexpected=differences.filter(x=>!documented.some(y=>signature(x)===signature(y)));
 const missing=documented.filter(x=>!differences.some(y=>signature(x)===signature(y)));
-console.log(JSON.stringify({cases:cases.length,roundtrips:upstreamOutputs.length,documentedDifferences:differences.length,unexpected,missing},null,2));
+console.log(JSON.stringify({cases:cases.length,roundtrips:upstreamOutputs.length,nonSerializable,documentedDifferences:differences.length,unexpected,missing},null,2));
 if(unexpected.length||missing.length) process.exitCode=1;
 } finally {
   writeFileSync(casesFile,originalCases);

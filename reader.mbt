@@ -6,6 +6,7 @@ priv struct Reader {
   mut line : Int32
   mut column : Int32
   mut nodes : Int32
+  mut policy : NumericPolicy
   mut last_text_end : Int32
   mut trace : Bool
   locations : Map[String, SourceLocation]
@@ -33,6 +34,7 @@ fn Reader::new(data : Bytes, limits : Limits) -> Reader raise ConfigError {
     line: 1,
     column: 1,
     nodes: 0,
+    policy: Portable,
     last_text_end: 0,
     trace: false,
     locations: Map([]),
@@ -92,6 +94,9 @@ fn Reader::skip(self : Reader) -> Unit raise ConfigError {
       self.advance()
       while !(self.peek() == 42 && self.peek(ahead=1) == 47) {
         if self.peek() == -1 {
+          if self.policy == Libconfig182 {
+            return
+          }
           raise self.error("unterminated_comment", "expected */")
         }
         self.advance()
