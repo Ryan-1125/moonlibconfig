@@ -164,3 +164,7 @@ node tools/semantic-edit.mjs
 ## 开源与参考
 
 原创MoonBit代码采用 [Apache-2.0](LICENSE)。参照项目 [hyperrealm/libconfig v1.8.2](https://github.com/hyperrealm/libconfig/tree/v1.8.2) 的源码采用 LGPL-2.1-or-later。实现独立编写，格式及已验证的上游行为为设计依据，不复制或翻译上游实现与测试源码。参考范围及原始授权见 [NOTICE](NOTICE)。
+
+## 最终验收复现
+
+运行 ./tools/Verify-Acceptance.ps1 可依次完成源码检查、三后端构建测试、API快照、ZIP及注册表独立消费、真实上游差分和原应用回读。脚本生成带源码提交、版本及逐步骤结果的 .local/acceptance/report.json。环境与材料对应关系见 [最终验收入口](docs/FINAL_ACCEPTANCE.md)。

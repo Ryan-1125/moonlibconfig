@@ -1,0 +1,93 @@
+{
+  "module": "Ryan-1125/moonlibconfig",
+  "version": "0.3.0",
+  "commit": "6485fa790f74534b99f3e3c8956d02dd009ea3c9",
+  "steps": [
+    {
+      "name": "toolchain",
+      "result": "passed",
+      "seconds": 2.3412688
+    },
+    {
+      "name": "format",
+      "result": "passed",
+      "seconds": 1.4139854
+    },
+    {
+      "name": "strict check",
+      "result": "passed",
+      "seconds": 1.3110213
+    },
+    {
+      "name": "build wasm-gc",
+      "result": "passed",
+      "seconds": 1.0897113
+    },
+    {
+      "name": "test wasm-gc",
+      "result": "passed",
+      "seconds": 0.9620935
+    },
+    {
+      "name": "build js",
+      "result": "passed",
+      "seconds": 0.7719888
+    },
+    {
+      "name": "test js",
+      "result": "passed",
+      "seconds": 0.7959854
+    },
+    {
+      "name": "build native",
+      "result": "passed",
+      "seconds": 1.5062741
+    },
+    {
+      "name": "test native",
+      "result": "passed",
+      "seconds": 1.1587033
+    },
+    {
+      "name": "public API",
+      "result": "passed",
+      "seconds": 0.2493682
+    },
+    {
+      "name": "API snapshot",
+      "result": "passed",
+      "seconds": 0.1190238
+    },
+    {
+      "name": "ZIP independent consumer",
+      "result": "passed",
+      "seconds": 5.663388
+    },
+    {
+      "name": "real upstream build",
+      "result": "passed",
+      "seconds": 2.2305829
+    },
+    {
+      "name": "portable differential",
+      "result": "passed",
+      "seconds": 6.223068
+    },
+    {
+      "name": "target differential",
+      "result": "passed",
+      "seconds": 5.9288041
+    },
+    {
+      "name": "original application readback",
+      "result": "passed",
+      "seconds": 0.8481146
+    },
+    {
+      "name": "registry independent consumer",
+      "result": "passed",
+      "seconds": 3.0424583
+    }
+  ],
+  "result": "passed"
+}
